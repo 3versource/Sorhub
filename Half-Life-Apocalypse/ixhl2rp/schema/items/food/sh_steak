@@ -1,6 +1,6 @@
-ITEM.name = "Burger"
-ITEM.description = "A burger, eaten a lot as fast-food."
-ITEM.model = "models/foodnhouseholditems/burgergtasa.mdl"
+ITEM.name = "Steak"
+ITEM.description = "A steak slice, looking delicious as ever."
+ITEM.model = "models/mosi/fallout4/props/food/steak.mdl"
 ITEM.category = "Food"
 ITEM.functions.Eat = {
 	icon = "icon16/cake.png",
