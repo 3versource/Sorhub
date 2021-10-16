@@ -45,27 +45,11 @@ else
 		if (true) then return end
 		
 		local savedTable = self:GetData() or {}
-
-		for k, v in ipairs(savedTable) do
-			local stove = ents.Create(v.class)
-			stove:SetPos(v.pos)
-			stove:SetAngles(v.ang)
-			stove:Spawn()
-			stove:Activate()
-		end
 	end
 	
 	function PLUGIN:SaveData()
 		if (true) then return end
-
 		local savedTable = {}
-
-		for k, v in ipairs(ents.GetAll()) do
-			if (v:isStove()) then
-				table.insert(savedTable, {class = v:GetClass(), pos = v:GetPos(), ang = v:GetAngles()})
-			end
-		end
-
 		self:SetData(savedTable)
 	end
 	
@@ -105,5 +89,11 @@ else
 
 			thinkTime = CurTime() + 1
 		end
+	end
+
+	function PLUGIN:PlayerLoadedCharacter(client, character)
+		timer.Simple(0.25, function()
+			client:SetLocalVar("hunger", CurTime() - character:GetData("hunger"))
+		end)
 	end
 end
