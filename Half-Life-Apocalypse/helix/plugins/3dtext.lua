@@ -60,7 +60,7 @@ if (SERVER) then
 
 		for k, v in pairs(self.list) do
 			if (k == 0) then
-				::continue::
+				continue
 			end
 
 			if (v[1]:Distance(position) <= radius) then
@@ -184,7 +184,7 @@ else
 
 		for k, v in pairs(PLUGIN.list) do
 			if (k == 0) then
-				::continue::
+				continue
 			end
 
 			local object = ix.markup.Parse("<font=ix3D2DFont>"..v[3]:gsub("\\n", "\n"))
@@ -227,7 +227,7 @@ else
 
 		for k, v in pairs(self.list) do
 			if (k == 0) then
-				::continue::
+				continue
 			end
 
 			if (v[1]:Distance(LocalPlayer():GetEyeTraceNoCursor().HitPos) <= radius) then
@@ -287,7 +287,7 @@ else
 			local distance = texts[i][1]:DistToSqr(position)
 
 			if (distance > 1048576) then
-				::continue::
+				continue
 			end
 
 			cam.Start3D2D(texts[i][1], texts[i][2], texts[i][4] or 0.1)

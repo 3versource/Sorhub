@@ -84,7 +84,7 @@ if (CLIENT) then
 			if (start == 1) then
 				for uniqueID, command in pairs(ix.command.list) do
 					if (command.bNoIndicator) then
-						::continue::
+						continue
 					end
 
 					if (commandName == uniqueID) then
@@ -117,7 +117,7 @@ if (CLIENT) then
 
 		for _, v in ipairs(player.GetAll()) do
 			if (v == client) then
-				::continue::
+				continue
 			end
 
 			local distance = v:GetPos():DistToSqr(position)
@@ -127,14 +127,14 @@ if (CLIENT) then
 				(moveType ~= MOVETYPE_WALK and moveType ~= MOVETYPE_NONE) or
 				!v.ixChatClassText or
 				distance >= v.ixChatClassRange) then
-				::continue::
+				continue
 			end
 
 			local text = v.ixChatClassText
 			local range = v.ixChatClassRange
 
 			if (!text) then
-				::continue::
+				continue
 			end
 
 			local bAnimation = !ix.option.Get("disableAnimations", false)
@@ -147,7 +147,7 @@ if (CLIENT) then
 					v.ixChatClassText = nil
 					v.ixChatClassRange = nil
 
-					::continue::
+					continue
 				end
 
 				fraction = v.ixChatClassAnimation

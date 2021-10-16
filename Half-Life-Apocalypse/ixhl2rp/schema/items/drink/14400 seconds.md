@@ -1,1 +1,1 @@
-thirst timer
+thirst timer is 14400 seconds

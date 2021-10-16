@@ -103,13 +103,13 @@ function PLUGIN:PostDrawTranslucentRenderables(bDepth, bSkybox)
 
 	for _, v in ipairs(entities) do
 		if (!IsValid(v) or !v:IsDoor() or !v:GetNetVar("visible")) then
-			::continue::
+			continue
 		end
 
 		local color = v:GetColor()
 
 		if (v:IsEffectActive(EF_NODRAW) or color.a <= 0) then
-			::continue::
+			continue
 		end
 
 		local position = v:LocalToWorld(v:OBBCenter())

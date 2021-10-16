@@ -144,7 +144,7 @@ function PLUGIN:PostPlayerDraw(client)
 	for k, v in ipairs(client:GetWeapons()) do
 		local class = v:GetClass():lower()
 		local drawInfo = HOLSTER_DRAWINFO[class]
-		if (not drawInfo or not drawInfo.model) then ::continue:: end
+		if (not drawInfo or not drawInfo.model) then continue end
 
 		if (not IsValid(client.holsteredWeapons[class])) then
 			local model =
@@ -156,7 +156,7 @@ function PLUGIN:PostPlayerDraw(client)
 		local drawModel = client.holsteredWeapons[class]
 		local boneIndex = client:LookupBone(drawInfo.bone)
 
-		if (not boneIndex or boneIndex < 0) then ::continue:: end
+		if (not boneIndex or boneIndex < 0) then continue end
 		local bonePos, boneAng = client:GetBonePosition(boneIndex)
 
 		if (curClass ~= class and IsValid(drawModel)) then

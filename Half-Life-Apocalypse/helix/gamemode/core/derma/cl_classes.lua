@@ -131,7 +131,7 @@ hook.Add("CreateMenuButtons", "ixClasses", function(tabs)
 
 	for k, _ in ipairs(ix.class.list) do
 		if (!ix.class.CanSwitchTo(LocalPlayer(), k)) then
-			::continue::
+			continue
 		else
 			tabs["classes"] = function(container)
 				container:Add("ixClasses")

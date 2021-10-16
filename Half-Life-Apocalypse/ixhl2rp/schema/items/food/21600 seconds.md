@@ -1,1 +1,1 @@
-hunger timer
+hunger timer is 21600 seconds

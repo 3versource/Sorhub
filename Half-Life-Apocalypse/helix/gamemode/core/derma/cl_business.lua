@@ -146,7 +146,7 @@ function PANEL:Init()
 
 	for k, v in pairs(ix.item.list) do
 		if (hook.Run("CanPlayerUseBusiness", LocalPlayer(), k) == false) then
-			::continue::
+			continue
 		end
 
 		if (!self.categoryPanels[L(v.category)]) then
@@ -226,12 +226,12 @@ function PANEL:LoadItems(category, search)
 
 	for uniqueID, itemTable in SortedPairsByMemberValue(items, "name") do
 		if (hook.Run("CanPlayerUseBusiness", LocalPlayer(), uniqueID) == false) then
-			::continue::
+			continue
 		end
 
 		if (itemTable.category == category) then
 			if (search and search ~= "" and !L(itemTable.name):lower():find(search, 1, true)) then
-				::continue::
+				continue
 			end
 
 			self.itemList:Add("ixBusinessItem"):SetItem(itemTable)

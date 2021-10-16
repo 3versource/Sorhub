@@ -340,7 +340,7 @@ function ix.command.ExtractArgs(text)
 	local curString = ""
 
 	for i = 1, text:utf8len() do
-		if (i <= skip) then ::continue:: end
+		if (i <= skip) then continue end
 
 		local c = text:utf8sub(i, i)
 
@@ -359,7 +359,7 @@ function ix.command.ExtractArgs(text)
 			curString = ""
 		else
 			if (c == " " and curString == "") then
-				::continue::
+				continue
 			end
 
 			curString = curString..c

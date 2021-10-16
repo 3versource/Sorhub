@@ -402,7 +402,7 @@ function PANEL:Populate()
 			local container = self:GetContainerPanel(v.category or "description")
 
 			if (v.ShouldDisplay and v:ShouldDisplay(container, self.payload) == false) then
-				::continue::
+				continue
 			end
 
 			local panel
@@ -469,7 +469,7 @@ end
 function PANEL:VerifyProgression(name)
 	for k, v in SortedPairsByMemberValue(ix.char.vars, "index") do
 		if (name ~= nil and (v.category or "description") ~= name) then
-			::continue::
+			continue
 		end
 
 		local value = self.payload[k]

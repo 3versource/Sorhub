@@ -104,7 +104,7 @@ end
 function META:FindError()
 	for _, v in pairs(self:GetItems()) do
 		if (v.width == 1 and v.height == 1) then
-			::continue::
+			continue
 		end
 
 		print("Finding error: " .. v.name)
@@ -227,7 +227,7 @@ function META:CanItemFit(x, y, w, h, item2)
 			if ((x + x2) > self.w or item) then
 				if (item2) then
 					if (item and item.id == item2.id) then
-						::continue::
+						continue
 					end
 				end
 
@@ -609,7 +609,7 @@ function META:HasItem(targetID, data)
 				end
 
 				if (!bFound) then
-					::continue::
+					continue
 				end
 			end
 
@@ -685,7 +685,7 @@ function META:HasItemOfBase(baseID, data)
 				end
 
 				if (!bFound) then
-					::continue::
+					continue
 				end
 			end
 

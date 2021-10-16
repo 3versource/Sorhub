@@ -72,7 +72,7 @@ function ix.inventory.Restore(invID, width, height, callback)
 
 					if (!itemInvID or !invInfo) then
 						-- don't restore items with an invalid inventory id or type
-						::continue::
+						continue
 					end
 
 					local inventory = ix.item.inventories[itemInvID]

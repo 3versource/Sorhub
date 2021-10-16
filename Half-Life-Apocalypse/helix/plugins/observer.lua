@@ -37,7 +37,7 @@ if (CLIENT) then
 
 			for _, v in ipairs(player.GetAll()) do
 				if (v == client or !v:GetCharacter() or client:GetAimVector():Dot((v:GetPos() - client:GetPos()):GetNormal()) < 0.65) then
-					::continue::
+					continue
 				end
 
 				local screenPosition = v:GetPos():ToScreen()

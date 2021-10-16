@@ -79,7 +79,7 @@ end
 function PANEL:SetAllValues(bValue)
 	for _, v in ipairs(self.settings:GetRows()) do
 		if (v == self.name) then
-			::continue::
+			continue
 		end
 
 		v:SetValue(tobool(bValue), true)

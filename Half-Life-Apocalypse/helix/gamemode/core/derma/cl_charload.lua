@@ -411,7 +411,7 @@ function PANEL:Populate(ignoreID)
 		local character = ix.char.loaded[id]
 
 		if (!character or character:GetID() == ignoreID) then
-			::continue::
+			continue
 		end
 
 		local index = character:GetFaction()

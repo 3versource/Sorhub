@@ -11,7 +11,7 @@ ITEM.functions.Inject = {
 		local client = itemTable.player
 
 		client:RestoreStamina(40)
-		client:SetHealth(math.min(client:Health() - 10, client:GetMaxHealth()))
+		client:SetHealth(math.min(client:Health() - 5, client:GetMaxHealth()))
 		if client:Health() <= 0 then
 			client:TakeDamage(100)
 		end

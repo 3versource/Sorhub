@@ -84,7 +84,7 @@ function PANEL:DoRightClick()
 
 		for k, v in SortedPairs(itemTable.functions) do
 			if (k == "drop" or k == "combine" or (v.OnCanRun and v.OnCanRun(itemTable) == false)) then
-				::continue::
+				continue
 			end
 
 			-- is Multi-Option Function
@@ -382,7 +382,7 @@ function PANEL:SetInventory(inventory, bFitParent)
 
 		for x, items in pairs(inventory.slots) do
 			for y, data in pairs(items) do
-				if (!data.id) then ::continue:: end
+				if (!data.id) then continue end
 
 				local item = ix.item.instances[data.id]
 
@@ -776,7 +776,7 @@ hook.Add("CreateMenuButtons", "ixInventory", function(tabs)
 			if (ix.option.Get("openBags", true)) then
 				for _, v in pairs(inventory:GetItems()) do
 					if (!v.isBag) then
-						::continue::
+						continue
 					end
 
 					v.functions.View.OnClick(v)

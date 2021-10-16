@@ -74,10 +74,10 @@ function PANEL:Init()
 	for k, v in SortedPairs(categories) do
 		if (!isstring(k)) then
 			ErrorNoHalt("expected string for help menu key\n")
-			::continue::
+			continue
 		elseif (!isfunction(v)) then
 			ErrorNoHalt(string.format("expected function for help menu entry '%s'\n", k))
-			::continue::
+			continue
 		end
 
 		self:AddCategory(k)
@@ -198,7 +198,7 @@ hook.Add("PopulateHelpMenu", "ixHelpMenu", function(tabs)
 		-- commands
 		for uniqueID, command in SortedPairs(ix.command.list) do
 			if (command.OnCheckAccess and !command:OnCheckAccess(LocalPlayer())) then
-				::continue::
+				continue
 			end
 
 			local bIsAlias = false
@@ -218,7 +218,7 @@ hook.Add("PopulateHelpMenu", "ixHelpMenu", function(tabs)
 				end
 
 				if (bIsAlias) then
-					::continue::
+					continue
 				end
 			end
 

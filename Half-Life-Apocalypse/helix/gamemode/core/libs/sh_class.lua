@@ -36,7 +36,7 @@ function ix.class.LoadFromDir(directory)
 		end
 
 		if (halt == true) then
-			::continue::
+			continue
 		end
 
 		-- Set up a global table so the file has access to the class table.
@@ -57,7 +57,7 @@ function ix.class.LoadFromDir(directory)
 				ErrorNoHalt("Class '"..niceName.."' does not have a valid faction!\n")
 				CLASS = nil
 
-				::continue::
+				continue
 			end
 
 			-- Allow classes to be joinable by default.

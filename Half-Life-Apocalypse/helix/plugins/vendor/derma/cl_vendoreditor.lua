@@ -248,7 +248,7 @@ function PANEL:ReloadItemList(filter)
 		local itemName = v.GetName and v:GetName() or L(v.name)
 
 		if (filter and !itemName:lower():find(filter:lower(), 1, false)) then
-			::continue::
+			continue
 		end
 
 		local mode = entity.items[k] and entity.items[k][VENDOR_MODE]

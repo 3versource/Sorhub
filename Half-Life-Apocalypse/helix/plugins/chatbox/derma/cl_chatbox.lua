@@ -698,7 +698,7 @@ function PANEL:Update(text)
 	for _, v in ipairs(commands) do
 		-- @todo chat classes aren't checked since they're done through the class's OnCanSay callback
 		if (v.OnCheckAccess and !v:OnCheckAccess(LocalPlayer())) then
-			::continue::
+			continue
 		end
 
 		local panel = self:Add("ixChatboxAutocompleteEntry")
@@ -1311,7 +1311,7 @@ function PANEL:AddMessage(...)
 
 	for _, v in pairs(self.tabs:GetTabs()) do
 		if (v:GetID() == activeTab:GetID()) then
-			::continue:: -- we already added it to the active tab
+			continue -- we already added it to the active tab
 		end
 
 		if (!v:GetFilter()[class]) then

@@ -266,7 +266,7 @@ function ix.item.LoadFromDir(directory)
 
 	for _, v in ipairs(folders) do
 		if (v == "base") then
-			::continue::
+			continue
 		end
 
 		for _, v2 in ipairs(file.Find(directory.."/"..v.."/*.lua", "LUA")) do

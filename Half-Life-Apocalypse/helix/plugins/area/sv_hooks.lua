@@ -42,7 +42,7 @@ function PLUGIN:AreaThink()
 		local character = client:GetCharacter()
 
 		if (!client:Alive() or !character) then
-			::continue::
+			continue
 		end
 
 		local overlappingBoxes = {}

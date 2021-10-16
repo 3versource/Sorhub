@@ -162,7 +162,7 @@ function ix.option.GetAllByCategories(bRemoveHidden)
 			local option = ix.option.stored[k2]
 
 			if (bRemoveHidden and isfunction(option.hidden) and option.hidden()) then
-				::continue::
+				continue
 			end
 
 			-- we create the category table here because it could contain all hidden options which makes the table empty

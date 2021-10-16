@@ -70,7 +70,7 @@ function PANEL:Paint(width, height)
 	for k, info in ipairs(self.lines) do
 		if (info.expireTime ~= 0 and CurTime() >= info.expireTime) then
 			table.remove(self.lines, k)
-			::continue::
+			continue
 		end
 
 		if (info.character < info.text:len()) then

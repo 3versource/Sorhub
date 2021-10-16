@@ -697,7 +697,7 @@ function GM:PlayerDisconnected(client)
 
 	for _, v in ipairs(player.GetAll()) do
 		if (!v.ixVoiceHear) then
-			::continue::
+			continue
 		end
 
 		v.ixVoiceHear[client] = nil

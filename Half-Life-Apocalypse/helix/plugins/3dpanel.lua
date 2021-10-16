@@ -65,7 +65,7 @@ if (SERVER) then
 		-- Loop through all of the panels.
 		for k, v in pairs(self.list) do
 			if (k == 0) then
-				::continue::
+				continue
 			end
 
 			-- Check if the distance from our specified position to the panel is less than the radius.
@@ -236,7 +236,7 @@ else
 		-- Loop through the list of panels.
 		for k, _ in pairs(PLUGIN.list) do
 			if (k == 0) then
-				::continue::
+				continue
 			end
 
 			CacheQueue[#CacheQueue + 1] = k

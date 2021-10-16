@@ -117,7 +117,7 @@ if (SERVER) then
 							"[Helix] Attempted to restore container inventory with invalid inventory ID '%s' (%s, %s)\n",
 							tostring(inventoryID), v[6] or "no name", v[4] or "no model"))
 
-						::continue::
+						continue
 					end
 
 					local entity = ents.Create("ix_container")

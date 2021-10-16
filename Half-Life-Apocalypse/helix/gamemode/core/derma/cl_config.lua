@@ -38,7 +38,7 @@ function PANEL:Populate()
 		-- we can use sortedpairs since configs don't have phrases to account for
 		for k, v in SortedPairs(categories[category]) do
 			if (isfunction(v.hidden) and v.hidden()) then
-				::continue::
+				continue
 			end
 
 			local data = v.data.data
@@ -180,7 +180,7 @@ function PANEL:UpdateUnloaded(bNoSizeToContents)
 	for k, _ in SortedPairs(ix.plugin.unloaded) do
 		if (ix.plugin.list[k]) then
 			-- if this plugin is in the loaded plugins list then it's queued for an unload - don't display it in this category
-			::continue::
+			continue
 		end
 
 		local row = self:AddRow(ix.type.bool, self.unloadedCategory)

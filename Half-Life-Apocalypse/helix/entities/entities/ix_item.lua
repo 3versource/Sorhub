@@ -279,11 +279,11 @@ function ENT:GetEntityMenu(client)
 
 	for k, v in SortedPairs(itemTable.functions) do
 		if (k == "take" or k == "combine") then
-			::continue::
+			continue
 		end
 
 		if (v.OnCanRun and v.OnCanRun(itemTable) == false) then
-			::continue::
+			continue
 		end
 
 		-- we keep the localized phrase since we aren't using the callbacks - the name won't matter in this case

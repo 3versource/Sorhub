@@ -82,7 +82,7 @@ function PANEL:Organize()
 
 	for _, v in ipairs(self.bars) do
 		if (!v:IsVisible()) then
-			::continue::
+			continue
 		end
 
 		v:SetPos(0, currentY)
@@ -115,7 +115,7 @@ function PANEL:Think()
 
 		if (bShouldHide or realValue == false) then
 			v:SetVisible(true)
-			::continue::
+			continue
 		end
 
 		if (v:GetDelta() ~= realValue) then
@@ -124,7 +124,7 @@ function PANEL:Think()
 
 		if (v:GetLifetime() < curTime and !info.visible and !bAlwaysShow and !hook.Run("ShouldBarDraw", info)) then
 			v:SetVisible(true)
-			::continue::
+			continue
 		end
 
 		v:SetVisible(true)

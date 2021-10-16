@@ -116,7 +116,7 @@ if (SERVER) then
 				if (istable(v.SubMaterial)) then
 					for k2, v2 in pairs(v.SubMaterial) do
 						if (!isnumber(k2) or !isstring(v2)) then
-							::continue::
+							continue
 						end
 
 						entity:SetSubMaterial(k2 - 1, v2)

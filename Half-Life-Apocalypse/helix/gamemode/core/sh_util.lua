@@ -535,7 +535,7 @@ if (CLIENT) then
 				end
 
 				lineWidth = newWidth
-				::continue::
+				continue
 			end
 
 			local newLine = line .. " " .. word
@@ -855,7 +855,7 @@ do
 
 		for _, v in pairs(ents.FindInSphere(searchCenter, 80)) do
 			if (!ix.util.IsUseableEntity(v, FCAP_USE_IN_RADIUS)) then
-				::continue::
+				continue
 			end
 
 			-- see if it's more roughly in front of the player than previous guess
@@ -867,7 +867,7 @@ do
 
 			-- Need to be looking at the object more or less
 			if (dot < 0.8) then
-				::continue::
+				continue
 			end
 
 			local dist = util.DistanceToLine(searchCenter, forward, point)
@@ -927,7 +927,7 @@ function ix.util.FindEmptySpace(entity, filter, spacing, size, height, tolerance
 			local trace2 = util.TraceLine(data)
 
 			if (trace.StartSolid or trace.Hit or trace2.StartSolid or trace2.Hit or !util.IsInWorld(origin)) then
-				::continue::
+				continue
 			end
 
 			output[#output + 1] = origin
