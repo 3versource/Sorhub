@@ -7,5 +7,5 @@ ITEM.description = "A box containing binoculars."
 ITEM.category = "Tools"
 
 ITEM:Hook("drop", function(item)
-	item.player:CanSetZoom(false)
+	item.player:Binoculars(false)
 end)
