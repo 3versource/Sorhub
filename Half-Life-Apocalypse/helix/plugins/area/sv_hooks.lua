@@ -99,7 +99,7 @@ net.Receive("ixAreaAdd", function(length, client)
 
 	for k, v in pairs(properties) do
 		if (!isstring(k) or !ix.area.properties[k]) then
-			::continue::
+			continue
 		end
 
 		properties[k] = ix.util.SanitizeType(ix.area.properties[k].type, v)
