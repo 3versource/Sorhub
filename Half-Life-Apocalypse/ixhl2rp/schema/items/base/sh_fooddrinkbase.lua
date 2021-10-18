@@ -15,7 +15,7 @@ if(isFood == true) then
         icon = "icon16/cake.png",
         sound = "physics/flesh/flesh_squishy_impact_hard4.wav",
         OnRun = function(item)
-            item.player:addHunger(hungerRecov))
+            item.player:addHunger(hungerRecov)
             item.player:addThirst(thirstRecov)
         end
     }
