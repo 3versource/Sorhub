@@ -2,7 +2,7 @@
 {
 	"base"		"helix"
 	"title"		"HL2 RP"
-	"author"	"nebulous.cloud"
+	"author"	"https://github.com/OctraSource/Sorhub"
 	"category"	"rp"
 	"menusystem" "1"
 }
