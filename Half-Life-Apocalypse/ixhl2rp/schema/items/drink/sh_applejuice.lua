@@ -2,7 +2,6 @@ ITEM.name = "Apple Juice Carton"
 ITEM.description = "A pre-war carton of apple juice."
 ITEM.model = "models/foodnhouseholditems/juicesmall.mdl"
 ITEM.category = "Drink"
-ITEM.base = sh_drink_base
 ITEM.functions.Drink = {
 	icon = "icon16/cup.png",
 	sound = "npc/barnacle/barnacle_gulp2.wav",
