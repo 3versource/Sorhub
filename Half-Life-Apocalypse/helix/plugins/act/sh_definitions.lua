@@ -100,7 +100,10 @@ function PLUGIN:SetupActs()
 	})
 
 	ix.act.Register("Lean", {"metrocop"}, {
-		sequence = {{"idle_baton", check = FacingWallBack}, "busyidle2"},
+		sequence = {
+			{"idle_baton", check = FacingWallBack},
+			{"busyidle2"}
+		},
 		untimed = true,
 		idle = true
 	})
