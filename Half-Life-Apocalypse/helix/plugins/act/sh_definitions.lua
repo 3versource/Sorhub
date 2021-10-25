@@ -88,7 +88,6 @@ function PLUGIN:SetupActs()
 
 	-- lean
 	ix.act.Register("Lean", {"citizen_male", "citizen_female"}, {
-		start = {"idle_to_lean_back", "", ""},
 		sequence = {
 			{"lean_back", check = FacingWallBack},
 			{"plazaidle1", check = FacingWallBack},
