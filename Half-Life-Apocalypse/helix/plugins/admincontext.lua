@@ -129,6 +129,7 @@ properties.Add("ixSetArmorProperty", {
 	end
 })
 
+
 properties.Add("ixSetDescriptionProperty", {
 	MenuLabel = "#Edit Description",
 	Order = 4,
