@@ -83,11 +83,9 @@ else
 		end
 	end
 
-	function PLUGIN:PlayerLoadedChar(client, character, lastChar)
-		if (character:GetData("hunger")) then
+	function PLUGIN:PlayerLoadedCharacter(client, character)
+		timer.Simple(0.25, function()
 			client:SetNetVar("hunger", CurTime() - character:GetData("hunger"))
-		else
-			client:SetNetVar("hunger", CurTime())
-		end
+		end)
 	end
 end
