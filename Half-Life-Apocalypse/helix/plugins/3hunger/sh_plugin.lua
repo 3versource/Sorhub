@@ -84,6 +84,6 @@ else
 	end
 
 	function PLUGIN:CharacterLoaded(client, character)
-		client:SetLocalVar("hunger", CurTime() - character:GetData("hunger"))
+		client:SetNetVar("hunger", CurTime() - character:GetData("hunger"))
 	end
 end
