@@ -90,10 +90,4 @@ else
 			thinkTime = CurTime() + 1
 		end
 	end
-
-	function PLUGIN:PlayerLoadedCharacter(client, character)
-		timer.Simple(0.25, function()
-			client:SetLocalVar("hunger", CurTime() - character:GetData("hunger"))
-		end)
-	end
 end
