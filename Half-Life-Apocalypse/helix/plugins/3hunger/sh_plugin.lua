@@ -83,7 +83,14 @@ else
 		end
 	end
 
+<<<<<<< HEAD
 	function PLUGIN:CharacterLoaded(client, character)
 		client:SetNetVar("hunger", CurTime() - character:GetData("hunger"))
+=======
+	function PLUGIN:PlayerLoadedCharacter(client, character)
+		timer.Simple(0.25, function()
+			client:SetLocalVar("hunger", CurTime() - character:GetData("hunger"))
+		end)
+>>>>>>> parent of b35d77d (fix?)
 	end
 end
