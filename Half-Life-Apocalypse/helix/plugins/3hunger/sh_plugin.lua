@@ -58,14 +58,6 @@ else
 		character:SetData("hunger", savedHunger)
 	end
 
-	function PLUGIN:PlayerLoadedChar(client, character, lastChar)
-		if (character:GetData("hunger")) then
-			client:SetNetVar("hunger", CurTime() - character:GetData("hunger"))
-		else
-			client:SetNetVar("hunger", CurTime())
-		end
-	end
-
 	function PLUGIN:PlayerDeath(client)
 		client.refillHunger = true
 	end
@@ -88,6 +80,14 @@ else
 			end
 
 			thinkTime = CurTime() + 1
+		end
+	end
+
+	function PLUGIN:PlayerLoadedChar(client, character, lastChar)
+		if (character:GetData("hunger")) then
+			client:SetNetVar("hunger", CurTime() - character:GetData("hunger"))
+		else
+			client:SetNetVar("hunger", CurTime())
 		end
 	end
 end

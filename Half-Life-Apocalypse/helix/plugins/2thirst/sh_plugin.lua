@@ -59,14 +59,6 @@ else
 		character:SetData("thirst", savedThirst)
 	end
 
-	function PLUGIN:PlayerLoadedChar(client, character, lastChar)
-		if (character:GetData("thirst")) then
-			client:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
-		else
-			client:SetNetVar("thirst", CurTime())
-		end
-	end
-
 	function PLUGIN:PlayerDeath(client)
 		client.refillThirst = true
 	end
@@ -87,6 +79,14 @@ else
 					client.TakeDamage(client, .05)
 					return
 			end
+		end
+	end
+
+	function PLUGIN:PlayerLoadedChar(client, character, lastChar)
+		if (character:GetData("thirst")) then
+			client:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
+		else
+			client:SetNetVar("thirst", CurTime())
 		end
 	end
 end
