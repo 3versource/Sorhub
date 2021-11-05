@@ -82,7 +82,7 @@ else
 		end
 	end
 
-	function PLUGIN:CharacterLoaded(client, character)
+	function PLUGIN:PlayerLoadedCharacter(client, character, lastChar)
 		client:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
 	end
 end
