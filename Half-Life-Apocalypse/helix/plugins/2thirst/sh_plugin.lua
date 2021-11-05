@@ -82,11 +82,9 @@ else
 		end
 	end
 
-	function PLUGIN:PlayerLoadedChar(client, character, lastChar)
+	function PLUGIN:PlayerLoadedChar(client, character)
 		if (character:GetData("thirst") ~= 14400) then
-			client:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
-		else
-			client:SetNetVar("thirst", CurTime())
+			player:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
 		end
 	end
 end
