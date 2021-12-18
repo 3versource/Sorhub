@@ -71,7 +71,7 @@ else
 
 	local thinkTime = CurTime()
 	function PLUGIN:PlayerPostThink(client)
-		if (1 < 2) then
+		if (client:getThirstPercent() ~= -1) then
 			local percent = (client:getHungerPercent() - 1)
 
 			if (percent == 0) then
