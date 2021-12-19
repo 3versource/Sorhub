@@ -1,5 +1,5 @@
-ITEM.name = ".9mm USP Match"
-ITEM.description = "A semi-automatic pistol that can be fired quick enough to outgun SMGs."
+ITEM.name = "USP Match"
+ITEM.description = "A semi-automatic .40 S&W pistol that can be fired as quick as SMGs."
 ITEM.model = "models/weapons/w_pistol.mdl"
 ITEM.class = "weapon_pistol"
 ITEM.weaponCategory = "sidearm"
