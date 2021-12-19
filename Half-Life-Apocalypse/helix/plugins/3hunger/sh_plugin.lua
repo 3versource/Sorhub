@@ -1,7 +1,7 @@
 local PLUGIN = PLUGIN
-PLUGIN.name = "Hunger"
+PLUGIN.name = "Hunger Need"
 PLUGIN.author = "OctraSource"
-PLUGIN.desc = "Adds a hunger bar to allow players to die of starvation."
+PLUGIN.desc = "Adds a needs bar that kills players if they don't eat.."
 PLUGIN.hungrySeconds = 21600
 
 
@@ -25,7 +25,7 @@ function playerMeta:addHunger(amount)
 end
 
 if (CLIENT) then
-	local color = Color(56, 46, 28)
+	local color = Color(56,46,28)
 
 	do
 		 ix.bar.Add(function()
@@ -38,6 +38,7 @@ if (CLIENT) then
 	end
 
 	local timers = {5, 15, 30}
+
 else
 	local PLUGIN = PLUGIN
 
@@ -71,19 +72,22 @@ else
 
 	local thinkTime = CurTime()
 	function PLUGIN:PlayerPostThink(client)
-		if (client:getThirstPercent() ~= -1) then
+		if (client:getHungerPercent() ~= -1) then
 			local percent = (client:getHungerPercent() - 1)
 
 			if (percent == 0) then
 					client.TakeDamage(client, .05)
 					return
 			end
-
-			thinkTime = CurTime() + 1
 		end
 	end
 
-	function PLUGIN:CharacterLoaded(client, character)
-		client:SetNetVar("hunger", CurTime() - character:GetData("hunger"))
+	function PLUGIN:PlayerLoadedCharacter(client, character, lastChar)
+		if(character:GetData("hunger") ~= nil) then
+			client:SetNetVar("hunger", CurTime() - character:GetData("hunger"))
+		end
+		if(character:GetData("hunger") == nil) then
+			client:SetNetVar("hunger", CurTime())
+		end
 	end
 end

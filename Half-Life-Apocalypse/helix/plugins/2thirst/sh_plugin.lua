@@ -1,7 +1,7 @@
 local PLUGIN = PLUGIN
-PLUGIN.name = "Thirst"
+PLUGIN.name = "Thirst Need"
 PLUGIN.author = "OctraSource"
-PLUGIN.desc = "Adds a thirst bar that allows players to die of thirst."
+PLUGIN.desc = "Adds a needs bar that kills players if they don't drink."
 PLUGIN.thirstySeconds = 14400
 
 
@@ -83,6 +83,11 @@ else
 	end
 
 	function PLUGIN:PlayerLoadedCharacter(client, character, lastChar)
-		client:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
+		if(character:GetData("thirst") ~= nil) then
+			client:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
+		end
+		if(character:GetData("thirst") == nil) then
+			client:SetNetVar("thirst", CurTime())
+		end
 	end
 end
