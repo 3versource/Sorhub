@@ -38,7 +38,7 @@ ix.anim.citizen_male = {
 		[ACT_LAND] = {ACT_RESET, ACT_RESET},
 		attack = ACT_SHOOT_AR2,
 		reload = ACT_RELOAD_PISTOL
-	}
+	},
 	pistol = {
 		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_RANGE_ATTACK_PISTOL},
 		[ACT_MP_CROUCH_IDLE] = {ACT_COVER_LOW, ACT_RANGE_ATTACK_PISTOL_LOW},
