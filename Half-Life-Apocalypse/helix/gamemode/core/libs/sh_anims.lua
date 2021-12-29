@@ -207,17 +207,17 @@ ix.anim.metrocop = {
 }
 ix.anim.overwatch = {
 	normal = {
-		[ACT_MP_STAND_IDLE] = {"idle_unarmed", ACT_IDLE_ANGRY},
+		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY},
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
-		[ACT_MP_WALK] = {"walkunarmed_all", ACT_WALK_RIFLE},
+		[ACT_MP_WALK] = {ACT_WALK, ACT_RUN},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
 		[ACT_MP_RUN] = {ACT_RUN_AIM_RIFLE, ACT_RUN_AIM_RIFLE},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
 	},
 	pistol = {
-		[ACT_MP_STAND_IDLE] = {"idle_unarmed", ACT_IDLE_ANGRY_SMG1},
+		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY_PISTOL},
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
-		[ACT_MP_WALK] = {"walkunarmed_all", ACT_WALK_RIFLE},
+		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK_PISTOL},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
 		[ACT_MP_RUN] = {ACT_RUN_AIM_RIFLE, ACT_RUN_AIM_RIFLE},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
@@ -239,17 +239,17 @@ ix.anim.overwatch = {
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
 	},
 	grenade = {
-		[ACT_MP_STAND_IDLE] = {"idle_unarmed", ACT_IDLE_ANGRY},
+		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY},
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
-		[ACT_MP_WALK] = {"walkunarmed_all", ACT_WALK_RIFLE},
+		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK_RIFLE},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
 		[ACT_MP_RUN] = {ACT_RUN_AIM_RIFLE, ACT_RUN_AIM_RIFLE},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
 	},
 	melee = {
-		[ACT_MP_STAND_IDLE] = {"idle_unarmed", ACT_IDLE_ANGRY},
+		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY},
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
-		[ACT_MP_WALK] = {"walkunarmed_all", ACT_WALK_RIFLE},
+		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK_RIFLE},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
 		[ACT_MP_RUN] = {ACT_RUN_AIM_RIFLE, ACT_RUN_AIM_RIFLE},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET},
@@ -397,7 +397,7 @@ ix.anim.SetModelClass("models/police.mdl", "metrocop")
 ix.anim.SetModelClass("models/combine_super_soldier.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_soldier_prisonGuard.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_soldier.mdl", "overwatch")
-ix.anim.SetModelClass("models/jq/hlvr/characters/combine/grunt/combine_grunt_hlvr_npc.mdl", "overwatch")
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/grunt/combine_grunt_hlvr_player.mdl", "overwatch")
 ix.anim.SetModelClass("models/vortigaunt.mdl", "vortigaunt")
 ix.anim.SetModelClass("models/vortigaunt_blue.mdl", "vortigaunt")
 ix.anim.SetModelClass("models/vortigaunt_doctor.mdl", "vortigaunt")
