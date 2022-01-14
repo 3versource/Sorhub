@@ -46,10 +46,10 @@ function ITEM:AddOutfit(client)
 	local groups = character:GetData("groups", {})
 
 	-- remove original bodygroups
-	if (!table.IsEmpty(groups)) then
-		character:SetData("oldGroups" .. self.outfitCategory, groups)
-		character:SetData("groups", {})
-	end
+	--if (!table.IsEmpty(groups)) then
+		--character:SetData("oldGroups" .. self.outfitCategory, groups)
+		--character:SetData("groups", {})
+	--end
 
 	if (isfunction(self.OnGetReplacement)) then
 		character:SetData("oldModel" .. self.outfitCategory,
