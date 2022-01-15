@@ -74,7 +74,7 @@ function ITEM:AddOutfit(client)
 
 	if (self.newSkin) then
 		character:SetData("oldSkin" .. self.outfitCategory, self.player:GetSkin())
-		self.player:SetSkin(self.newSkin)
+		--self.player:SetSkin(self.newSkin)
 	end
 
 	-- get outfit saved bodygroups
