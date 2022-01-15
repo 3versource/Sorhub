@@ -22,7 +22,7 @@ class, simply add to the `ix.anim` table with a model class name and the require
 ix.anim = ix.anim or {}
 ix.anim.citizen_male = {
 	normal = {
-		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY_SMG1},
+		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_MANNEDGUN},
 		[ACT_MP_CROUCH_IDLE] = {ACT_COVER_LOW, ACT_COVER_LOW},
 		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK_AIM_RIFLE_STIMULATED},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH, ACT_WALK_CROUCH_AIM_RIFLE},
@@ -68,13 +68,13 @@ ix.anim.citizen_male = {
 		attack = ACT_RANGE_ATTACK_THROW
 	},
 	melee = {
-		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY_MELEE},
+		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_MANNEDGUN},
 		[ACT_MP_CROUCH_IDLE] = {ACT_COVER_LOW, ACT_COVER_LOW},
 		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH, ACT_WALK_CROUCH},
 		[ACT_MP_RUN] = {ACT_RUN, ACT_RUN},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET},
-		attack = ACT_MELEE_ATTACK_SWING
+		//attack = ACT_RUN_RIFLE_STIMULATED
 	},
 	glide = ACT_GLIDE,
 	vehicle = {
@@ -87,7 +87,7 @@ ix.anim.citizen_male = {
 
 ix.anim.citizen_female = {
 	normal = {
-		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY_SMG1},
+		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_MANNEDGUN},
 		[ACT_MP_CROUCH_IDLE] = {ACT_COVER_LOW, ACT_COVER_LOW},
 		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK_AIM_RIFLE_STIMULATED},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH, ACT_WALK_CROUCH_AIM_RIFLE},
@@ -139,7 +139,7 @@ ix.anim.citizen_female = {
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH, ACT_WALK_CROUCH},
 		[ACT_MP_RUN] = {ACT_RUN, ACT_RUN},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET},
-		attack = ACT_MELEE_ATTACK_SWING
+		//attack = ACT_RUN_RIFLE_STIMULATED
 	},
 	glide = ACT_GLIDE,
 	vehicle = ix.anim.citizen_male.vehicle
