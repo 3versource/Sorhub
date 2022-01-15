@@ -173,6 +173,18 @@ HOLSTER_DRAWINFO["cw_gallo"] = {
 	bone = "ValveBiped.Bip01_Spine1",
 	model = "models/weapons/cw_gallo/w_cw_gallo.mdl"
 }
+HOLSTER_DRAWINFO["tfa_mw2019_crowbar"] = {
+	pos = Vector(3, 2, 1),
+	ang = Angle(90, 150, 100),
+	bone = "ValveBiped.Bip01_Spine1",
+	model = "models/weapons/tfa_l4d_mw2019/melee/w_crowbar.mdl"
+}
+HOLSTER_DRAWINFO["tfa_mw2019_fireaxe"] = {
+	pos = Vector(3, 2, 1),
+	ang = Angle(90, 150, 100),
+	bone = "ValveBiped.Bip01_Spine1",
+	model = "models/weapons/tfa_l4d_mw2019/melee/w_fireaxe.mdl"
+}
 
 function PLUGIN:PostPlayerDraw(client)
 	if (not ix.config.Get("showHolsteredWeps")) then return end
