@@ -1,4 +1,3 @@
-
 ITEM.name = "Outfit"
 ITEM.description = "A Outfit Base."
 ITEM.category = "Outfit"
@@ -20,7 +19,6 @@ ITEM.replacements = {
 	{"male", "female"},
 	{"group01", "group02"}
 }
-
 -- This will apply body groups.
 ITEM.bodyGroups = {
 	["blade"] = 1,
@@ -46,10 +44,10 @@ function ITEM:AddOutfit(client)
 	local groups = character:GetData("groups", {})
 
 	-- remove original bodygroups
-	--if (!table.IsEmpty(groups)) then
-		--character:SetData("oldGroups" .. self.outfitCategory, groups)
-		--character:SetData("groups", {})
-	--end
+	if (!table.IsEmpty(groups)) then
+		character:SetData("oldGroups" .. self.outfitCategory, groups)
+		character:SetData("groups", {})
+	end
 
 	if (isfunction(self.OnGetReplacement)) then
 		character:SetData("oldModel" .. self.outfitCategory,
@@ -127,80 +125,42 @@ end
 
 function ITEM:RemoveOutfit(client)
 	local character = client:GetCharacter()
-
+		
 	self:SetData("equip", false)
-
-	local materials = {}
-
-	for k, _ in ipairs(client:GetMaterials()) do
-		if (client:GetSubMaterial(k - 1) ~= "") then
-			materials[k] = client:GetSubMaterial(k - 1)
-		end
+	
+	if (character:GetData("oldMdl")) then
+		character:setModel(character:GetData("oldMdl"))
+		character:SetData("oldMdl", nil)
 	end
-
-	-- save outfit submaterials
-	if (!table.IsEmpty(materials)) then
-		self:SetData("submaterial", materials)
-	end
-
-	-- remove outfit submaterials
-	ResetSubMaterials(client)
-
-	local groups = {}
-
-	for i = 0, (client:GetNumBodyGroups() - 1) do
-		local bodygroup = client:GetBodygroup(i)
-
-		if (bodygroup > 0) then
-			groups[i] = bodygroup
-		end
-	end
-
-	-- save outfit bodygroups
-	if (!table.IsEmpty(groups)) then
-		self:SetData("groups", groups)
-	end
-
-	-- remove outfit bodygroups
-	client:ResetBodygroups()
-
-	-- restore the original player model
-	if (character:GetData("oldModel" .. self.outfitCategory)) then
-		character:SetModel(character:GetData("oldModel" .. self.outfitCategory))
-		character:SetData("oldModel" .. self.outfitCategory, nil)
-	end
-
-	-- restore the original player model skin
+		
 	if (self.newSkin) then
-		if (character:GetData("oldSkin" .. self.outfitCategory)) then
-			client:SetSkin(character:GetData("oldSkin" .. self.outfitCategory))
-			character:SetData("oldSkin" .. self.outfitCategory, nil)
+		if (character:GetData("oldSkin")) then
+			client:SetSkin(character:GetData("oldSkin"))
+			character:SetData("oldSkin", nil)
 		else
 			client:SetSkin(0)
 		end
 	end
+	
+	for k, v in pairs(self.bodyGroups or {}) do
+		local index = client:FindBodygroupByName(k)
+	
+		if (index > -1) then
+			client:SetBodygroup(index, 0)
 
-	-- get character original bodygroups
-	groups = character:GetData("oldGroups" .. self.outfitCategory, {})
+			local groups = character:GetData("groups", {})
 
-	-- restore original bodygroups
-	if (!table.IsEmpty(groups)) then
-		for k, v in pairs(groups) do
-			client:SetBodygroup(k, v)
+			if (groups[index]) then
+				groups[index] = nil
+				character:SetData("groups", groups)
+			end
 		end
-
-		character:SetData("groups", character:GetData("oldGroups" .. self.outfitCategory, {}))
-		character:SetData("oldGroups" .. self.outfitCategory, nil)
 	end
-
-	if (istable(self.attribBoosts)) then
+	
+	if (self.attribBoosts) then
 		for k, _ in pairs(self.attribBoosts) do
-			character:RemoveBoost(self.uniqueID, k)
+			character:removeBoost(self.uniqueID, k)
 		end
-	end
-
-	for k, _ in pairs(self:GetData("outfitAttachments", {})) do
-		self:RemoveAttachment(k, client)
 	end
 
 	self:OnUnequipped()
