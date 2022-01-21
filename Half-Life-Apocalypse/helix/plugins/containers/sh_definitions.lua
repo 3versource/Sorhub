@@ -16,31 +16,38 @@ ix.container.Register("models/props_junk/wood_crate001a.mdl", {
 	height = 4,
 })
 
+ix.container.Register("models/props_interiors/medicalcabinet02.mdl", {
+	name = "Medical Cabinet",
+	description = "A red and white cabinet with a cross on it.",
+	width = 4,
+	height = 4,
+})
+
 ix.container.Register("models/props_c17/lockers001a.mdl", {
 	name = "Locker",
 	description = "A white locker.",
 	width = 5,
-	height = 8,
+	height = 5,
 })
 
 ix.container.Register("models/props_wasteland/controlroom_storagecloset001a.mdl", {
 	name = "Metal Cabinet",
 	description = "A green metal cabinet.",
 	width = 6,
-	height = 12,
+	height = 6,
 })
 
 ix.container.Register("models/props_wasteland/controlroom_storagecloset001b.mdl", {
 	name = "Metal Cabinet",
 	description = "A green metal cabinet.",
 	width = 6,
-	height = 12,
+	height = 6,
 })
 
 ix.container.Register("models/props_wasteland/controlroom_filecabinet001a.mdl", {
 	name = "File Cabinet",
 	description = "A metal filing cabinet.",
-	width = 5,
+	width = 3,
 	height = 3
 })
 
@@ -48,13 +55,13 @@ ix.container.Register("models/props_wasteland/controlroom_filecabinet002a.mdl", 
 	name = "File Cabinet",
 	description = "A metal filing cabinet.",
 	width = 3,
-	height = 6,
+	height = 4,
 })
 
 ix.container.Register("models/props_lab/filecabinet02.mdl", {
 	name = "File Cabinet",
 	description = "A metal filing cabinet.",
-	width = 5,
+	width = 4,
 	height = 3
 })
 
@@ -62,7 +69,7 @@ ix.container.Register("models/props_c17/furniturefridge001a.mdl", {
 	name = "Refrigerator",
 	description = "A metal box for keeping food in.",
 	width = 4,
-	height = 8,
+	height = 6,
 })
 
 ix.container.Register("models/props_wasteland/kitchen_fridge001a.mdl", {
@@ -76,14 +83,14 @@ ix.container.Register("models/props_junk/trashbin01a.mdl", {
 	name = "Trash Bin",
 	description = "What do you expect to find in here?",
 	width = 2,
-	height = 2,
+	height = 4,
 })
 
 ix.container.Register("models/props_junk/trashdumpster01a.mdl", {
 	name = "Dumpster",
 	description = "A dumpster meant to stow away trash. It emanates an unpleasant smell.",
 	width = 6,
-	height = 3
+	height = 4
 })
 
 ix.container.Register("models/items/ammocrate_smg1.mdl", {
@@ -107,8 +114,8 @@ ix.container.Register("models/items/ammocrate_smg1.mdl", {
 ix.container.Register("models/props_forest/footlocker01_closed.mdl", {
 	name = "Footlocker",
 	description = "A small chest to store belongings in.",
-	width = 5,
-	height = 3
+	width = 4,
+	height = 2
 })
 
 ix.container.Register("models/Items/item_item_crate.mdl", {
@@ -122,5 +129,5 @@ ix.container.Register("models/props_c17/cashregister01a.mdl", {
 	name = "Cash Register",
 	description = "A register with some buttons and a drawer.",
 	width = 2,
-	height = 2
+	height = 1
 })
