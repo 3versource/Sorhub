@@ -8,6 +8,8 @@ FACTION.isDefault = false
 FACTION.isGloballyRecognized = true
 FACTION.runSounds = {[0] = "NPC_MetroPolice.RunFootstepLeft", [1] = "NPC_MetroPolice.RunFootstepRight"}
 
+local id
+
 function FACTION:OnCharacterCreated(client, character)
 	local inventory = character:GetInventory()
 
@@ -15,10 +17,18 @@ function FACTION:OnCharacterCreated(client, character)
 	inventory:Add("stunstick", 1)
 	inventory:Add("pistolammo", 2)
 	inventory:Add("handheld_radio", 1)
+
+	character:SetData("cid", id)
+
+	inventory:Add("cid", 1, {
+		name = character:GetName(),
+		id = id
+	})
 end
 
 function FACTION:GetDefaultName(client)
-	return "MPF-RCT." .. Schema:ZeroNumber(math.random(1, 99999), 5), true
+	id = Schema:ZeroNumber(math.random(1, 99999), 5)
+	return "MPF-RCT." .. id, true
 end
 
 function FACTION:OnTransfered(client)
