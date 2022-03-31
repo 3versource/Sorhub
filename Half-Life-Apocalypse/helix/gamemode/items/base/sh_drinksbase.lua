@@ -1,16 +1,17 @@
-
 ITEM.name = "waterBase"
 ITEM.description = "Water Base"
+ITEM.model = "models/error.mdl"
 ITEM.category = "Drink"
-ITEM.restoration = 100
+
+-- restoration time (in seconds) && sound
+ITEM.restThirst = 1
 ITEM.sound = "npc/barnacle/barnacle_gulp2.wav"
 
---ITEM.functions.Drink = {
---	icon = "icon16/cup.png",
---	OnRun = function(item)
---		item.player:addThirst(item.restoration)
---		item.player:EmitSound(item.sound)
---	end
---}
---EXPERIMENTAL drink function
---may not be entirely functional
+ITEM.functions.Drink = {
+	icon = "icon16/cup.png",
+	OnRun = function(item)
+		-- lowercase "item" in variable calls
+		item.player:addThirst(item.restThirst)
+		item.player:EmitSound(item.sound)
+	end
+}

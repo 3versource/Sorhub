@@ -2,10 +2,6 @@ ITEM.name = "Bran-flakes"
 ITEM.description = "A box of Union-branded 'Bran'-flakes."
 ITEM.model = "models/bioshockinfinite/hext_cereal_box_cornflakes.mdl"
 ITEM.category = "Food"
-ITEM.functions.Eat = {
-	icon = "icon16/cake.png",
-	sound = "player/footsteps/gravel1.wav",
-	OnRun = function(item)
-		item.player:addHunger(14000)
-	end
-}
+
+ITEM.restFood = 14000
+ITEM.sound = "physics/flesh/flesh_squishy_impact_hard4.wav"
