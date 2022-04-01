@@ -394,6 +394,7 @@ function ix.anim.GetModelClass(model)
 end
 
 ix.anim.SetModelClass("models/police.mdl", "metrocop")
+ix.anim.SetModelClass("models/police_nemez.mdl", "metrocop")
 ix.anim.SetModelClass("models/combine_super_soldier.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_soldier_prisonGuard.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_soldier.mdl", "overwatch")
