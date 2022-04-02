@@ -266,7 +266,7 @@ ITEM.functions.Equip = {
 			if (v.id != item.id) then
 				local itemTable = ix.item.instances[v.id]
 
-				if (itemTable.pacData and v.outfitCategory == item.outfitCategory and itemTable:GetData("equip")) then
+				if ((itemTable.pacData and v.outfitCategory == item.outfitCategory and itemTable:GetData("equip")) or (v.outfitCategory == "fullbody" and itemTable:GetData("equip"))) then
 					client:NotifyLocalized(item.equippedNotify or "outfitAlreadyEquipped")
 					return false
 				end
