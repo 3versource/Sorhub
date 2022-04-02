@@ -47,6 +47,8 @@ function ITEM:AddOutfit(client)
 	if (!table.IsEmpty(groups)) then
 		character:SetData("oldGroups" .. self.outfitCategory, groups)
 		character:SetData("groups", {})
+
+		client:ResetBodygroups()
 	end
 
 	if (isfunction(self.OnGetReplacement)) then
@@ -72,7 +74,7 @@ function ITEM:AddOutfit(client)
 
 	if (self.newSkin) then
 		character:SetData("oldSkin" .. self.outfitCategory, self.player:GetSkin())
-		--self.player:SetSkin(self.newSkin)
+		self.player:SetSkin(self.newSkin)
 	end
 
 	-- get outfit saved bodygroups
@@ -117,7 +119,7 @@ end
 
 local function ResetSubMaterials(client)
 	for k, _ in ipairs(client:GetMaterials()) do
-		if (client:GetSubMaterial(k - 1) ~= "") then
+		if (client:GetSubMaterial(k - 1) != "") then
 			client:SetSubMaterial(k - 1)
 		end
 	end
@@ -125,42 +127,80 @@ end
 
 function ITEM:RemoveOutfit(client)
 	local character = client:GetCharacter()
-		
+
 	self:SetData("equip", false)
-	
-	if (character:GetData("oldMdl")) then
-		character:setModel(character:GetData("oldMdl"))
-		character:SetData("oldMdl", nil)
+
+	local materials = {}
+
+	for k, _ in ipairs(client:GetMaterials()) do
+		if (client:GetSubMaterial(k - 1) != "") then
+			materials[k] = client:GetSubMaterial(k - 1)
+		end
 	end
-		
+
+	-- save outfit submaterials
+	if (!table.IsEmpty(materials)) then
+		self:SetData("submaterial", materials)
+	end
+
+	-- remove outfit submaterials
+	ResetSubMaterials(client)
+
+	local groups = {}
+
+	for i = 0, (client:GetNumBodyGroups() - 1) do
+		local bodygroup = client:GetBodygroup(i)
+
+		if (bodygroup > 0) then
+			groups[i] = bodygroup
+		end
+	end
+
+	-- save outfit bodygroups
+	if (!table.IsEmpty(groups)) then
+		self:SetData("groups", groups)
+	end
+
+	-- remove outfit bodygroups
+	client:ResetBodygroups()
+
+	-- restore the original player model
+	if (character:GetData("oldModel" .. self.outfitCategory)) then
+		character:SetModel(character:GetData("oldModel" .. self.outfitCategory))
+		character:SetData("oldModel" .. self.outfitCategory, nil)
+	end
+
+	-- restore the original player model skin
 	if (self.newSkin) then
-		if (character:GetData("oldSkin")) then
-			client:SetSkin(character:GetData("oldSkin"))
-			character:SetData("oldSkin", nil)
+		if (character:GetData("oldSkin" .. self.outfitCategory)) then
+			client:SetSkin(character:GetData("oldSkin" .. self.outfitCategory))
+			character:SetData("oldSkin" .. self.outfitCategory, nil)
 		else
 			client:SetSkin(0)
 		end
 	end
-	
-	for k, v in pairs(self.bodyGroups or {}) do
-		local index = client:FindBodygroupByName(k)
-	
-		if (index > -1) then
-			client:SetBodygroup(index, 0)
 
-			local groups = character:GetData("groups", {})
+	-- get character original bodygroups
+	groups = character:GetData("oldGroups" .. self.outfitCategory, {})
 
-			if (groups[index]) then
-				groups[index] = nil
-				character:SetData("groups", groups)
-			end
+	-- restore original bodygroups
+	if (!table.IsEmpty(groups)) then
+		for k, v in pairs(groups) do
+			client:SetBodygroup(k, v)
+		end
+
+		character:SetData("groups", character:GetData("oldGroups" .. self.outfitCategory, {}))
+		character:SetData("oldGroups" .. self.outfitCategory, nil)
+	end
+
+	if (istable(self.attribBoosts)) then
+		for k, _ in pairs(self.attribBoosts) do
+			character:RemoveBoost(self.uniqueID, k)
 		end
 	end
-	
-	if (self.attribBoosts) then
-		for k, _ in pairs(self.attribBoosts) do
-			character:removeBoost(self.uniqueID, k)
-		end
+
+	for k, _ in pairs(self:GetData("outfitAttachments", {})) do
+		self:RemoveAttachment(k, client)
 	end
 
 	self:OnUnequipped()
@@ -209,7 +249,7 @@ ITEM.functions.EquipUn = { -- sorry, for name order.
 		local client = item.player
 
 		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") == true and
-			hook.Run("CanPlayerUnequipItem", client, item) ~= false
+			hook.Run("CanPlayerUnequipItem", client, item) != false
 	end
 }
 
@@ -223,11 +263,11 @@ ITEM.functions.Equip = {
 		local items = char:GetInventory():GetItems()
 
 		for _, v in pairs(items) do
-			if (v.id ~= item.id) then
+			if (v.id != item.id) then
 				local itemTable = ix.item.instances[v.id]
 
-				if (itemTable.pacData and v.outfitCategory == item.outfitCategory and itemTable:GetData("equip")) then
-					client:NotifyLocalized(item.equippedNotify or "outfitAlreadyEquipped")
+				if (itemTable.pacData and itemTable:GetData("equip")) then
+					client:NotifyLocalized("Unequip all clothing before equipping this.")
 					return false
 				end
 			end
@@ -239,8 +279,8 @@ ITEM.functions.Equip = {
 	OnCanRun = function(item)
 		local client = item.player
 
-		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") ~= true and item:CanEquipOutfit() and
-			hook.Run("CanPlayerEquipItem", client, item) ~= false
+		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") != true and item:CanEquipOutfit() and
+			hook.Run("CanPlayerEquipItem", client, item) != false
 	end
 }
 
@@ -253,7 +293,7 @@ function ITEM:CanTransfer(oldInventory, newInventory)
 end
 
 function ITEM:OnRemoved()
-	if (self.invID ~= 0 and self:GetData("equip")) then
+	if (self.invID != 0 and self:GetData("equip")) then
 		self.player = self:GetOwner()
 			self:RemoveOutfit(self.player)
 		self.player = nil

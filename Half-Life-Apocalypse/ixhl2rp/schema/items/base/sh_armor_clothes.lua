@@ -1,4 +1,3 @@
-
 ITEM.base = "base_armorfit"
 ITEM.name = "Armored Clothes"
 ITEM.description = "A suitcase full of clothes."
