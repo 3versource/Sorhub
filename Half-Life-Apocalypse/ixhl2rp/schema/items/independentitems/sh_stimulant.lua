@@ -1,4 +1,3 @@
-
 ITEM.name = "Adrenaline Shot"
 ITEM.model = Model("models/props_c17/TrapPropeller_Lever.mdl")
 ITEM.description = "A syringe that is labelled on the side, 'Adrenaline.' A green fluid sloshes inside."
