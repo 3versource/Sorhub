@@ -20,6 +20,7 @@ function ITEM:removeOutfit(client)
 	local character = client:GetCharacter()
 	
 	self:SetData("equip", false)
+	self:OnUnequipped()
 
 	if (character:GetData("oldMdl")) then
 		character:setModel(character:GetData("oldMdl"))
@@ -100,6 +101,7 @@ ITEM.functions.Equip = {
 		end
 
 		item:SetData("equip", true)
+		item:OnEquipped()
 		
 		if (type(item.onGetReplacement) == "function") then
 			char:SetData("oldMdl", char:GetData("oldMdl", item.player:GetModel()))
