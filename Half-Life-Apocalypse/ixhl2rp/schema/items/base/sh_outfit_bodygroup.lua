@@ -5,18 +5,3 @@ ITEM.model = Model("models/props_c17/suitcase_passenger_physics.mdl")
 ITEM.category = "Armored Clothing"
 ITEM.width = 1
 ITEM.height = 1
-
-if (CLIENT) then
-end
-
-function ITEM:OnEquipped()
-end
-
-function ITEM:OnUnequipped()
-end
-
-function ITEM:OnLoadout()
-end
-
-function ITEM:OnSave()
-end

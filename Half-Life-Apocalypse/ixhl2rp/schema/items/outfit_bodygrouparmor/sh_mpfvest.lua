@@ -1,12 +1,13 @@
 
-ITEM.name = "Light Combat Vest"
-ITEM.description = "A light combat vest."
+ITEM.name = "Metropolice Vest"
+ITEM.description = "An MPF vest."
+ITEM.category = "Kevlar"
 ITEM.flag = "V"
-ITEM.maxArmor = 20
+ITEM.maxArmor = 25
 ITEM.model = "models/props_junk/cardboard_box003b.mdl"
 ITEM.category = "Kevlar"
 ITEM.outfitCategory = "kevlar"
 
 ITEM.bodyGroups = {
-	["kevlar"] = 2
+	["kevlar"] = 4
 }

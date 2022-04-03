@@ -1,6 +1,6 @@
 
 ITEM.name = "Metropolice ECHO Uniform"
-ITEM.description = "A uniform for ECHO units. It has a long coat."
+ITEM.description = "A uniform for ECHO units. It has a long coat and is equipped with radios."
 ITEM.category = "Kevlar"
 ITEM.flag = "V"
 ITEM.maxArmor = 50
