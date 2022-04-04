@@ -45,9 +45,6 @@ function FACTION:OnNameChanged(client, oldValue, value)
 	else
 		character:JoinClass(CLASS_MPU)
 	end
-
-	if (!Schema:IsCombineRank(oldValue, "GHOST") and Schema:IsCombineRank(value, "GHOST")) then
-	end
 end
 
 FACTION_MPF = FACTION.index
