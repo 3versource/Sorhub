@@ -7,6 +7,7 @@ ITEM.maxArmor = 25
 ITEM.model = "models/props_junk/cardboard_box003b.mdl"
 ITEM.category = "Metropolice Uniform"
 ITEM.outfitCategory = "fullbody"
+ITEM.unitName = "DART"
 
 ITEM.newSkin = 3
 ITEM.replacements = "models/police_nemez.mdl"

@@ -7,6 +7,7 @@ ITEM.maxArmor = 80
 ITEM.model = "models/props_junk/cardboard_box003b.mdl"
 ITEM.category = "Metropolice Uniform"
 ITEM.outfitCategory = "fullbody"
+ITEM.unitName = "BASTION"
 
 ITEM.newSkin = 3
 ITEM.replacements = "models/police_nemez.mdl"
