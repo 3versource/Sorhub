@@ -5,6 +5,7 @@ ITEM.model = "models/Gibs/HGIBS.mdl"
 ITEM.width = 1
 ITEM.height = 1
 ITEM.outfitCategory = "model"
+ITEM.unitName = "unitName"
 ITEM.pacData = {}
 
 --[[
