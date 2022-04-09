@@ -79,8 +79,6 @@ function Schema:PostPlayerLoadout(client)
 			client.ixScanner:SetHealth(client:Health())
 			client.ixScanner:SetMaxHealth(client:GetMaxHealth())
 			client:StripWeapons()
-		else
-			client:SetArmor(self:IsCombineRank(client:Name(), "RCT") and 50 or 100)
 		end
 
 		local factionTable = ix.faction.Get(client:Team())
