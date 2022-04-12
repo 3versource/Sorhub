@@ -1,7 +1,7 @@
-ITEM.name = "M4 Carbine"
+ITEM.name = "M4A1"
 ITEM.description = "An american gas-powered rifle utilizing 5.56x45mm NATO."
-ITEM.model = "models/weapons/cw_xm4/w_cw_xm4.mdl"
-ITEM.class = "cw_xm4"
+ITEM.model = "models/worldmodels/w_mw2019_m4a1_wm.mdl"
+ITEM.class = "tfa_l4d2mw_m4a1"
 ITEM.weaponCategory = "primary"
 ITEM.classes = {CLASS_EOW}
 ITEM.flag = "g"

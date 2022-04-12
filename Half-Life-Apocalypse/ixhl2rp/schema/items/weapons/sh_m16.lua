@@ -1,7 +1,7 @@
 ITEM.name = "M16"
-ITEM.description = "A Vietnam War treasure, this is a 5.56x45mm NATO burst rifle."
-ITEM.model = "models/weapons/cw_m16/w_cw_m16.mdl"
-ITEM.class = "cw_m16"
+ITEM.description = "A vietnam treasure, this is a 5.56x45mm NATO full-auto rifle."
+ITEM.model = "tfa_l4d2mw_m16"
+ITEM.class = "tfa_l4d2mw_m16"
 ITEM.weaponCategory = "primary"
 ITEM.classes = {CLASS_EOW}
 ITEM.flag = "g"

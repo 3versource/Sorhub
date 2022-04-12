@@ -1,7 +1,7 @@
 ITEM.name = "Spas-12 Semi-Auto"
-ITEM.description = "A devastating close-range semi-automatic."
-ITEM.model = "models/weapons/cw_gallo/w_cw_gallo.mdl"
-ITEM.class = "cw_gallo"
+ITEM.description = "A devastating close-range semi-automatic that takes shotgun shells."
+ITEM.model = "models/worldmodels/w_mw2019_spas_wm.mdl"
+ITEM.class = "tfa_l4d2mw_spas"
 ITEM.weaponCategory = "primary"
 ITEM.classes = {CLASS_EOW}
 ITEM.flag = "g"

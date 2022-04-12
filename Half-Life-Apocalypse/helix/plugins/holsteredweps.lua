@@ -17,24 +17,15 @@ if (SERVER) then return end
 --   4. model: the model to show
 HOLSTER_DRAWINFO = HOLSTER_DRAWINFO or {}
 
-HOLSTER_DRAWINFO["tfa_projecthl2_usp"] = {
-	pos = Vector(0, 5, -3),
-	ang = Angle(180, 0, -110),
-	bone = "ValveBiped.Bip01_R_Thigh",
-	model = "models/weapons/w_pistol.mdl"
-}
-HOLSTER_DRAWINFO["tfa_projecthl2_357"] = {
-	pos = Vector(-6, 1.5, -6),
-	ang = Angle(20, 0, -90),
-	bone = "ValveBiped.Bip01_Pelvis",
-	model = "models/weapons/w_357.mdl"
-}
+-- HELIX DEFINED WEAPONS
 HOLSTER_DRAWINFO["ix_stunstick"] = {
 	pos = Vector(2, 9, 0),
 	ang = Angle(0, 100, 0),
 	bone = "ValveBiped.Bip01_Pelvis",
 	model = "models/weapons/w_stunbaton.mdl"
 }
+
+-- DEFAULT HL2 WEAPONS
 HOLSTER_DRAWINFO["weapon_frag"] ={
 	pos = Vector(4, 8, 0),
 	ang = Angle(15, 0, 270),
@@ -53,18 +44,6 @@ HOLSTER_DRAWINFO["weapon_crowbar"] = {
 	bone = "ValveBiped.Bip01_Spine",
 	model = "models/weapons/w_crowbar.mdl"
 }
-HOLSTER_DRAWINFO["tfa_projecthl2_ar2"] = {
-	pos = Vector(2, 17, -7),
-	ang = Angle(-180, -10, -180),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/w_irifle.mdl"
-}
-HOLSTER_DRAWINFO["tfa_projecthl2_spas12"] = {
-	pos = Vector(2, 5, 5),
-	ang = Angle(-10, 0, 90),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/w_shotgun.mdl"
-}
 HOLSTER_DRAWINFO["weapon_rpg"] = {
 	pos = Vector(4, 24, 8),
 	ang = Angle(-45, 180, 0),
@@ -77,78 +56,86 @@ HOLSTER_DRAWINFO["weapon_crossbow"] = {
 	bone = "ValveBiped.Bip01_Spine",
 	model = "models/weapons/w_crossbow.mdl"
 }
+
+-- TFA HL2 WEAPONS
+HOLSTER_DRAWINFO["tfa_projecthl2_usp"] = {
+	pos = Vector(0, 5, -3),
+	ang = Angle(180, 0, -110),
+	bone = "ValveBiped.Bip01_R_Thigh",
+	model = "models/weapons/w_pistol.mdl"
+}
+HOLSTER_DRAWINFO["tfa_projecthl2_357"] = {
+	pos = Vector(-6, 1.5, -6),
+	ang = Angle(20, 0, -90),
+	bone = "ValveBiped.Bip01_Pelvis",
+	model = "models/weapons/w_357.mdl"
+}
+HOLSTER_DRAWINFO["tfa_projecthl2_ar2"] = {
+	pos = Vector(2, 17, -7),
+	ang = Angle(-180, -10, -180),
+	bone = "ValveBiped.Bip01_Spine1",
+	model = "models/weapons/w_irifle.mdl"
+}
+HOLSTER_DRAWINFO["tfa_projecthl2_spas12"] = {
+	pos = Vector(2, 5, 5),
+	ang = Angle(-10, 0, 90),
+	bone = "ValveBiped.Bip01_Spine1",
+	model = "models/weapons/w_shotgun.mdl"
+}
 HOLSTER_DRAWINFO["tfa_projecthl2_smg"] = {
 	pos = Vector(2, 3, 0),
 	ang = Angle(20, 190, 0),
 	bone = "ValveBiped.Bip01_Spine1",
 	model = "models/weapons/w_smg1.mdl"
 }
-HOLSTER_DRAWINFO["cw_1911"] = {
+
+-- TFA MODERN WARFARE WEAPONS
+HOLSTER_DRAWINFO["tfa_l4d2mw_1911"] = {
 	pos = Vector(4, 3, -4),
 	ang = Angle(0, 0, 90),
 	bone = "ValveBiped.Bip01_R_Thigh",
-	model = "models/weapons/cw_1911/w_cw_1911.mdl"
+	model = "models/worldmodels/w_mw2019_1911_wm.mdl"
 }
-HOLSTER_DRAWINFO["cw_magnum"] = {
-	pos = Vector(4, 3, -4),
-	ang = Angle(0, 0, 90),
-	bone = "ValveBiped.Bip01_R_Thigh",
-	model = "models/weapons/cw_magnum/w_cw_magnum.mdl"
-}
-HOLSTER_DRAWINFO["cw_krig6"] = {
-	pos = Vector(3, 8, 0),
-	ang = Angle(-160, 10, 0),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/cw_krig6/w_cw_krig6.mdl"
-}
-HOLSTER_DRAWINFO["cw_ak47"] = {
-	pos = Vector(3, 8, 0),
-	ang = Angle(-160, 10, 0),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/cw_ak47/w_cw_ak47.mdl"
-}
-HOLSTER_DRAWINFO["cw_dmr14"] = {
-	pos = Vector(3, 8, 0),
-	ang = Angle(-160, 10, 0),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/cw_dmr14/w_cw_dmr14.mdl"
-}
-HOLSTER_DRAWINFO["cw_xm4"] = {
-	pos = Vector(3, 8, 0),
-	ang = Angle(-160, 10, 0),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/cw_xm4/w_cw_xm4.mdl"
-}
-HOLSTER_DRAWINFO["cw_m16"] = {
-	pos = Vector(3, 8, 0),
-	ang = Angle(-160, 10, 0),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/cw_m16/w_cw_m16.mdl"
-}
-HOLSTER_DRAWINFO["cw_mp5"] = {
-	pos = Vector(3, 6, -2),
-	ang = Angle(-160, 10, 0),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/cw_mp5/w_cw_mp5.mdl"
-}
-HOLSTER_DRAWINFO["cw_gallo"] = {
-	pos = Vector(4, 16, 4),
-	ang = Angle(10, 180, 90),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/cw_gallo/w_cw_gallo.mdl"
-}
-HOLSTER_DRAWINFO["tfa_mw2019_crowbar"] = {
-	pos = Vector(3, 2, 1),
-	ang = Angle(90, 150, 100),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/tfa_l4d_mw2019/melee/w_crowbar.mdl"
-}
-HOLSTER_DRAWINFO["tfa_mw2019_fireaxe"] = {
-	pos = Vector(3, 2, 1),
-	ang = Angle(90, 150, 100),
-	bone = "ValveBiped.Bip01_Spine1",
-	model = "models/weapons/tfa_l4d_mw2019/melee/w_fireaxe.mdl"
-}
+
+-- PISTOL
+-- HOLSTER_DRAWINFO["cw_1911"] = {
+-- 	pos = Vector(4, 3, -4),
+-- 	ang = Angle(0, 0, 90),
+-- 	bone = "ValveBiped.Bip01_R_Thigh",
+-- 	model = "models/weapons/cw_1911/w_cw_1911.mdl"
+-- }
+
+-- HEAVY PISTOL
+-- HOLSTER_DRAWINFO["cw_magnum"] = {
+-- 	pos = Vector(4, 3, -4),
+-- 	ang = Angle(0, 0, 90),
+-- 	bone = "ValveBiped.Bip01_R_Thigh",
+-- 	model = "models/weapons/cw_magnum/w_cw_magnum.mdl"
+-- }
+
+-- ASSAULT RIFLE
+-- HOLSTER_DRAWINFO["cw_krig6"] = {
+-- 	pos = Vector(3, 8, 0),
+-- 	ang = Angle(-160, 10, 0),
+-- 	bone = "ValveBiped.Bip01_Spine1",
+-- 	model = "models/weapons/cw_krig6/w_cw_krig6.mdl"
+-- }
+
+-- SMG
+-- HOLSTER_DRAWINFO["cw_mp5"] = {
+-- 	pos = Vector(3, 6, -2),
+-- 	ang = Angle(-160, 10, 0),
+-- 	bone = "ValveBiped.Bip01_Spine1",
+-- 	model = "models/weapons/cw_mp5/w_cw_mp5.mdl"
+-- }
+
+-- SHOTGUN
+-- HOLSTER_DRAWINFO["cw_gallo"] = {
+-- 	pos = Vector(4, 16, 4),
+-- 	ang = Angle(10, 180, 90),
+-- 	bone = "ValveBiped.Bip01_Spine1",
+-- 	model = "models/weapons/cw_gallo/w_cw_gallo.mdl"
+-- }
 
 function PLUGIN:PostPlayerDraw(client)
 	if (not ix.config.Get("showHolsteredWeps")) then return end
