@@ -1,7 +1,7 @@
 ITEM.name = "Spas-12 Pump-Action"
 ITEM.description = "A devastating close-range pump-action."
 ITEM.model = "models/weapons/w_shotgun.mdl"
-ITEM.class = "weapon_shotgun"
+ITEM.class = "tfa_projecthl2_spas12"
 ITEM.weaponCategory = "primary"
 ITEM.classes = {CLASS_EOW}
 ITEM.flag = "g"

@@ -1,7 +1,7 @@
 ITEM.name = "OSIPR"
 ITEM.description = "The most powerful infantry-used weapon known to humanity. The steel absorbs heat around it."
 ITEM.model = "models/weapons/w_irifle.mdl"
-ITEM.class = "weapon_ar2"
+ITEM.class = "tfa_projecthl2_ar2"
 ITEM.weaponCategory = "primary"
 ITEM.classes = {CLASS_EOW}
 ITEM.flag = "g"

@@ -17,13 +17,13 @@ if (SERVER) then return end
 --   4. model: the model to show
 HOLSTER_DRAWINFO = HOLSTER_DRAWINFO or {}
 
-HOLSTER_DRAWINFO["weapon_pistol"] = {
+HOLSTER_DRAWINFO["tfa_projecthl2_usp"] = {
 	pos = Vector(0, 5, -3),
 	ang = Angle(180, 0, -110),
 	bone = "ValveBiped.Bip01_R_Thigh",
 	model = "models/weapons/w_pistol.mdl"
 }
-HOLSTER_DRAWINFO["weapon_357"] = {
+HOLSTER_DRAWINFO["tfa_projecthl2_357"] = {
 	pos = Vector(-6, 1.5, -6),
 	ang = Angle(20, 0, -90),
 	bone = "ValveBiped.Bip01_Pelvis",
@@ -53,49 +53,13 @@ HOLSTER_DRAWINFO["weapon_crowbar"] = {
 	bone = "ValveBiped.Bip01_Spine",
 	model = "models/weapons/w_crowbar.mdl"
 }
-HOLSTER_DRAWINFO["weapon_hl2pipe"] = {
-	pos = Vector(4, 8, 0),
-	ang = Angle(45, 180, 0),
-	bone = "ValveBiped.Bip01_Spine",
-	model = "models/props_canal/mattpipe.mdl"
-}
-HOLSTER_DRAWINFO["weapon_hl2axe"] = {
-	pos = Vector(4, 8, 0),
-	ang = Angle(0, 25, 90),
-	bone = "ValveBiped.Bip01_Spine",
-	model = "models/weapons/hl2meleepack/w_axe.mdl"
-}
-HOLSTER_DRAWINFO["weapon_hl2brokenbottle"] = {
-	pos = Vector(1, -8, 8.5),
-	ang = Angle(250, 10, 0),
-	bone = "ValveBiped.Bip01_Spine",
-	model = "models/props_junk/garbage_glassbottle003a_chunk01.mdl"
-}
-HOLSTER_DRAWINFO["weapon_hl2pan"] = {
-	pos = Vector(1, -12, 9),
-	ang = Angle(175, 10, 0),
-	bone = "ValveBiped.Bip01_Spine",
-	model = "models/props_c17/metalPot002a.mdl"
-}
-HOLSTER_DRAWINFO["weapon_hl2pot"] = {
-	pos = Vector(2, -10, 9),
-	ang = Angle(220, 100, 0),
-	bone = "ValveBiped.Bip01_Spine",
-	model = "models/props_interiors/pot02a.mdl"
-}
-HOLSTER_DRAWINFO["weapon_hl2shovel"] = {
-	pos = Vector(4, 6, 0),
-	ang = Angle(90, -40, 110),
-	bone = "ValveBiped.Bip01_Spine",
-	model = "models/props_junk/shovel01a.mdl"
-}
-HOLSTER_DRAWINFO["weapon_ar2"] = {
+HOLSTER_DRAWINFO["tfa_projecthl2_ar2"] = {
 	pos = Vector(2, 17, -7),
 	ang = Angle(-180, -10, -180),
 	bone = "ValveBiped.Bip01_Spine1",
 	model = "models/weapons/w_irifle.mdl"
 }
-HOLSTER_DRAWINFO["weapon_shotgun"] = {
+HOLSTER_DRAWINFO["tfa_projecthl2_spas12"] = {
 	pos = Vector(2, 5, 5),
 	ang = Angle(-10, 0, 90),
 	bone = "ValveBiped.Bip01_Spine1",
@@ -113,7 +77,7 @@ HOLSTER_DRAWINFO["weapon_crossbow"] = {
 	bone = "ValveBiped.Bip01_Spine",
 	model = "models/weapons/w_crossbow.mdl"
 }
-HOLSTER_DRAWINFO["weapon_smg1"] = {
+HOLSTER_DRAWINFO["tfa_projecthl2_smg"] = {
 	pos = Vector(2, 3, 0),
 	ang = Angle(20, 190, 0),
 	bone = "ValveBiped.Bip01_Spine1",
