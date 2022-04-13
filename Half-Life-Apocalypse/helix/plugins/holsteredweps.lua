@@ -89,8 +89,7 @@ HOLSTER_DRAWINFO["tfa_projecthl2_smg"] = {
 	model = "models/weapons/w_smg1.mdl"
 }
 
--- TFA MODERN WARFARE WEAPONS
--- PISTOLS
+-- TFA MODERN WARFARE WEAPONS PISTOLS
 HOLSTER_DRAWINFO["tfa_l4d2mw_1911"] = {
 	pos = Vector(-2, 3, -4),
 	ang = Angle(0, 0, 90),
@@ -104,7 +103,7 @@ HOLSTER_DRAWINFO["tfa_l4d2mw_50gs"] = {
 	model = "models/worldmodels/w_mw2019_50gs_wm.mdl"
 }
 
--- ASSAULT RIFLES
+-- TFA MODERN WARFARE WEAPONS ASSAULT RIFLES
 HOLSTER_DRAWINFO["tfa_l4d2mw_ak47"] = {
 	pos = Vector(3, 8, 4),
 	ang = Angle(-160, 10, 0),
@@ -124,7 +123,7 @@ HOLSTER_DRAWINFO["tfa_l4d2mw_grau"] = {
 	model = "models/worldmodels/w_mw2019_grau_wm.mdl"
 }
 
--- RIFLES
+-- TFA MODERN WARFARE WEAPONS RIFLES
 HOLSTER_DRAWINFO["tfa_l4d2mw_sks"] = {
 	pos = Vector(3, 8, 4),
 	ang = Angle(-160, 10, 0),
@@ -138,7 +137,7 @@ HOLSTER_DRAWINFO["tfa_l4d2mw_spr208"] = {
 	model = "models/worldmodels/w_mw2019_spr208_wm.mdl"
 }
 
--- SMGS
+-- TFA MODERN WARFARE WEAPONS SMGS
 HOLSTER_DRAWINFO["tfa_l4d2mw_mp5"] = {
 	pos = Vector(5, 10, 5),
 	ang = Angle(-160, 10, 0),
@@ -146,7 +145,7 @@ HOLSTER_DRAWINFO["tfa_l4d2mw_mp5"] = {
 	model = "models/worldmodels/w_mw2019_mp5_wm.mdl"
 }
 
--- SHOTGUNS
+-- TFA MODERN WARFARE WEAPONS SHOTGUNS
 HOLSTER_DRAWINFO["tfa_l4d2mw_m680wood"] = {
 	pos = Vector(-1, 16, 4),
 	ang = Angle(10, 180, 90),
@@ -159,6 +158,15 @@ HOLSTER_DRAWINFO["tfa_l4d2mw_browning5"] = {
 	bone = "ValveBiped.Bip01_Spine1",
 	model = "models/worldmodels/w_mw2019_browningauto_wm.mdl"
 }
+
+-- SPECIAL
+HOLSTER_DRAWINFO["weapon_vfirethrower"] = {
+	pos = Vector(5, 10, 8),
+	ang = Angle(-180, 10, 0),
+	bone = "ValveBiped.Bip01_Spine1",
+	model = "models/weapons/vfirethrower/w_flamethrower.mdl"
+}
+
 
 function PLUGIN:PostPlayerDraw(client)
 	if (not ix.config.Get("showHolsteredWeps")) then return end

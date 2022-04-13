@@ -6,9 +6,9 @@ ITEM.weaponCategory = "primary"
 ITEM.classes = {CLASS_EMP, CLASS_EOW}
 ITEM.flag = "g"
 ITEM.width = 3
-ITEM.height = 2
+ITEM.height = 5
 ITEM.iconCam = {
 	ang	= Angle(-0.23955784738064, 270.44906616211, 0),
 	fov	= 6,
-	pos	= Vector(-12, 360, 0)
+	pos	= Vector(-5, 360, 7)
 }
