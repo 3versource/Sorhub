@@ -1,7 +1,7 @@
-ITEM.name = "MP5"
-ITEM.description = "A compact gun used in close-range assaults. It utilizes 9x19 Parabellum bullets."
-ITEM.model = "models/worldmodels/w_mw2019_mp5_wm.mdl"
-ITEM.class = "tfa_l4d2mw_mp5"
+ITEM.name = "Uzi"
+ITEM.description = "Once the companion of many Israelic soldiers, it's a rapid-fire SMG that uses .41 AE."
+ITEM.model = "models/worldmodels/w_mw2019_mp7_wm.mdl"
+ITEM.class = "tfa_l4d2mw_uzi"
 ITEM.weaponCategory = "primary"
 ITEM.classes = {CLASS_EMP, CLASS_EOW}
 ITEM.flag = "g"

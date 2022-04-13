@@ -1,6 +1,6 @@
 ITEM.name = "1911"
 ITEM.description = "A small compact pistol with high stopping power, once used by soldiers of the Great War. It utilizes .45 ACP bullets."
-ITEM.model = "models/worldmodels/w_mw2019_1911_wm.mdl"
+ITEM.model = "models/weapons/unloaded/pist_fiveseven.mdl"
 ITEM.class = "tfa_l4d2mw_1911"
 ITEM.weaponCategory = "sidearm"
 ITEM.classes = {CLASS_EOW}
