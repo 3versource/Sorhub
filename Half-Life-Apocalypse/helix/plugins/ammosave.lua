@@ -38,8 +38,10 @@ ix.ammo.Register("gravity")
 ix.ammo.Register("battery")
 ix.ammo.Register("gaussenergy")
 ix.ammo.Register("combinecannon")
+ix.ammo.Register("combineheavycannon")
 ix.ammo.Register("airboatgun")
 ix.ammo.Register("striderminigun")
+ix.ammo.Register("striderminigundirect")
 ix.ammo.Register("helicoptergun")
 
 -- Called right before the character has its information save.
