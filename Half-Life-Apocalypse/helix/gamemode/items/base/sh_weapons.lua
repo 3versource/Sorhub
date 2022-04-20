@@ -316,3 +316,25 @@ hook.Add("EntityRemoved", "ixRemoveGrenade", function(entity)
 		end
 	end
 end)
+
+hook.Add("EntityFireBullets", "ixAmmoCheck", function(entity)
+
+	for i, ply in ipairs( player.GetAll() ) do -- cycle through every player, then
+		if ply:Alive() then -- if the current player is alive, then
+				
+			if(entity:GetName() == ply:GetName()) then -- if the selected player has the same name as the entity firing the gun, then
+				local weapon = ply:GetActiveWeapon() -- store the current weapon
+				local ammoName = game.GetAmmoName(weapon:GetPrimaryAmmoType()) -- store the current ammo type
+
+				if(weapon:Clip1() == 0) then -- if the gun has no ammo in its magazine, then
+					print("clip is empty")
+					ply:SetAmmo(weapon:GetMaxClip1(), ammoName)
+				end
+
+				print("ran command")
+				print(weapon:GetMaxClip1())
+			end
+
+		end
+	end
+end)
