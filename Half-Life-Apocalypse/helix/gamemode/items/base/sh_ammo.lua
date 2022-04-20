@@ -8,6 +8,7 @@ ITEM.ammoAmount = 30 -- amount of the ammo
 ITEM.description = "A Box that contains %s of Pistol Ammo"
 ITEM.category = "Ammunition"
 ITEM.useSound = "items/ammo_pickup.wav"
+ITEM.isAmmo = true
 
 function ITEM:GetDescription()
 	local rounds = self:GetData("rounds", self.ammoAmount)
