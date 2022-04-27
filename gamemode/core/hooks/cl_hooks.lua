@@ -303,7 +303,7 @@ function GM:CalcViewModelView(weapon, viewModel, oldEyePos, oldEyeAngles, eyePos
 	local bWepRaised = client:IsWepRaised()
 
 	-- update tween if the raised state is out of date
-	if (client.ixWasWeaponRaised ~= bWepRaised) then
+	if (client.ixWasWeaponRaised != bWepRaised) then
 		local fraction = bWepRaised and 0 or 1
 
 		client.ixRaisedFraction = 1 - fraction
@@ -405,7 +405,7 @@ function GM:NetworkEntityCreated(entity)
 		entity:SetIK(false)
 
 		-- we've just discovered a new player, so we need to update their animation state
-		if (entity ~= LocalPlayer()) then
+		if (entity != LocalPlayer()) then
 			-- we don't need to call the PlayerWeaponChanged hook here since it'll be handled below,
 			-- when this player's weapon has been discovered
 			hook.Run("PlayerModelChanged", entity, entity:GetModel())
@@ -425,7 +425,7 @@ local vignetteAlphaDelta = 0
 local vignetteTraceHeight = Vector(0, 0, 768)
 local blurGoal = 0
 local blurDelta = 0
-local hasVignetteMaterial = vignette ~= "___error"
+local hasVignetteMaterial = vignette != "___error"
 
 timer.Create("ixVignetteChecker", 1, 0, function()
 	local client = LocalPlayer()
@@ -515,7 +515,7 @@ do
 
 		lastEntity = util.TraceHull(lastTrace).Entity
 
-		if (lastEntity ~= aimEntity) then
+		if (lastEntity != aimEntity) then
 			aimTime = time + aimLength
 			aimEntity = lastEntity
 		end
@@ -525,10 +525,10 @@ do
 			(!IsValid(ix.gui.characterMenu) or ix.gui.characterMenu.bClosing)
 		local bShouldPopulate = lastEntity.OnShouldPopulateEntityInfo and lastEntity:OnShouldPopulateEntityInfo() or true
 
-		if (bShouldShow and IsValid(lastEntity) and hookRun("ShouldPopulateEntityInfo", lastEntity) ~= false and
+		if (bShouldShow and IsValid(lastEntity) and hookRun("ShouldPopulateEntityInfo", lastEntity) != false and
 			(lastEntity.PopulateEntityInfo or bShouldPopulate)) then
 
-			if (!IsValid(panel) or (IsValid(panel) and panel:GetEntity() ~= lastEntity)) then
+			if (!IsValid(panel) or (IsValid(panel) and panel:GetEntity() != lastEntity)) then
 				if (IsValid(ix.gui.entityInfo)) then
 					ix.gui.entityInfo:Remove()
 				end
@@ -575,7 +575,7 @@ function GM:HUDPaintBackground()
 
 	blurGoal = client:GetLocalVar("blur", 0) + (hookRun("AdjustBlurAmount", blurGoal) or 0)
 
-	if (blurDelta ~= blurGoal) then
+	if (blurDelta != blurGoal) then
 		blurDelta = mathApproach(blurDelta, blurGoal, frameTime * 20)
 	end
 
@@ -587,7 +587,7 @@ function GM:HUDPaintBackground()
 
 	local weapon = client:GetActiveWeapon()
 
-	if (IsValid(weapon) and hook.Run("CanDrawAmmoHUD", weapon) ~= false and weapon.DrawAmmo ~= false) then
+	if (IsValid(weapon) and hook.Run("CanDrawAmmoHUD", weapon) != false and weapon.DrawAmmo != false) then
 		local clip = weapon:Clip1()
 		local clipMax = weapon:GetMaxClip1()
 		local count = client:GetAmmoCount(weapon:GetPrimaryAmmoType())
@@ -605,7 +605,7 @@ function GM:HUDPaintBackground()
 			ix.util.DrawText(secondary, x + 32, y + 32, nil, 1, 1, "ixBigFont")
 		end
 
-		if (weapon:GetClass() ~= "weapon_slam" and clip > 0 or count > 0) then
+		if (weapon:GetClass() != "weapon_slam" and clip > 0 or count > 0) then
 			x = x - (secondary > 0 and 144 or 64)
 
 			ix.util.DrawBlurAt(x, y, 128, 64)
@@ -622,8 +622,6 @@ function GM:HUDPaintBackground()
 	if (client:GetLocalVar("restricted") and !client:GetLocalVar("restrictNoMsg")) then
 		ix.util.DrawText(L"restricted", scrW * 0.5, scrH * 0.33, nil, 1, 1, "ixBigFont")
 	end
-
-	ix.hud.DrawAll(false)
 end
 
 function GM:PostDrawOpaqueRenderables(bDepth, bSkybox)
@@ -660,9 +658,9 @@ end
 
 function GM:PostDrawHUD()
 	cam.Start2D()
-		ix.hud.DrawAll(true)
+		ix.hud.DrawAll()
 
-		if (!IsValid(ix.gui.characterMenu) or ix.gui.characterMenu:IsClosing()) then
+		if (!IsValid(ix.gui.deathScreen) and (!IsValid(ix.gui.characterMenu) or ix.gui.characterMenu:IsClosing())) then
 			ix.bar.DrawAction()
 		end
 	cam.End2D()
@@ -723,7 +721,7 @@ function GM:PopulateCharacterInfo(client, character, container)
 		string.format("%s...", descriptionText:utf8sub(1, 125)) or
 		descriptionText)
 
-	if (descriptionText ~= "") then
+	if (descriptionText != "") then
 		local description = container:AddRow("description")
 		description:SetText(descriptionText)
 		description:SizeToContents()
@@ -856,7 +854,7 @@ function GM:RenderScreenspaceEffects()
 				render.SetColorModulation(1, 1, 1)
 				render.SetStencilWriteMask(28)
 				render.SetStencilTestMask(28)
-				render.SetStencilReferenceValue(35)
+				render.SetStencilReferenceValue(28)
 
 				render.SetStencilCompareFunction(STENCIL_ALWAYS)
 				render.SetStencilPassOperation(STENCIL_REPLACE)
@@ -928,6 +926,14 @@ net.Receive("ixStringRequest", function()
 	end)
 end)
 
+net.Receive("ixPlayerDeath", function()
+	if (IsValid(ix.gui.deathScreen)) then
+		ix.gui.deathScreen:Remove()
+	end
+
+	ix.gui.deathScreen = vgui.Create("ixDeathScreen")
+end)
+
 function GM:Think()
 	local client = LocalPlayer()
 
@@ -974,5 +980,9 @@ hook.Add("player_spawn", "ixPlayerSpawn", function(data)
 		-- GetBoneName returns __INVALIDBONE__ for everything the first time you use it, so we'll force an update to make them valid
 		client:SetupBones()
 		client:SetIK(false)
+
+		if (client == LocalPlayer() and (IsValid(ix.gui.deathScreen) and !ix.gui.deathScreen:IsClosing())) then
+			ix.gui.deathScreen:Close()
+		end
 	end
 end)

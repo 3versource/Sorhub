@@ -227,7 +227,7 @@ OverridePanel("DScrollPanel", function()
 	Override("ScrollToChild")
 	function PANEL:ScrollToChild(panel)
 		-- docked panels required InvalidateParent in order to retrieve their position correctly
-		if (panel:GetDock() ~= NODOCK) then
+		if (panel:GetDock() != NODOCK) then
 			panel:InvalidateParent(true)
 		else
 			self:PerformLayout()

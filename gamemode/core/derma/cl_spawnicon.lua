@@ -37,7 +37,7 @@ function PANEL:SetModel(model, skin, hidden)
 		local found = false
 
 		for _, v in ipairs(entity:GetSequenceList()) do
-			if ((v:lower():find("idle") or v:lower():find("fly")) and v ~= "idlenoise") then
+			if ((v:lower():find("idle") or v:lower():find("fly")) and v != "idlenoise") then
 				entity:ResetSequence(v)
 				found = true
 

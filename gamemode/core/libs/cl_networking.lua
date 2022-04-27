@@ -33,13 +33,13 @@ end)
 function GetNetVar(key, default) -- luacheck: globals GetNetVar
 	local value = ix.net.globals[key]
 
-	return value ~= nil and value or default
+	return value != nil and value or default
 end
 
 function entityMeta:GetNetVar(key, default)
 	local index = self:EntIndex()
 
-	if (ix.net[index] and ix.net[index][key] ~= nil) then
+	if (ix.net[index] and ix.net[index][key] != nil) then
 		return ix.net[index][key]
 	end
 

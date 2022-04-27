@@ -1,4 +1,6 @@
 
+util.AddNetworkString("ixPlayerDeath")
+
 function GM:PlayerInitialSpawn(client)
 	client.ixJoinTime = RealTime()
 
@@ -38,7 +40,7 @@ function GM:PlayerInitialSpawn(client)
 
 		-- Don't use the character cache if they've connected to another server using the same database
 		local address = ix.util.GetAddress()
-		local bNoCache = client:GetData("lastIP", address) ~= address
+		local bNoCache = client:GetData("lastIP", address) != address
 		client:SetData("lastIP", address)
 
 		net.Start("ixDataSync")
@@ -95,7 +97,7 @@ function GM:PlayerInitialSpawn(client)
 end
 
 function GM:PlayerUse(client, entity)
-	if (client:IsRestricted() or (isfunction(entity.GetEntityMenu) and entity:GetClass() ~= "ix_item")) then
+	if (client:IsRestricted() or (isfunction(entity.GetEntityMenu) and entity:GetClass() != "ix_item")) then
 		return false
 	end
 
@@ -120,7 +122,7 @@ function GM:KeyPress(client, key)
 			if (entity:IsDoor()) then
 				local result = hook.Run("CanPlayerUseDoor", client, entity)
 
-				if (result ~= false) then
+				if (result != false) then
 					hook.Run("PlayerUseDoor", client, entity)
 				end
 			end
@@ -136,7 +138,7 @@ function GM:KeyRelease(client, key)
 	end
 end
 
-function GM:CanPlayerInteractItem(client, action, item)
+function GM:CanPlayerInteractItem(client, action, item, data)
 	if (client:IsRestricted()) then
 		return false
 	end
@@ -154,8 +156,28 @@ function GM:CanPlayerInteractItem(client, action, item)
 		return false
 	end
 
+	if (action == "combine") then
+		local other = data[1]
+
+		if (hook.Run("CanPlayerCombineItem", client, item, other) == false) then
+			return false
+		end
+
+		local combineItem = ix.item.instances[other]
+
+		if (combineItem and combineItem.invID != 0) then
+			local combineInv = ix.item.inventories[combineItem.invID]
+
+			if (!combineInv:OnCheckAccess(client)) then
+				return false
+			end
+		else
+			return false
+		end
+	end
+
 	if (isentity(item) and item.ixSteamID and item.ixCharID
-	and item.ixSteamID == client:SteamID() and item.ixCharID ~= client:GetCharacter():GetID()
+	and item.ixSteamID == client:SteamID() and item.ixCharID != client:GetCharacter():GetID()
 	and !item:GetItemTable().bAllowMultiCharacterInteraction) then
 		client:NotifyLocalized("itemOwned")
 		return false
@@ -172,8 +194,12 @@ function GM:CanPlayerTakeItem(client, item)
 
 end
 
+function GM:CanPlayerCombineItem(client, item, other)
+
+end
+
 function GM:PlayerShouldTakeDamage(client, attacker)
-	return client:GetCharacter() ~= nil
+	return client:GetCharacter() != nil
 end
 
 function GM:GetFallDamage(client, speed)
@@ -258,7 +284,7 @@ function GM:PlayerLoadedCharacter(client, character, lastChar)
 	if (faction and faction.pay and faction.pay > 0) then
 		timer.Create(uniqueID, faction.payTime or 300, 0, function()
 			if (IsValid(client)) then
-				if (hook.Run("CanPlayerEarnSalary", client, faction) ~= false) then
+				if (hook.Run("CanPlayerEarnSalary", client, faction) != false) then
 					local pay = hook.Run("GetSalaryAmount", client, faction) or faction.pay
 
 					character:GiveMoney(pay)
@@ -302,7 +328,7 @@ function GM:PlayerSay(client, text)
 
 	text = ix.chat.Send(client, chatType, message, anonymous)
 
-	if (isstring(text) and chatType ~= "ic") then
+	if (isstring(text) and chatType != "ic") then
 		ix.log.Add(client, "chat", chatType and chatType:utf8upper() or "??", text)
 	end
 
@@ -565,7 +591,7 @@ local deathSounds = {
 function GM:DoPlayerDeath(client, attacker, damageinfo)
 	client:AddDeaths(1)
 
-	if (hook.Run("ShouldSpawnClientRagdoll", client) ~= false) then
+	if (hook.Run("ShouldSpawnClientRagdoll", client) != false) then
 		client:CreateRagdoll()
 	end
 
@@ -576,6 +602,9 @@ function GM:DoPlayerDeath(client, attacker, damageinfo)
 			attacker:AddFrags(1)
 		end
 	end
+
+	net.Start("ixPlayerDeath")
+	net.Send(client)
 
 	client:SetAction("@respawning", ix.config.Get("spawnTime", 5))
 	client:SetDSP(31)
@@ -589,7 +618,7 @@ function GM:PlayerDeath(client, inflictor, attacker)
 			client.ixRagdoll.ixIgnoreDelete = true
 			client:SetLocalVar("blur", nil)
 
-			if (hook.Run("ShouldRemoveRagdollOnDeath", client) ~= false) then
+			if (hook.Run("ShouldRemoveRagdollOnDeath", client) != false) then
 				client.ixRagdoll:Remove()
 			end
 		end
@@ -601,7 +630,7 @@ function GM:PlayerDeath(client, inflictor, attacker)
 
 		local deathSound = hook.Run("GetPlayerDeathSound", client)
 
-		if (deathSound ~= false) then
+		if (deathSound != false) then
 			deathSound = deathSound or deathSounds[math.random(1, #deathSounds)]
 
 			if (client:IsFemale() and !deathSound:find("female")) then
@@ -849,7 +878,7 @@ end
 
 timer.Create("ixLifeGuard", 1, 0, function()
 	for _, v in ipairs(player.GetAll()) do
-		if (v:GetCharacter() and v:Alive() and hook.Run("ShouldPlayerDrowned", v) ~= false) then
+		if (v:GetCharacter() and v:Alive() and hook.Run("ShouldPlayerDrowned", v) != false) then
 			if (v:WaterLevel() >= 3) then
 				if (!v.drowningTime) then
 					v.drowningTime = CurTime() + 30

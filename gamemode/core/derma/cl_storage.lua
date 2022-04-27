@@ -31,7 +31,7 @@ function PANEL:Init()
 		local amount = math.max(0, math.Round(tonumber(self.amountEntry:GetValue()) or 0))
 		self.amountEntry:SetValue("0")
 
-		if (amount ~= 0) then
+		if (amount != 0) then
 			self:OnTransfer(amount)
 		end
 	end
