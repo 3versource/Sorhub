@@ -332,8 +332,6 @@ hook.Add("EntityFireBullets", "ixAmmoCheck", function(entity)
 							if(v.isAmmo and v.ammo == ammoName and weapon:Clip1() == 0 and ply:GetAmmoCount(ammoName) == 0) then-- if the item has the isAmmo parameter and it's true AND if the ammo's type equals the currently equipped weapon AND their gun is empty, then
 								ply:SetAmmo(v.ammoAmount + ply:GetAmmoCount(ammoName), ammoName) -- set the ammo amount to what the item had said
 								v:Remove()-- remove the ammo item
-								print("e")
-								 -- exit the loop
 							end
 						end
 					end

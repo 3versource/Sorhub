@@ -1,54 +1,42 @@
 
 --[[--
 Interactable entities that can be held in inventories.
-
 Items are objects that are contained inside of an `Inventory`, or as standalone entities if they are dropped in the world. They
 usually have functionality that provides more gameplay aspects to the schema. For example, the zipties in the HL2 RP schema
 allow a player to tie up and search a player.
-
 For an item to have an actual presence, they need to be instanced (usually with `ix.item.Instance`). Items describe the
 properties, while instances are a clone of these properties that can have their own unique data (e.g an ID card will have the
 same name but different numerical IDs). You can think of items as the class, while instances are objects of the `Item` class.
-
 ## Creating item classes (`ItemStructure`)
 Item classes are defined in their own file inside of your schema or plugin's `items/` folder. In these item class files you
 specify how instances of the item behave. This includes default values for basic things like the item's name and description,
 to more advanced things by overriding extra methods from an item base. See `ItemStructure` for information on how to define
 a basic item class.
-
 Item classes in this folder are automatically loaded by Helix when the server starts up.
-
 ## Item bases
 If many items share the same functionality (i.e a can of soda and a bottle of water can both be consumed), then you might want
 to consider using an item base to reduce the amount of duplication for these items. Item bases are defined the same way as
 regular item classes, but they are placed in the `items/base/` folder in your schema or plugin. For example, a `consumables`
 base would be in `items/base/sh_consumables.lua`.
-
 Any items that you want to use this base must be placed in a subfolder that has the name of the base you want that item to use.
 For example, for a bottled water item to use the consumable base, it must be placed in `items/consumables/sh_bottled_water.lua`.
 This also means that you cannot place items into subfolders as you wish, since the framework will try to use an item base that
 doesn't exist.
-
 The default item bases that come with Helix are:
-
   - `ammo` - provides ammo to any items with the `weapons` base
   - `bags` - holds an inventory that other items can be stored inside of
   - `outfit` - changes the appearance of the player that wears it
   - `pacoutfit` - changes the appearance of the player that wears it using PAC3
   - `weapons` - makes any SWEP into an item that can be equipped
-
 These item bases usually come with extra values and methods that you can define/override in order to change their functionality.
 You should take a look at the source code for these bases to see their capabilities.
-
 ## Item functions (`ItemFunctionStructure`)
 Requiring players to interact with items in order for them to do something is quite common. As such, there is already a built-in
 mechanism to allow players to right-click items and show a list of available options. Item functions are defined in your item
 class file in the `ITEM.functions` table. See `ItemFunctionStructure` on how to define them.
-
 Helix comes with `drop`, `take`, and `combine` item functions by default that allows items to be dropped from a player's
 inventory, picked up from the world, and combining items together. These can be overridden by defining an item function
 in your item class file with the same name. See the `bags` base for example usage of the `combine` item function.
-
 ## Item icons (`ItemIconStructure`)
 Icons for items sometimes don't line up quite right, in which case you can modify an item's `iconCam` value and line up the
 rendered model as needed. See `ItemIconStructure` for more details.
@@ -58,7 +46,6 @@ rendered model as needed. See `ItemIconStructure` for more details.
 --[[--
 All item functions live inside of an item's `functions` table. An item function entry includes a few methods and fields you can
 use to customize the functionality and appearance of the item function. An example item function is below:
-
 	-- this item function's unique ID is "MyFunction"
 	ITEM.functions.MyFunction = {
 		name = "myFunctionPhrase", -- uses the "myFunctionPhrase" language phrase when displaying in the UI
@@ -67,15 +54,12 @@ use to customize the functionality and appearance of the item function. An examp
 		OnRun = function(item)
 			local client = item.player
 			local entity = item.entity -- only set if this is function is being ran while the item is in the world
-
 			if (IsValid(client)) then
 				client:ChatPrint("This is a test.")
-
 				if (IsValid(entity)) then
 					client:ChatPrint(entity:GetName())
 				end
 			end
-
 			-- do not remove this item from the owning player's inventory
 			return false
 		end,
@@ -115,13 +99,11 @@ use to customize the functionality and appearance of the item function. An examp
 Changing the way an item's icon is rendered is done by modifying the location and angle of the model, as well as the FOV of the
 camera. You can tweak the values in code, or use the `ix_dev_icon` console command to visually position the model and camera. An
 example entry for an item's icon is below:
-
 	ITEM.iconCam = {
 		pos = Vector(0, 0, 60),
 		ang = Angle(90, 0, 0),
 		fov = 45
 	}
-
 Note that this will probably not work for your item's specific model, since every model has a different size, origin, etc. All
 item icons need to be tweaked individually.
 ]]
@@ -134,7 +116,6 @@ item icons need to be tweaked individually.
 --[[--
 When creating an item class, the file will have a global table `ITEM` set that you use to define the item's values/methods. An
 example item class is below:
-
 `items/sh_brick.lua`
 	ITEM.name = "Brick"
 	ITEM.description = "A brick. Pretty self-explanatory. You can eat it but you'll probably lose some teeth."
@@ -142,7 +123,6 @@ example item class is below:
 	ITEM.width = 1
 	ITEM.height = 1
 	ITEM.price = 25
-
 Note that the below list only includes the default fields available for *all* items, and not special ones defined in custom
 item bases.
 ]]
@@ -338,7 +318,7 @@ function ITEM:SetData(key, value, receivers, noSave, noCheckEntity)
 		end
 	end
 
-	if (receivers ~= false and (receivers or self:GetOwner())) then
+	if (receivers != false and (receivers or self:GetOwner())) then
 		net.Start("ixInventoryData")
 			net.WriteUInt(self:GetID(), 32)
 			net.WriteString(key)
@@ -369,13 +349,13 @@ function ITEM:GetData(key, default)
 
 		local value = self.data[key]
 
-		if (value ~= nil) then
+		if (value != nil) then
 			return value
 		elseif (IsValid(self.entity)) then
 			local data = self.entity:GetNetVar("data", {})
 			value = data[key]
 
-			if (value ~= nil) then
+			if (value != nil) then
 				return value
 			end
 		end
@@ -383,7 +363,7 @@ function ITEM:GetData(key, default)
 		self.data = {}
 	end
 
-	if (default ~= nil) then
+	if (default != nil) then
 		return default
 	end
 
@@ -473,7 +453,7 @@ function ITEM:Remove(bNoReplication, bNoDelete)
 
 		local receivers = inv.GetReceivers and inv:GetReceivers()
 
-		if (self.invID ~= 0 and istable(receivers)) then
+		if (self.invID != 0 and istable(receivers)) then
 			net.Start("ixInventoryRemove")
 				net.WriteUInt(self.id, 32)
 				net.WriteUInt(self.invID, 32)
@@ -581,7 +561,7 @@ if (SERVER) then
 			local characterID = client:GetCharacter():GetID()
 
 			if (itemPlayerID and itemCharacterID) then
-				if (itemPlayerID == playerID and itemCharacterID ~= characterID) then
+				if (itemPlayerID == playerID and itemCharacterID != characterID) then
 					return false, "itemOwned"
 				end
 			else
@@ -631,7 +611,7 @@ if (SERVER) then
 				local status, result = targetInv:Add(self.id, nil, nil, x, y, noReplication)
 
 				if (status) then
-					if (self.invID > 0 and prevID ~= 0) then
+					if (self.invID > 0 and prevID != 0) then
 						-- we are transferring this item from one inventory to another
 						curInv:Remove(self.id, false, true, true)
 
