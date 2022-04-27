@@ -39,7 +39,7 @@ if (SERVER) then
 	function ENT:Use(activator)
 		activator:PerformInteraction(ix.config.Get("itemPickupTime", 0.5), self, function(client)
 			if (client:GetCharacter() and client:GetCharacter():GetID() == self:GetNetVar("owner", 0)
-			and hook.Run("CanPlayerOpenShipment", client, self) ~= false) then
+			and hook.Run("CanPlayerOpenShipment", client, self) != false) then
 				client.ixShipment = self
 
 				net.Start("ixShipmentOpen")

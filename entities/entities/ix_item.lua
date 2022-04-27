@@ -204,7 +204,7 @@ else
 		tooltip:SetArrowColor(color)
 
 		if ((item.width > 1 or item.height > 1) and
-			hook.Run("ShouldDrawItemSize", item) ~= false) then
+			hook.Run("ShouldDrawItemSize", item) != false) then
 
 			local sizeHeight = item.height * blockSize + item.height * blockSpacing
 			local size = tooltip:Add("Panel")
@@ -298,7 +298,7 @@ function ENT:GetEntityMenu(client)
 				surface.PlaySound(v.sound)
 			end
 
-			if (send ~= false) then
+			if (send != false) then
 				net.Start("ixItemEntityAction")
 					net.WriteString(k)
 					net.WriteEntity(self)

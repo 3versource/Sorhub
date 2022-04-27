@@ -278,7 +278,7 @@ function SWEP:PickupObject(entity)
 end
 
 function SWEP:DropObject(bThrow)
-	if (!IsValid(self.heldEntity) or self.heldEntity.ixHeldOwner ~= self:GetOwner()) then
+	if (!IsValid(self.heldEntity) or self.heldEntity.ixHeldOwner != self:GetOwner()) then
 		return
 	end
 
@@ -313,7 +313,7 @@ end
 function SWEP:PlayPickupSound(surfaceProperty)
 	local result = "Flesh.ImpactSoft"
 
-	if (surfaceProperty ~= nil) then
+	if (surfaceProperty != nil) then
 		local surfaceName = util.GetSurfacePropName(surfaceProperty)
 		local soundName = surfaceName:gsub("^metal$", "SolidMetal") .. ".ImpactSoft"
 
@@ -406,7 +406,7 @@ function SWEP:PrimaryAttack()
 			local context = {damage = damage}
 			local result = hook.Run("GetPlayerPunchDamage", self:GetOwner(), damage, context)
 
-			if (result ~= nil) then
+			if (result != nil) then
 				damage = result
 			else
 				damage = context.damage
