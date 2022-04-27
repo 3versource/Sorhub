@@ -65,7 +65,7 @@ function PANEL:ResetSequence(model, lastModel)
 		local found = false
 
 		for _, v in ipairs(model:GetSequenceList()) do
-			if ((v:lower():find("idle") or v:lower():find("fly")) and v ~= "idlenoise") then
+			if ((v:lower():find("idle") or v:lower():find("fly")) and v != "idlenoise") then
 				model:ResetSequence(v)
 				found = true
 
@@ -156,7 +156,7 @@ end
 
 function PANEL:Paint(width, height)
 	local x, y = self:LocalToScreen(0, 0)
-	local bTransition = self.lastCharacter:GetModel() ~= errorModel
+	local bTransition = self.lastCharacter:GetModel() != errorModel
 	local modelFOV = (ScrW() > ScrH() * 1.8) and 92 or 70
 
 	cam.Start3D(self.cameraPosition, self.cameraAngle, modelFOV, x, y, width, height)
@@ -180,7 +180,7 @@ function PANEL:Paint(width, height)
 		local bottomy = self:GetTall()
 		local previous = curparent
 
-		while (curparent:GetParent() ~= nil) do
+		while (curparent:GetParent() != nil) do
 			local lastX, lastY = previous:GetPos()
 			curparent = curparent:GetParent()
 
@@ -301,8 +301,7 @@ function PANEL:Init()
 	continueButton:SetContentAlignment(6)
 	continueButton:SizeToContents()
 	continueButton.DoClick = function()
-		self:SetMouseInputEnabled(false)
-		self:Slide("down", self.animationTime, function()
+		self:SlideDown(self.animationTime, function()
 			net.Start("ixCharacterChoose")
 				net.WriteUInt(self.character:GetID(), 32)
 			net.SendToServer()

@@ -67,7 +67,7 @@ function PANEL:Init()
 			local boostedValue = self.boostValue or 0
 			local add = 0
 
-			if (self.deltaValue ~= self.value) then
+			if (self.deltaValue != self.value) then
 				add = 35
 			end
 
@@ -87,7 +87,7 @@ function PANEL:Init()
 			do
 				local boostValue
 
-				if (boostedValue ~= 0) then
+				if (boostedValue != 0) then
 					if (boostedValue < 0) then
 						local please = math.min(self.value, math.abs(boostedValue))
 						boostValue = ((please or 0) / self.max) * (self.deltaValue / self.value)
@@ -144,7 +144,7 @@ function PANEL:DoChange()
 
 	self.nextPress = CurTime() + 0.2
 
-	if (self:OnChanged(self.pressing) ~= false) then
+	if (self:OnChanged(self.pressing) != false) then
 		self.value = math.Clamp(self.value + self.pressing, 0, self.max)
 	end
 end
