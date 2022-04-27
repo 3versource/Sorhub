@@ -71,14 +71,14 @@ function ikon:init()
 	]]--
 	ikon.haloAdd = ikon.haloAdd or halo.Add
 	function halo.Add(...)
-		if (ikon.rendering ~= true) then
+		if (ikon.rendering != true) then
 			ikon.haloAdd(...)
 		end
 	end
 
 	ikon.haloRender = ikon.haloRender or halo.Render
 	function halo.Render(...)
-		if (ikon.rendering ~= true) then
+		if (ikon.rendering != true) then
 			ikon.haloRender(...)
 		end
 	end

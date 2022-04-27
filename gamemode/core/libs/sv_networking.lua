@@ -33,7 +33,7 @@ end
 function GetNetVar(key, default) -- luacheck: globals GetNetVar
 	local value = ix.net.globals[key]
 
-	return value ~= nil and value or default
+	return value != nil and value or default
 end
 
 function SetNetVar(key, value, receiver) -- luacheck: globals SetNetVar
@@ -99,7 +99,7 @@ end
 -- > 12345678
 -- @see SetLocalVar
 function playerMeta:GetLocalVar(key, default)
-	if (ix.net.locals[self] and ix.net.locals[self][key] ~= nil) then
+	if (ix.net.locals[self] and ix.net.locals[self][key] != nil) then
 		return ix.net.locals[self][key]
 	end
 
@@ -136,7 +136,7 @@ end
 -- > Hello World!
 -- @see SetNetVar
 function entityMeta:GetNetVar(key, default)
-	if (ix.net.list[self] and ix.net.list[self][key] ~= nil) then
+	if (ix.net.list[self] and ix.net.list[self][key] != nil) then
 		return ix.net.list[self][key]
 	end
 
@@ -155,7 +155,7 @@ function entityMeta:SetNetVar(key, value, receiver)
 
 	ix.net.list[self] = ix.net.list[self] or {}
 
-	if (ix.net.list[self][key] ~= value) then
+	if (ix.net.list[self][key] != value) then
 		ix.net.list[self][key] = value
 	end
 

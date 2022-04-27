@@ -50,7 +50,7 @@ if (SERVER) then
 	function ix.storage.InUse(inventory)
 		if (inventory.storageInfo) then
 			for _, v in pairs(inventory:GetReceivers()) do
-				if (IsValid(v) and v:IsPlayer() and v ~= inventory.storageInfo.entity) then
+				if (IsValid(v) and v:IsPlayer() and v != inventory.storageInfo.entity) then
 					return true
 				end
 			end
@@ -296,7 +296,7 @@ if (SERVER) then
 
 		local inventory = client.ixOpenStorage
 
-		if (!inventory or !inventory.storageInfo or storageID ~= inventory:GetID()) then
+		if (!inventory or !inventory.storageInfo or storageID != inventory:GetID()) then
 			return
 		end
 
@@ -346,7 +346,7 @@ if (SERVER) then
 
 		local inventory = client.ixOpenStorage
 
-		if (!inventory or !inventory.storageInfo or storageID ~= inventory:GetID()) then
+		if (!inventory or !inventory.storageInfo or storageID != inventory:GetID()) then
 			return
 		end
 
@@ -423,7 +423,7 @@ else
 
 		local id = net.ReadUInt(32)
 
-		if (id ~= 0) then
+		if (id != 0) then
 			ix.item.inventories[id] = nil
 		end
 	end)
@@ -434,7 +434,7 @@ else
 
 		local panel = ix.gui.openedStorage
 
-		if (!IsValid(panel) or panel:GetStorageID() ~= storageID) then
+		if (!IsValid(panel) or panel:GetStorageID() != storageID) then
 			return
 		end
 
