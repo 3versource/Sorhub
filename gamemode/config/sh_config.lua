@@ -16,7 +16,7 @@ ix.config.Add("maxCharacters", 5, "The maximum number of characters a player can
 	category = "characters"
 })
 ix.config.Add("color", Color(75, 119, 190, 255), "The main color theme for the framework.", function(oldValue, newValue)
-	if (newValue.a ~= 255) then
+	if (newValue.a != 255) then
 		ix.config.Set("color", ColorAlpha(newValue, 255))
 		return
 	end
@@ -137,6 +137,10 @@ ix.config.Add("scoreboardRecognition", false, "Whether or not recognition is use
 ix.config.Add("defaultMoney", 0, "The amount of money that players start with.", nil, {
 	category = "characters",
 	data = {min = 0, max = 1000}
+})
+ix.config.Add("minMoneyDropAmount", 1, "The minimum amount of money that can be dropped.", nil, {
+	category = "characters",
+	data = {min = 1, max = 1000}
 })
 ix.config.Add("allowVoice", false, "Whether or not voice chat is allowed.", function(oldValue, newValue)
 	if (SERVER) then
