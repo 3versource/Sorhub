@@ -221,7 +221,7 @@ if (CLIENT) then
 		if (option) then
 			local localValue = ix.option.client[key]
 
-			if (localValue ~= nil) then
+			if (localValue != nil) then
 				return localValue
 			end
 
@@ -286,7 +286,7 @@ else
 			if (clientOptions) then
 				local clientOption = clientOptions[key]
 
-				if (clientOption ~= nil) then
+				if (clientOption != nil) then
 					return clientOption
 				end
 			end

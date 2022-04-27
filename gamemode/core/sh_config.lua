@@ -44,12 +44,12 @@ function ix.config.Add(key, value, description, callback, data, bNoNetworking, b
 	data.type = nil
 
 	-- using explicit nil comparisons so we don't get caught by a config's value being `false`
-	if (oldConfig ~= nil) then
-		if (oldConfig.value ~= nil) then
+	if (oldConfig != nil) then
+		if (oldConfig.value != nil) then
 			value = oldConfig.value
 		end
 
-		if (oldConfig.default ~= nil) then
+		if (oldConfig.default != nil) then
 			default = oldConfig.default
 		end
 	end
@@ -135,9 +135,9 @@ function ix.config.Get(key, default)
 
 	-- ensure we aren't accessing a dummy value
 	if (config and config.type) then
-		if (config.value ~= nil) then
+		if (config.value != nil) then
 			return config.value
-		elseif (config.default ~= nil) then
+		elseif (config.default != nil) then
 			return config.default
 		end
 	end
@@ -180,7 +180,7 @@ if (SERVER) then
 		local data = {}
 
 		for k, v in pairs(ix.config.stored) do
-			if (v.default ~= v.value) then
+			if (v.default != v.value) then
 				data[k] = v.value
 			end
 		end
