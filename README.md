@@ -1,4 +1,3 @@
-# Sorhub
-All schemas each server will use will be stored on here.
-<br>
-Server content can be downloaded inside the servers themselves.
+<p align="center">
+	<img src="https://raw.githubusercontent.com/NebulousCloud/helix/master/docs/banner.gif" alt="Helix" />
+</p>
