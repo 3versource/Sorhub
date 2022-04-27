@@ -1,8 +1,0 @@
-"ixhl2rp"
-{
-	"base"		"helix"
-	"title"		"HL2 RP"
-	"author"	"https://github.com/OctraSource/Sorhub"
-	"category"	"rp"
-	"menusystem" "1"
-}
