@@ -299,7 +299,7 @@ function PANEL:Paint(width, height)
 	surface.DrawText(text)
 
 	-- sunbeams
-	if (self.sunbeamOffset > 0 and self.sunbeamOffset ~= 1) then
+	if (self.sunbeamOffset > 0 and self.sunbeamOffset != 1) then
 		DrawSunbeams(0.25, sunbeamOffsetEasing * 0.1, 0.02,
 			(((width * 0.5 - logoTextWidth * 0.5) - 32) / width) + ((logoTextWidth + 64) / width) * self.sunbeamOffset,
 			0.5 + math.sin(time * 2) * 0.01

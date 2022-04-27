@@ -235,7 +235,7 @@ hook.Add("PopulateHelpMenu", "ixHelpMenu", function(tabs)
 			local syntaxText = command.syntax
 			local syntax
 
-			if (syntaxText ~= "" and syntaxText ~= "[none]") then
+			if (syntaxText != "" and syntaxText != "[none]") then
 				syntax = container:Add("DLabel")
 				syntax:SetFont("ixMediumLightFont")
 				syntax:SetText(syntaxText)
@@ -250,7 +250,7 @@ hook.Add("PopulateHelpMenu", "ixHelpMenu", function(tabs)
 			-- description
 			local descriptionText = command:GetDescription()
 
-			if (descriptionText ~= "") then
+			if (descriptionText != "") then
 				local description = container:Add("DLabel")
 				description:SetFont("ixSmallFont")
 				description:SetText(descriptionText)
@@ -350,7 +350,7 @@ hook.Add("PopulateHelpMenu", "ixHelpMenu", function(tabs)
 			-- description
 			local descriptionText = v.description
 
-			if (descriptionText ~= "") then
+			if (descriptionText != "") then
 				local description = container:Add("DLabel")
 				description:SetFont("ixSmallFont")
 				description:SetText(descriptionText)
