@@ -329,10 +329,11 @@ hook.Add("EntityFireBullets", "ixAmmoCheck", function(entity)
 					local ammoName = game.GetAmmoName(weapon:GetPrimaryAmmoType()) -- store the current ammo type
 					if(weapon:Clip1() == 0) then -- if the gun has no ammo in its magazine, then
 						for _, v in pairs(ply:GetCharacter():GetInventory():GetItems()) do -- scan the player's inventory
-							if(v.isAmmo and v.ammo == ammoName and weapon:Clip1() == 0) then-- if the item has the isAmmo parameter and it's true AND if the ammo's type equals the currently equipped weapon AND their gun is empty, then
-								ply:SetAmmo(v.ammoAmount, ammoName) -- set the ammo amount to what the item had said
-								v:Remove() -- remove the ammo item
-								break -- exit the loop
+							if(v.isAmmo and v.ammo == ammoName and weapon:Clip1() == 0 and ply:GetAmmoCount(ammoName) == 0) then-- if the item has the isAmmo parameter and it's true AND if the ammo's type equals the currently equipped weapon AND their gun is empty, then
+								ply:SetAmmo(v.ammoAmount + ply:GetAmmoCount(ammoName), ammoName) -- set the ammo amount to what the item had said
+								v:Remove()-- remove the ammo item
+								print("e")
+								 -- exit the loop
 							end
 						end
 					end
@@ -345,33 +346,6 @@ end)
 -- -- alternative check statement (to prevent lag)
 -- hook.Add("PlayerBindPress", "ixReloadRequest", function(ply, bind)
 -- 	if(bind = "+reload") then
--- 		if ply:Alive() then -- the currently selected player is alive, then
-			
--- 			local weapon = ply:GetActiveWeapon() -- store the current weapon
--- 					local ammoName = game.GetAmmoName(weapon:GetPrimaryAmmoType()) -- store the current ammo type
-
--- 					if(weapon:Clip1() == 0) then -- if the gun has no ammo in its magazine, then
--- 						print("clip is empty")
-
--- 						for _, v in pairs(ply:GetCharacter():GetInventory():GetItems()) do -- scan the player's inventory
--- 							-- if the item has the isAmmo parameter and it's true AND if the ammo's type equals the currently equipped weapon AND their gun is empty, then
--- 							if(v.isAmmo and v.ammo == ammoName and weapon:Clip1() == 0) then
-
--- 								ply:SetAmmo(v.ammoAmount, ammoName) -- set the ammo amount to what the item had said
--- 								print("ammo loaded")
-
--- 								v:Remove() -- remove the ammo item
--- 								print("item removed")
-								
--- 								break -- exit the loop
--- 							end
--- 						end
-
--- 					end
-
--- 					print("ran command")
-		
--- 		end
 -- 	end
 -- 	print(ply.." pressed "..bind)
 -- 	print("PlayerBindDetected")
