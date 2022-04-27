@@ -110,7 +110,7 @@ do
 			end
 
 			-- Only change the flag string if it is different.
-			if (addedFlags ~= "") then
+			if (addedFlags != "") then
 				self:SetFlags(self:GetFlags()..addedFlags)
 			end
 		end
@@ -139,7 +139,7 @@ do
 				newFlags = newFlags:gsub(flag, "")
 			end
 
-			if (newFlags ~= oldFlags) then
+			if (newFlags != oldFlags) then
 				self:SetFlags(newFlags)
 			end
 		end

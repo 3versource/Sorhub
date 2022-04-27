@@ -219,7 +219,7 @@ function ix.command.Add(command, data)
 			data.arguments = {data.arguments}
 		end
 
-		if (bHasArgumentNames and #data.argumentNames ~= #data.arguments) then
+		if (bHasArgumentNames and #data.argumentNames != #data.arguments) then
 			return ErrorNoHalt(string.format(
 				"Command '%s' doesn't have argument names that correspond to each argument\n", command
 			))
@@ -255,7 +255,7 @@ function ix.command.Add(command, data)
 				return ErrorNoHalt(string.format(
 					"Command '%s' is missing function argument for command argument #%d\n", command, i
 				))
-			elseif (argument == ix.type.text and i ~= #data.arguments) then
+			elseif (argument == ix.type.text and i != #data.arguments) then
 				return ErrorNoHalt(string.format(
 					"Command '%s' tried to use a text argument outside of the last argument\n", command
 				))
@@ -354,7 +354,7 @@ function ix.command.ExtractArgs(text)
 			else
 				curString = curString..c
 			end
-		elseif (c == " " and curString ~= "") then
+		elseif (c == " " and curString != "") then
 			arguments[#arguments + 1] = curString
 			curString = ""
 		else
@@ -366,7 +366,7 @@ function ix.command.ExtractArgs(text)
 		end
 	end
 
-	if (curString ~= "") then
+	if (curString != "") then
 		arguments[#arguments + 1] = curString
 	end
 
@@ -411,7 +411,7 @@ function ix.command.FindAll(identifier, bSorted, bReorganize, bRemoveDupes)
 		end
 	end
 
-	if (bReorganize and fullMatch and fullMatch ~= 1) then
+	if (bReorganize and fullMatch and fullMatch != 1) then
 		result[1], result[fullMatch] = result[fullMatch], result[1]
 	end
 
