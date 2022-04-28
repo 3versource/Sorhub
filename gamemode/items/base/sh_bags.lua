@@ -32,7 +32,7 @@ ITEM.functions.View = {
 				panel:ShowCloseButton(true)
 				panel:SetTitle(item.GetName and item:GetName() or L(item.name))
 
-				if (parent ~= ix.gui.menuInventoryContainer) then
+				if (parent != ix.gui.menuInventoryContainer) then
 					panel:Center()
 
 					if (parent == ix.gui.openedStorage) then
@@ -56,7 +56,7 @@ ITEM.functions.View = {
 }
 ITEM.functions.combine = {
 	OnRun = function(item, data)
-		ix.item.instances[data[1]]:Transfer(item:GetData("id"))
+		ix.item.instances[data[1]]:Transfer(item:GetData("id"), nil, nil, item.player)
 
 		return false
 	end,
@@ -215,7 +215,7 @@ function ITEM:CanTransfer(oldInventory, newInventory)
 		end
 	end
 
-	return !newInventory or newInventory:GetID() ~= oldInventory:GetID() or newInventory.vars.isBag
+	return !newInventory or newInventory:GetID() != oldInventory:GetID() or newInventory.vars.isBag
 end
 
 function ITEM:OnTransferred(curInv, inventory)

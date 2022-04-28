@@ -101,7 +101,7 @@ ITEM.functions.EquipUn = { -- sorry, for name order.
 		local client = item.player
 
 		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") == true and
-			hook.Run("CanPlayerUnequipItem", client, item) ~= false
+			hook.Run("CanPlayerUnequipItem", client, item) != false
 	end
 }
 
@@ -115,7 +115,7 @@ ITEM.functions.Equip = {
 		local items = char:GetInventory():GetItems()
 
 		for _, v in pairs(items) do
-			if (v.id ~= item.id) then
+			if (v.id != item.id) then
 				local itemTable = ix.item.instances[v.id]
 
 				if (itemTable.pacData and v.outfitCategory == item.outfitCategory and itemTable:GetData("equip")) then
@@ -141,8 +141,8 @@ ITEM.functions.Equip = {
 	OnCanRun = function(item)
 		local client = item.player
 
-		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") ~= true and
-			hook.Run("CanPlayerEquipItem", client, item) ~= false
+		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") != true and
+			hook.Run("CanPlayerEquipItem", client, item) != false
 	end
 }
 
