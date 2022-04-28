@@ -74,7 +74,7 @@ ix.anim.citizen_male = {
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH, ACT_WALK_CROUCH},
 		[ACT_MP_RUN] = {ACT_RUN, ACT_RUN},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET},
-		//attack = ACT_RUN_RIFLE_STIMULATED
+		-- attack = ACT_RUN_RIFLE_STIMULATED
 	},
 	glide = ACT_GLIDE,
 	vehicle = {
@@ -139,7 +139,7 @@ ix.anim.citizen_female = {
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH, ACT_WALK_CROUCH},
 		[ACT_MP_RUN] = {ACT_RUN, ACT_RUN},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET},
-		//attack = ACT_RUN_RIFLE_STIMULATED
+		-- attack = ACT_RUN_RIFLE_STIMULATED
 	},
 	glide = ACT_GLIDE,
 	vehicle = ix.anim.citizen_male.vehicle
