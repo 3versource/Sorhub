@@ -75,7 +75,7 @@ ix.command.Add("SpawnAdd", {
 		end
 
 		if (info) then
-			if (class and class ~= "") then
+			if (class and class != "") then
 				local found = false
 
 				for _, v in ipairs(ix.class.list) do

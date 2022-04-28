@@ -332,7 +332,7 @@ if (SERVER) then
 		local isSellingToVendor = net.ReadBool()
 
 		if (entity.items[uniqueID] and
-			hook.Run("CanPlayerTradeWithVendor", client, entity, uniqueID, isSellingToVendor) ~= false) then
+			hook.Run("CanPlayerTradeWithVendor", client, entity, uniqueID, isSellingToVendor) != false) then
 			local price = entity:GetPrice(uniqueID, isSellingToVendor)
 
 			if (isSellingToVendor) then
@@ -352,7 +352,7 @@ if (SERVER) then
 				local invOkay = true
 
 				for _, v in pairs(client:GetCharacter():GetInventory():GetItems()) do
-					if (v.uniqueID == uniqueID and v:GetID() ~= 0 and ix.item.instances[v:GetID()] and v:GetData("equip", false) == false) then
+					if (v.uniqueID == uniqueID and v:GetID() != 0 and ix.item.instances[v:GetID()] and v:GetData("equip", false) == false) then
 						invOkay = v:Remove()
 						found = true
 						name = L(v.name, client)
@@ -597,14 +597,14 @@ else
 		end
 
 		local value = net.ReadUInt(16)
-		value = value ~= -1 and value or nil
+		value = value != -1 and value or nil
 
 		entity.money = value
 
 		local editor = ix.gui.vendorEditor
 
 		if (IsValid(editor)) then
-			local useMoney = tonumber(value) ~= nil
+			local useMoney = tonumber(value) != nil
 
 			editor.money:SetDisabled(!useMoney)
 			editor.money:SetEnabled(useMoney)
@@ -656,7 +656,7 @@ properties.Add("vendor_edit", {
 
 	Filter = function(self, entity, client)
 		if (!IsValid(entity)) then return false end
-		if (entity:GetClass() ~= "ix_vendor") then return false end
+		if (entity:GetClass() != "ix_vendor") then return false end
 		if (!gamemode.Call( "CanProperty", client, "vendor_edit", entity)) then return false end
 
 		return CAMI.PlayerHasAccess(client, "Helix - Manage Vendors", nil)

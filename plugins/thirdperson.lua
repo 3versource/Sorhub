@@ -139,7 +139,7 @@ if (CLIENT) then
 	function PLUGIN:CreateMove(cmd)
 		owner = LocalPlayer()
 
-		if (owner:CanOverrideView() and owner:GetMoveType() ~= MOVETYPE_NOCLIP and
+		if (owner:CanOverrideView() and owner:GetMoveType() != MOVETYPE_NOCLIP and
 			LocalPlayer():GetViewEntity() == LocalPlayer()) then
 			fm = cmd:GetForwardMove()
 			sm = cmd:GetSideMove()

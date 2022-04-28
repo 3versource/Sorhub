@@ -117,7 +117,7 @@ function ENT:CanBuyFromPlayer(client, uniqueID)
 		return false
 	end
 
-	if (data[VENDOR_MODE] ~= VENDOR_SELLONLY) then
+	if (data[VENDOR_MODE] != VENDOR_SELLONLY) then
 		return false
 	end
 
@@ -139,7 +139,7 @@ end
 
 function ENT:SetAnim()
 	for k, v in ipairs(self:GetSequenceList()) do
-		if (v:lower():find("idle") and v ~= "idlenoise") then
+		if (v:lower():find("idle") and v != "idlenoise") then
 			return self:ResetSequence(k)
 		end
 	end
@@ -319,7 +319,7 @@ else
 
 		local descriptionText = self:GetDescription()
 
-		if (descriptionText ~= "") then
+		if (descriptionText != "") then
 			local description = container:AddRow("description")
 			description:SetText(self:GetDescription())
 			description:SizeToContents()

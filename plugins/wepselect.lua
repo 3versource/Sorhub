@@ -60,7 +60,7 @@ if (CLIENT) then
 				local lastY = 0
 
 				if (self.markup and (i < self.index or i == 1)) then
-					if (self.index ~= 1) then
+					if (self.index != 1) then
 						local _, h = self.markup:Size()
 						lastY = h * fraction
 					end
@@ -103,7 +103,7 @@ if (CLIENT) then
 			local instructions = weapon.Instructions
 			local text = ""
 
-			if (instructions ~= nil and instructions:find("%S")) then
+			if (instructions != nil and instructions:find("%S")) then
 				local color = ix.config.Get("color")
 				text = text .. string.format(
 					"<font=ixItemBoldFont><color=%d,%d,%d>%s</font></color>\n%s\n",
@@ -111,7 +111,7 @@ if (CLIENT) then
 				)
 			end
 
-			if (text ~= "") then
+			if (text != "") then
 				self.markup = markup.Parse("<font=ixItemDescFont>"..text, ScrW() * 0.3)
 				self.infoAlpha = 0
 			end
@@ -139,7 +139,7 @@ if (CLIENT) then
 
 		if (bValid and currentWeapon:GetClass() == "gmod_tool") then
 			local tool = client:GetTool()
-			bTool = tool and (tool.Scroll ~= nil)
+			bTool = tool and (tool.Scroll != nil)
 		end
 
 		local weapons = client:GetWeapons()
@@ -148,7 +148,7 @@ if (CLIENT) then
 			local oldIndex = self.index
 			self.index = math.min(self.index + 1, #weapons)
 
-			if (self.alpha == 0 or oldIndex ~= self.index) then
+			if (self.alpha == 0 or oldIndex != self.index) then
 				self:OnIndexChanged(weapons[self.index])
 			end
 
@@ -157,7 +157,7 @@ if (CLIENT) then
 			local oldIndex = self.index
 			self.index = math.max(self.index - 1, 1)
 
-			if (self.alpha == 0 or oldIndex ~= self.index) then
+			if (self.alpha == 0 or oldIndex != self.index) then
 				self:OnIndexChanged(weapons[self.index])
 			end
 
