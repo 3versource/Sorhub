@@ -95,7 +95,7 @@ ix.config.Add("saveInterval", 300, "How often characters save in seconds.", nil,
 	data = {min = 60, max = 3600},
 	category = "characters"
 })
-ix.config.Add("walkSpeed", 90, "How fast a player normally walks.", function(oldValue, newValue)
+ix.config.Add("walkSpeed", 130, "How fast a player normally walks.", function(oldValue, newValue)
 	for _, v in ipairs(player.GetAll())	do
 		v:SetWalkSpeed(newValue)
 	end
@@ -103,7 +103,7 @@ end, {
 	data = {min = 75, max = 500},
 	category = "characters"
 })
-ix.config.Add("runSpeed", 225, "How fast a player normally runs.", function(oldValue, newValue)
+ix.config.Add("runSpeed", 235, "How fast a player normally runs.", function(oldValue, newValue)
 	for _, v in ipairs(player.GetAll())	do
 		v:SetRunSpeed(newValue)
 	end
@@ -121,8 +121,7 @@ ix.config.Add("intro", true, "Whether or not the Helix intro is enabled for new 
 ix.config.Add("music", "music/hl2_song2.mp3", "The default music played in the character menu.", nil, {
 	category = "appearance"
 })
-ix.config.Add("communityURL", "https://discord.gg/atJvegw4bx",
-"The URL to navigate to when the community button is clicked.", nil, {
+ix.config.Add("communityURL", "https://nebulous.cloud/", "The URL to navigate to when the community button is clicked.", nil, {
 	category = "appearance"
 })
 ix.config.Add("communityText", "@community",

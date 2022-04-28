@@ -1,7 +1,7 @@
 local PLUGIN = PLUGIN
 PLUGIN.name = "Hunger Need"
 PLUGIN.author = "OctraSource"
-PLUGIN.desc = "Adds a needs bar that kills players if they don't eat.."
+PLUGIN.desc = "Adds a needs bar that kills players if they don't eat."
 PLUGIN.hungrySeconds = 21600
 
 local playerMeta = FindMetaTable("Player")
