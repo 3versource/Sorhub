@@ -58,7 +58,7 @@ function PLUGIN:AreaThink()
 			local oldID = client:GetArea()
 			local id = overlappingBoxes[1]
 
-			if (oldID ~= id) then
+			if (oldID != id) then
 				hook.Run("OnPlayerAreaChanged", client, client.ixArea, id)
 				client.ixArea = id
 			end

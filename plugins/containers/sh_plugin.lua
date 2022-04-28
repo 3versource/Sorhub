@@ -28,7 +28,7 @@ if (SERVER) then
 
 	function PLUGIN:PlayerSpawnedProp(client, model, entity)
 		model = tostring(model):lower()
-		local data = ix.container.stored[model:lower()]
+		local data = ix.container.stored[model]
 
 		if (data) then
 			if (hook.Run("CanPlayerSpawnContainer", client, model, entity) == false) then return end
@@ -62,7 +62,7 @@ if (SERVER) then
 		local data = {}
 
 		for _, v in ipairs(ents.FindByClass("ix_container")) do
-			if (hook.Run("CanSaveContainer", v, v:GetInventory()) ~= false) then
+			if (hook.Run("CanSaveContainer", v, v:GetInventory()) != false) then
 				local inventory = v:GetInventory()
 
 				if (inventory) then
@@ -241,7 +241,7 @@ properties.Add("container_setpassword", {
 	MenuIcon = "icon16/lock_edit.png",
 
 	Filter = function(self, entity, client)
-		if (entity:GetClass() ~= "ix_container") then return false end
+		if (entity:GetClass() != "ix_container") then return false end
 		if (!gamemode.Call("CanProperty", client, "container_setpassword", entity)) then return false end
 
 		return true
@@ -266,7 +266,7 @@ properties.Add("container_setpassword", {
 
 		entity.Sessions = {}
 
-		if (password:len() ~= 0) then
+		if (password:len() != 0) then
 			entity:SetLocked(true)
 			entity.password = password
 
@@ -281,7 +281,7 @@ properties.Add("container_setpassword", {
 		local name = entity:GetDisplayName()
 		local inventory = entity:GetInventory()
 
-		ix.log.Add(client, "containerPassword", name, inventory:GetID(), password:len() ~= 0)
+		ix.log.Add(client, "containerPassword", name, inventory:GetID(), password:len() != 0)
 	end
 })
 
@@ -291,7 +291,7 @@ properties.Add("container_setname", {
 	MenuIcon = "icon16/tag_blue_edit.png",
 
 	Filter = function(self, entity, client)
-		if (entity:GetClass() ~= "ix_container") then return false end
+		if (entity:GetClass() != "ix_container") then return false end
 		if (!gamemode.Call("CanProperty", client, "container_setname", entity)) then return false end
 
 		return true
@@ -314,7 +314,7 @@ properties.Add("container_setname", {
 
 		local name = net.ReadString()
 
-		if (name:len() ~= 0) then
+		if (name:len() != 0) then
 			entity:SetDisplayName(name)
 
 			client:NotifyLocalized("containerName", name)
@@ -328,6 +328,6 @@ properties.Add("container_setname", {
 
 		local inventory = entity:GetInventory()
 
-		ix.log.Add(client, "containerName", name, inventory:GetID(), name:len() ~= 0)
+		ix.log.Add(client, "containerName", name, inventory:GetID(), name:len() != 0)
 	end
 })

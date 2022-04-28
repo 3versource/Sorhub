@@ -100,7 +100,7 @@ if (CLIENT) then
 	end
 
 	function PLUGIN:DrawPhysgunBeam(client, physgun, enabled, target, bone, hitPos)
-		if (client ~= LocalPlayer() and client:GetMoveType() == MOVETYPE_NOCLIP) then
+		if (client != LocalPlayer() and client:GetMoveType() == MOVETYPE_NOCLIP) then
 			return false
 		end
 	end
