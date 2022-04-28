@@ -6,4 +6,5 @@ Helix is a framework for roleplay gamemodes in [Garry's Mod](https://gmod.facepu
 
 ## Acknowledgements
 Helix is a fork of NutScript 1.1 by [Chessnut](https://github.com/brianhang) and [rebel1324](https://github.com/rebel1324).
+<br>
 Helix was NOT MADE BY ME (OCTRASOURCE) IN ANY WAY.
