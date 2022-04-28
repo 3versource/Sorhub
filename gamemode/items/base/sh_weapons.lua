@@ -316,36 +316,3 @@ hook.Add("EntityRemoved", "ixRemoveGrenade", function(entity)
 		end
 	end
 end)
-
--- every time an entity fires a gun
--- test the hook "PlayerBindPress"
-
-hook.Add("EntityFireBullets", "ixAmmoCheck", function(entity)
-	if(entity:GetClass() == "player") then -- if the entity that fired a gun is a player,
-		for i, ply in ipairs( player.GetAll() ) do -- cycle through every player in the server, then
-			if ply:Alive() then -- the currently selected player is alive, then
-				if(entity:GetName() == ply:GetName()) then -- if the selected player has the same name as the entity firing the gun, then
-					local weapon = ply:GetActiveWeapon() -- store the current weapon
-					local ammoName = game.GetAmmoName(weapon:GetPrimaryAmmoType()) -- store the current ammo type
-					if(weapon:Clip1() == 0) then -- if the gun has no ammo in its magazine, then
-						for _, v in pairs(ply:GetCharacter():GetInventory():GetItems()) do -- scan the player's inventory
-							if(v.isAmmo and v.ammo == ammoName and weapon:Clip1() == 0 and ply:GetAmmoCount(ammoName) == 0) then
--- if the item has the isAmmo parameter and it's true AND if the ammo's type equals the currently equipped weapon AND their gun is empty, then
-								ply:SetAmmo(v.ammoAmount + ply:GetAmmoCount(ammoName), ammoName) -- set the ammo amount to what the item had said
-								v:Remove()-- remove the ammo item
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-end)
-
--- -- alternative check statement (to prevent lag)
--- hook.Add("PlayerBindPress", "ixReloadRequest", function(ply, bind)
--- 	if(bind = "+reload") then
--- 	end
--- 	print(ply.." pressed "..bind)
--- 	print("PlayerBindDetected")
--- end)
