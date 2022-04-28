@@ -87,7 +87,7 @@ function ix.class.CanSwitchTo(client, class)
 	end
 
 	-- If the player's faction matches the class's faction.
-	if (client:Team() ~= info.faction) then
+	if (client:Team() != info.faction) then
 		return false, "not correct team"
 	end
 

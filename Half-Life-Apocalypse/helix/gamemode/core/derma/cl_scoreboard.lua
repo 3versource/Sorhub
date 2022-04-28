@@ -39,7 +39,7 @@ function PANEL:SetModel(model, skin, bodygroups)
 	self.path = "materials/spawnicons/" ..
 		model:sub(1, #model - 4) .. -- remove extension
 		((isnumber(skin) and skin > 0) and ("_skin" .. tostring(skin)) or "") .. -- skin number
-		(self.bodygroups ~= BODYGROUPS_EMPTY and ("_" .. self.bodygroups) or "") .. -- bodygroups
+		(self.bodygroups != BODYGROUPS_EMPTY and ("_" .. self.bodygroups) or "") .. -- bodygroups
 		".png"
 
 	local material = Material(self.path, "smooth")
@@ -196,17 +196,17 @@ function PANEL:Update()
 		self.icon:SetBodygroup(v.id, client:GetBodygroup(v.id))
 	end
 
-	if (self.icon:GetModel() ~= model or self.icon:GetSkin() ~= skin) then
+	if (self.icon:GetModel() != model or self.icon:GetSkin() != skin) then
 		self.icon:SetModel(model, skin)
 		self.icon:SetTooltip(nil)
 	end
 
-	if (self.name:GetText() ~= name) then
+	if (self.name:GetText() != name) then
 		self.name:SetText(name)
 		self.name:SizeToContents()
 	end
 
-	if (self.description:GetText() ~= description) then
+	if (self.description:GetText() != description) then
 		self.description:SetText(description)
 		self.description:SizeToContents()
 	end
@@ -216,7 +216,7 @@ function PANEL:Think()
 	if (CurTime() >= self.nextThink) then
 		local client = self.player
 
-		if (!IsValid(client) or !client:GetCharacter() or self.character ~= client:GetCharacter() or self.team ~= client:Team()) then
+		if (!IsValid(client) or !client:GetCharacter() or self.character != client:GetCharacter() or self.team != client:Team()) then
 			self:Remove()
 			self:GetParent():SizeToContents()
 		end

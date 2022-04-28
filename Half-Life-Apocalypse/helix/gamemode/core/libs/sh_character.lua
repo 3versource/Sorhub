@@ -161,7 +161,7 @@ if (SERVER) then
 											v2.inventory_type = nil
 										end
 
-										if (hook.Run("ShouldRestoreInventory", charID, v2.inventory_id, v2.inventory_type) ~= false) then
+										if (hook.Run("ShouldRestoreInventory", charID, v2.inventory_id, v2.inventory_type) != false) then
 											local w, h = ix.config.Get("inventoryWidth"), ix.config.Get("inventoryHeight")
 											local invType
 
@@ -253,7 +253,7 @@ if (SERVER) then
 					elseif (isstring(v.default)) then
 						value = tostring(value) == "NULL" and v.default or tostring(value or v.default)
 					elseif (isbool(v.default)) then
-						if (tostring(value) ~= "NULL") then
+						if (tostring(value) != "NULL") then
 							value = tobool(value)
 						else
 							value = v.default
@@ -287,7 +287,7 @@ function ix.char.New(data, id, client, steamID)
 
 	local character = setmetatable({vars = {}}, ix.meta.character)
 		for k, v in pairs(data) do
-			if (v ~= nil) then
+			if (v != nil) then
 				character.vars[k] = v
 			end
 		end
@@ -654,7 +654,7 @@ do
 			return attributes
 		end,
 		OnValidate = function(self, value, data, client)
-			if (value ~= nil) then
+			if (value != nil) then
 				if (istable(value)) then
 					local count = 0
 
@@ -979,7 +979,7 @@ do
 
 						return
 					else
-						if (result[1] ~= nil) then
+						if (result[1] != nil) then
 							payload[k] = result[1]
 						end
 
@@ -1132,7 +1132,7 @@ do
 				message = L(message:sub(2))
 			end
 
-			message = message ~= "" and message or L("unknownError")
+			message = message != "" and message or L("unknownError")
 
 			if (IsValid(ix.gui.characterMenu)) then
 				ix.gui.characterMenu:OnCharacterLoadFailed(message)

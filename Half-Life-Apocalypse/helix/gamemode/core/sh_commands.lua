@@ -45,7 +45,7 @@ ix.command.Add("PM", {
 		end
 	end
 })
-		
+
 ix.command.Add("Reply", {
 	description = "@cmdReply",
 	arguments = ix.type.text,
@@ -304,7 +304,7 @@ ix.command.Add("CharGiveItem", {
 		if (bSuccess) then
 			target:GetPlayer():NotifyLocalized("itemCreated")
 
-			if (target ~= client:GetCharacter()) then
+			if (target != client:GetCharacter()) then
 				return "@itemCreated"
 			end
 		else
@@ -472,8 +472,10 @@ do
 			OnRun = function(self, client, amount)
 				amount = math.Round(amount)
 
-				if (amount <= 0) then
-					return "@invalidArg", 1
+				local minDropAmount = ix.config.Get("minMoneyDropAmount", 1)
+
+				if (amount < minDropAmount) then
+					return "@belowMinMoneyDrop", minDropAmount
 				end
 
 				if (!client:GetCharacter():HasMoney(amount)) then
@@ -766,7 +768,7 @@ ix.command.Add("CharSetClass", {
 				targetPlayer:NotifyLocalized("becomeClass", L(classTable.name, targetPlayer))
 
 				-- only send second notification if the character isn't setting their own class
-				if (client ~= targetPlayer) then
+				if (client != targetPlayer) then
 					return "@setClass", target:GetName(), L(classTable.name, client)
 				end
 			else

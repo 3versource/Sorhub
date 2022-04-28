@@ -23,17 +23,17 @@ function PANEL:Init()
 		if (IsValid(line.player)) then
 			local menu = DermaMenu()
 				menu:AddOption(L"tenant", function()
-					if (self.accessData and self.accessData[line.player] ~= DOOR_TENANT) then
+					if (self.accessData and self.accessData[line.player] != DOOR_TENANT) then
 						DoorSetPermission(self.door, line.player, DOOR_TENANT)
 					end
 				end):SetImage("icon16/user_add.png")
 				menu:AddOption(L"guest", function()
-					if (self.accessData and self.accessData[line.player] ~= DOOR_GUEST) then
+					if (self.accessData and self.accessData[line.player] != DOOR_GUEST) then
 						DoorSetPermission(self.door, line.player, DOOR_GUEST)
 					end
 				end):SetImage("icon16/user_green.png")
 				menu:AddOption(L"none", function()
-					if (self.accessData and self.accessData[line.player] ~= DOOR_NONE) then
+					if (self.accessData and self.accessData[line.player] != DOOR_NONE) then
 						DoorSetPermission(self.door, line.player, DOOR_NONE)
 					end
 				end):SetImage("icon16/user_red.png")
@@ -49,7 +49,7 @@ function PANEL:SetDoor(door, access, door2)
 	self.door = door
 
 	for _, v in ipairs(player.GetAll()) do
-		if (v ~= LocalPlayer() and v:GetCharacter()) then
+		if (v != LocalPlayer() and v:GetCharacter()) then
 			self.access:AddLine(v:Name(), L(ACCESS_LABELS[access[v] or 0])).player = v
 		end
 	end

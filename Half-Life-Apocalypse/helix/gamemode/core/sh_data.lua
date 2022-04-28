@@ -51,7 +51,7 @@ function ix.data.Get(key, default, bGlobal, bIgnoreMap, bRefresh)
 	if (!bRefresh) then
 		local stored = ix.data.stored[key]
 
-		if (stored ~= nil) then
+		if (stored != nil) then
 			return stored
 		end
 	end
@@ -61,13 +61,13 @@ function ix.data.Get(key, default, bGlobal, bIgnoreMap, bRefresh)
 	-- Read the data from a local file.
 	local contents = file.Read(path .. key .. ".txt", "DATA")
 
-	if (contents and contents ~= "") then
+	if (contents and contents != "") then
 		local status, decoded = pcall(util.JSONToTable, contents)
 
 		if (status and decoded) then
 			local value = decoded[1]
 
-			if (value ~= nil) then
+			if (value != nil) then
 				return value
 			end
 		end
@@ -79,7 +79,7 @@ function ix.data.Get(key, default, bGlobal, bIgnoreMap, bRefresh)
 		if (status and decoded) then
 			local value = decoded[1]
 
-			if (value ~= nil) then
+			if (value != nil) then
 				return value
 			end
 		end
@@ -102,7 +102,7 @@ function ix.data.Delete(key, bGlobal, bIgnoreMap)
 	-- Read the data from a local file.
 	local contents = file.Read(path .. key .. ".txt", "DATA")
 
-	if (contents and contents ~= "") then
+	if (contents and contents != "") then
 		file.Delete(path .. key .. ".txt")
 		ix.data.stored[key] = nil
 		return true

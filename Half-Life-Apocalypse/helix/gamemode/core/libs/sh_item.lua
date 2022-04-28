@@ -205,7 +205,7 @@ function ix.item.Register(uniqueID, baseID, isBaseItem, path, luaGenerated)
 				ix.util.Include(path)
 			end
 
-			if (ITEM.base and oldBase ~= ITEM.base) then
+			if (ITEM.base and oldBase != ITEM.base) then
 				local baseTable = ix.item.base[ITEM.base]
 
 				if (baseTable) then
@@ -412,13 +412,13 @@ do
 			local owner = net.ReadUInt(32)
 			local data = net.ReadTable()
 
-			local character = owner ~= 0 and ix.char.loaded[owner] or LocalPlayer():GetCharacter()
+			local character = owner != 0 and ix.char.loaded[owner] or LocalPlayer():GetCharacter()
 
 			if (character) then
 				local inventory = ix.item.inventories[invID]
 
 				if (inventory) then
-					local item = (uniqueID ~= "" and id ~= 0) and ix.item.New(uniqueID, id) or nil
+					local item = (uniqueID != "" and id != 0) and ix.item.New(uniqueID, id) or nil
 					item.invID = invID
 					item.data = {}
 
@@ -632,7 +632,7 @@ do
 				local playerID = client:SteamID64()
 				local characterID = client:GetCharacter():GetID()
 
-				if (itemPlayerID and itemCharacterID and itemPlayerID == playerID and itemCharacterID ~= characterID) then
+				if (itemPlayerID and itemCharacterID and itemPlayerID == playerID and itemCharacterID != characterID) then
 					client:NotifyLocalized("itemOwned")
 
 					item.player = nil
@@ -669,7 +669,7 @@ do
 					item.postHooks[action](item, result, data)
 				end
 
-				if (result ~= false) then
+				if (result != false) then
 					if (IsValid(entity)) then
 						entity.ixIsSafe = true
 						entity:Remove()
@@ -681,7 +681,7 @@ do
 				item.entity = nil
 				item.player = nil
 
-				return result ~= false
+				return result != false
 			end
 		end
 
@@ -714,7 +714,7 @@ do
 					local item = inventory:GetItemAt(oldX, oldY)
 
 					if (item) then
-						if (newInvID and invID ~= newInvID) then
+						if (newInvID and invID != newInvID) then
 							local inventory2 = ix.item.inventories[newInvID]
 
 							if (inventory2) then
@@ -759,7 +759,7 @@ do
 								local filtered = {}
 
 								for _, v in ipairs(receivers) do
-									if (v ~= client) then
+									if (v != client) then
 										filtered[#filtered + 1] = v
 									end
 								end

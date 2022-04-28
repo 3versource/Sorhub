@@ -56,12 +56,12 @@ function PANEL:Populate()
 			end
 
 			row:SetValue(value, true)
-			row:SetShowReset(value ~= v.default, k, v.default)
+			row:SetShowReset(value != v.default, k, v.default)
 
 			row.OnValueChanged = function(panel)
 				local newValue = ix.util.SanitizeType(type, panel:GetValue())
 
-				panel:SetShowReset(newValue ~= v.default, k, v.default)
+				panel:SetShowReset(newValue != v.default, k, v.default)
 
 				net.Start("ixConfigSet")
 					net.WriteString(k)

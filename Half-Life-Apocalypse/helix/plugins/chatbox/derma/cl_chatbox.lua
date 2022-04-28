@@ -794,7 +794,7 @@ function PANEL:SetCommand(command)
 
 	self.name:SetText("/" .. command.name)
 
-	if (description and description ~= "") then
+	if (description and description != "") then
 		self.description:SetText(command:GetDescription())
 	else
 		self.description:SetVisible(false)
@@ -1035,7 +1035,7 @@ function PANEL:OnMousePressed(key)
 		return
 	end
 
-	if (key ~= MOUSE_LEFT) then
+	if (key != MOUSE_LEFT) then
 		return
 	end
 
@@ -1134,7 +1134,7 @@ function PANEL:GetTextEntryChatClass(text)
 
 	local chatType = ix.chat.Parse(LocalPlayer(), text, true)
 
-	if (chatType and chatType ~= "ic") then
+	if (chatType and chatType != "ic") then
 		-- OOC is the only one with two slashes as its prefix, so we'll make a special case for it here
 		if (chatType == "ooc") then
 			return "ooc"
@@ -1197,7 +1197,7 @@ function PANEL:OnTextChanged(text)
 		return
 	end
 
-	if (preview:GetCommand() ~= "") then
+	if (preview:GetCommand() != "") then
 		preview:SetCommand("")
 		preview:SetVisible(false)
 	end
@@ -1231,7 +1231,7 @@ function PANEL:OnMessageSent()
 		local lastEntry = ix.chat.history[#ix.chat.history]
 
 		-- only add line to textentry history if it isn't the same message
-		if (lastEntry ~= text) then
+		if (lastEntry != text) then
 			if (#ix.chat.history >= 20) then
 				table.remove(ix.chat.history, 1)
 			end

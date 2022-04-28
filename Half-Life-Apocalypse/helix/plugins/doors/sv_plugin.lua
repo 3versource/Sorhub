@@ -49,7 +49,7 @@ function PLUGIN:CopyParentDoor(child)
 		for _, v in ipairs(variables) do
 			local value = parent:GetNetVar(v)
 
-			if (child:GetNetVar(v) ~= value) then
+			if (child:GetNetVar(v) != value) then
 				child:SetNetVar(v, value)
 			end
 		end
@@ -174,11 +174,11 @@ function PLUGIN:CanPlayerAccessDoor(client, door, access)
 
 	if (class and classData and classData2) then
 		if (classData.team) then
-			if (classData.team ~= classData2.team) then
+			if (classData.team != classData2.team) then
 				return false
 			end
 		else
-			if (charClass ~= class) then
+			if (charClass != class) then
 				return false
 			end
 		end
@@ -257,7 +257,7 @@ net.Receive("ixDoorPermission", function(length, client)
 	local target = net.ReadEntity()
 	local access = net.ReadUInt(4)
 
-	if (IsValid(target) and target:GetCharacter() and door.ixAccess and door:GetDTEntity(0) == client and target ~= client) then
+	if (IsValid(target) and target:GetCharacter() and door.ixAccess and door:GetDTEntity(0) == client and target != client) then
 		access = math.Clamp(access or 0, DOOR_NONE, DOOR_TENANT)
 
 		if (access == door.ixAccess[target]) then

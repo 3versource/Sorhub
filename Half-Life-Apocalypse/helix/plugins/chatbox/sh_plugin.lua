@@ -63,7 +63,7 @@ if (CLIENT) then
 			return false
 		end
 
-		return self.panel.tabs:GetTabs()[id] ~= nil
+		return self.panel.tabs:GetTabs()[id] != nil
 	end
 
 	function PLUGIN:SaveTabs()
@@ -130,7 +130,7 @@ if (CLIENT) then
 			elseif (isentity(v) and v:IsPlayer()) then
 				text[#text + 1] = team.GetColor(v:Team())
 				text[#text + 1] = v:Name()
-			elseif (type(v) ~= "IMaterial") then
+			elseif (type(v) != "IMaterial") then
 				text[#text + 1] = tostring(v)
 			end
 		end
@@ -145,6 +145,12 @@ else
 		local text = net.ReadString()
 
 		if ((client.ixNextChat or 0) < CurTime() and isstring(text) and text:find("%S")) then
+			local maxLength = ix.config.Get("chatMax")
+
+			if (text:utf8len() > maxLength) then
+				text = text:utf8sub(0, maxLength)
+			end
+
 			hook.Run("PlayerSay", client, text)
 			client.ixNextChat = CurTime() + 0.5
 		end

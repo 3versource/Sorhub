@@ -86,7 +86,7 @@ ITEM.functions.EquipUn = { -- sorry, for name order.
 		local client = item.player
 
 		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") == true and
-			hook.Run("CanPlayerUnequipItem", client, item) ~= false
+			hook.Run("CanPlayerUnequipItem", client, item) != false
 	end
 }
 
@@ -102,8 +102,8 @@ ITEM.functions.Equip = {
 	OnCanRun = function(item)
 		local client = item.player
 
-		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") ~= true and
-			hook.Run("CanPlayerEquipItem", client, item) ~= false
+		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") != true and
+			hook.Run("CanPlayerEquipItem", client, item) != false
 	end
 }
 
@@ -125,7 +125,7 @@ function ITEM:Equip(client, bNoSelect, bNoSound)
 	client.carryWeapons = client.carryWeapons or {}
 
 	for _, v in pairs(items) do
-		if (v.id ~= self.id) then
+		if (v.id != self.id) then
 			local itemTable = ix.item.instances[v.id]
 
 			if (!itemTable) then

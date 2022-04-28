@@ -71,7 +71,7 @@ function ix.plugin.Load(uniqueID, path, isSingleFile, variable)
 
 	hook.Run("PluginLoaded", uniqueID, PLUGIN)
 
-	if (uniqueID ~= "schema") then
+	if (uniqueID != "schema") then
 		PLUGIN.name = PLUGIN.name or "Unknown"
 		PLUGIN.description = PLUGIN.description or "No description available."
 
@@ -344,7 +344,7 @@ do
 			for k, v in pairs(cache) do
 				local a, b, c, d, e, f = v(k, ...)
 
-				if (a ~= nil) then
+				if (a != nil) then
 					return a, b, c, d, e, f
 				end
 			end
@@ -353,7 +353,7 @@ do
 		if (Schema and Schema[name]) then
 			local a, b, c, d, e, f = Schema[name](Schema, ...)
 
-			if (a ~= nil) then
+			if (a != nil) then
 				return a, b, c, d, e, f
 			end
 		end
@@ -386,7 +386,7 @@ do
 				local bSuccess, a, b, c, d, e, f = pcall(v, k, ...)
 
 				if (bSuccess) then
-					if (a ~= nil) then
+					if (a != nil) then
 						return errors, a, b, c, d, e, f
 					end
 				else
@@ -406,7 +406,7 @@ do
 			local bSuccess, a, b, c, d, e, f = pcall(Schema[name], Schema, ...)
 
 			if (bSuccess) then
-				if (a ~= nil) then
+				if (a != nil) then
 					return errors, a, b, c, d, e, f
 				end
 			else

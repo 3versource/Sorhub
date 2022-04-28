@@ -398,7 +398,7 @@ function PANEL:Populate()
 
 	-- set up character vars
 	for k, v in SortedPairsByMemberValue(ix.char.vars, "index") do
-		if (!v.bNoDisplay and k ~= "__SortedIndex") then
+		if (!v.bNoDisplay and k != "__SortedIndex") then
 			local container = self:GetContainerPanel(v.category or "description")
 
 			if (v.ShouldDisplay and v:ShouldDisplay(container, self.payload) == false) then
@@ -468,7 +468,7 @@ end
 
 function PANEL:VerifyProgression(name)
 	for k, v in SortedPairsByMemberValue(ix.char.vars, "index") do
-		if (name ~= nil and (v.category or "description") ~= name) then
+		if (name ~= nil and (v.category or "description") != name) then
 			continue
 		end
 

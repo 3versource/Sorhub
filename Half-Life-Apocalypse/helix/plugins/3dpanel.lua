@@ -197,7 +197,7 @@ else
 		local url = net.ReadString()
 		local brightness = net.ReadUInt(8)
 
-		if (url ~= "") then
+		if (url != "") then
 			PLUGIN.list[index] = {position, angles, nil, nil, scale, url, nil, brightness}
 
 			CacheMaterial(index)

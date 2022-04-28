@@ -535,7 +535,7 @@ function PANEL:OnCursorMoved(x, y)
 		easing = "outQuint"
 	})
 
-	if (self.value ~= oldValue) then
+	if (self.value != oldValue) then
 		self:ValueUpdated()
 	end
 end

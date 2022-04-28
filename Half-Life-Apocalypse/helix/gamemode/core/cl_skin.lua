@@ -108,7 +108,7 @@ function SKIN:PaintFrame(panel)
 	surface.SetDrawColor(30, 30, 30, 150)
 	surface.DrawRect(0, 0, panel:GetWide(), panel:GetTall())
 
-	if (panel:GetTitle() ~= "" or panel.btnClose:IsVisible()) then
+	if (panel:GetTitle() != "" or panel.btnClose:IsVisible()) then
 		surface.SetDrawColor(ix.config.Get("color"))
 		surface.DrawRect(0, 0, panel:GetWide(), 24)
 
@@ -529,6 +529,15 @@ function SKIN:PaintInventorySlot(panel, width, height)
 
 	surface.SetDrawColor(0, 0, 0, 250)
 	surface.DrawOutlinedRect(1, 1, width - 2, height - 2)
+end
+
+function SKIN:PaintDeathScreenBackground(panel, width, height, progress)
+	surface.SetDrawColor(0, 0, 0, (progress / 0.3) * 255)
+	surface.DrawRect(0, 0, width, height)
+end
+
+function SKIN:PaintDeathScreen(panel, width, height, progress)
+	ix.bar.DrawAction()
 end
 
 do

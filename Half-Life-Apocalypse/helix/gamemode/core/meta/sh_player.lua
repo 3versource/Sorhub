@@ -65,7 +65,7 @@ end
 function meta:IsFemale()
 	local model = self:GetModel():lower()
 
-	return (model:find("female") or model:find("alyx") or model:find("mossman")) ~= nil or
+	return (model:find("female") or model:find("alyx") or model:find("mossman")) != nil or
 		ix.anim.GetModelClass(model) == "citizen_female"
 end
 
@@ -139,7 +139,7 @@ function meta:DoStaredAction(entity, callback, time, onCancel, distance)
 			data.start = self:GetShootPos()
 			data.endpos = data.start + self:GetAimVector()*(distance or 96)
 
-			if (util.TraceLine(data).Entity ~= entity) then
+			if (util.TraceLine(data).Entity != entity) then
 				timer.Remove(uniqueID)
 
 				if (onCancel) then
@@ -248,14 +248,14 @@ if (SERVER) then
 					local traceEntity = util.TraceLine(data).Entity
 
 					if (IsValid(traceEntity) and traceEntity == self.ixInteractionTarget and !traceEntity.ixInteractionDirty) then
-						if (callback(self) ~= false) then
+						if (callback(self) != false) then
 							traceEntity.ixInteractionDirty = true
 						end
 					end
 				end
 			end)
 		else
-			if (callback(self) ~= false) then
+			if (callback(self) != false) then
 				entity.ixInteractionDirty = true
 			end
 		end

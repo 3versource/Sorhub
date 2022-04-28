@@ -28,7 +28,7 @@ do
 		RemoveTooltip()
 
 		timer.Create("ixTooltip", 0.1, 1, function()
-			if (!IsValid(panel) or lastHover ~= panel) then
+			if (!IsValid(panel) or lastHover != panel) then
 				return
 			end
 

@@ -26,7 +26,7 @@ function PANEL:DoClick()
 		bStatus = self.callback()
 	end
 
-	if (bStatus ~= false) then
+	if (bStatus != false) then
 		ix.menu.NetworkChoice(entity, self.originalText, bStatus)
 	end
 

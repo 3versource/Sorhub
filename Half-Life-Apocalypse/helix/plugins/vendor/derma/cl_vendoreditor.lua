@@ -16,7 +16,7 @@ function PANEL:Init()
 	self.name:SetText(entity:GetDisplayName())
 	self.name:SetPlaceholderText(L"name")
 	self.name.OnEnter = function(this)
-		if (entity:GetDisplayName() ~= this:GetText()) then
+		if (entity:GetDisplayName() != this:GetText()) then
 			self:updateVendor("name", this:GetText())
 		end
 	end
@@ -27,7 +27,7 @@ function PANEL:Init()
 	self.description:SetText(entity:GetDescription())
 	self.description:SetPlaceholderText(L"description")
 	self.description.OnEnter = function(this)
-		if (entity:GetDescription() ~= this:GetText()) then
+		if (entity:GetDescription() != this:GetText()) then
 			self:updateVendor("description", this:GetText())
 		end
 	end
@@ -38,12 +38,12 @@ function PANEL:Init()
 	self.model:SetText(entity:GetModel())
 	self.model:SetPlaceholderText(L"model")
 	self.model.OnEnter = function(this)
-		if (entity:GetModel():lower() ~= this:GetText():lower()) then
+		if (entity:GetModel():lower() != this:GetText():lower()) then
 			self:updateVendor("model", this:GetText():lower())
 		end
 	end
 
-	local useMoney = tonumber(entity.money) ~= nil
+	local useMoney = tonumber(entity.money) != nil
 
 	self.money = self:Add("DTextEntry")
 	self.money:Dock(TOP)
@@ -102,7 +102,7 @@ function PANEL:Init()
 				if (IsValid(self) and IsValid(self.sellScale)) then
 					value = self.sellScale:GetValue()
 
-					if (value ~= entity.scale) then
+					if (value != entity.scale) then
 						self:updateVendor("scale", value)
 					end
 				end

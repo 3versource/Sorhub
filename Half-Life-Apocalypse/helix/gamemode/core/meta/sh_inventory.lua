@@ -114,7 +114,7 @@ function META:FindError()
 			for y = v.gridY, v.gridY + v.height - 1 do
 				local item = self.slots[x][y]
 
-				if (item and item.id ~= v.id) then
+				if (item and item.id != v.id) then
 					print("Error Found: ".. item.name)
 				end
 			end
@@ -296,7 +296,7 @@ function META:FindEmptySlot(w, h, onlyMain)
 		end
 	end
 
-	if (onlyMain ~= true) then
+	if (onlyMain != true) then
 		local bags = self:GetBags()
 
 		if (#bags > 0) then
@@ -537,8 +537,9 @@ function META:GetItems(onlyMain)
 				items[v2.id] = v2
 
 				v2.data = v2.data or {}
-				local isBag = v2.data.id
-				if (isBag and isBag ~= self:GetID() and onlyMain ~= true) then
+				local isBag = (((v2.base == "base_bags") or v2.isBag) and v2.data.id)
+
+				if (isBag and isBag != self:GetID() and onlyMain != true) then
 					local bagInv = ix.item.inventories[isBag]
 
 					if (bagInv) then
@@ -567,7 +568,7 @@ function META:GetBags()
 				local isBag = (((v2.base == "base_bags") or v2.isBag) and v2.data.id)
 
 				if (!table.HasValue(invs, isBag)) then
-					if (isBag and isBag ~= self:GetID()) then
+					if (isBag and isBag != self:GetID()) then
 						invs[#invs + 1] = isBag
 					end
 				end
@@ -602,7 +603,7 @@ function META:HasItem(targetID, data)
 				local bFound = true
 
 				for dataKey, dataVal in pairs(data) do
-					if (itemData[dataKey] ~= dataVal) then
+					if (itemData[dataKey] != dataVal) then
 						bFound = false
 						break
 					end
@@ -678,7 +679,7 @@ function META:HasItemOfBase(baseID, data)
 				local bFound = true
 
 				for dataKey, dataVal in pairs(data) do
-					if (itemData[dataKey] ~= dataVal) then
+					if (itemData[dataKey] != dataVal) then
 						bFound = false
 						break
 					end
@@ -804,7 +805,7 @@ if (SERVER) then
 
 			-- we need to check for owner since the item instance already exists
 			if (!item.bAllowMultiCharacterInteraction and IsValid(client) and client:GetCharacter() and
-				item:GetPlayerID() == client:SteamID64() and item:GetCharacterID() ~= client:GetCharacter():GetID()) then
+				item:GetPlayerID() == client:SteamID64() and item:GetCharacterID() != client:GetCharacter():GetID()) then
 				return false, "itemOwned"
 			end
 

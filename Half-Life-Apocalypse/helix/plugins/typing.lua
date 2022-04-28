@@ -49,7 +49,7 @@ if (CLIENT) then
 
 		local newClass = hook.Run("GetTypingIndicator", character, text)
 
-		if (newClass ~= currentClass) then
+		if (newClass != currentClass) then
 			currentClass = newClass
 
 			net.Start("ixTypeClass")
@@ -74,7 +74,7 @@ if (CLIENT) then
 		else
 			local chatType = ix.chat.Parse(nil, text)
 
-			if (chatType and chatType ~= "ic") then
+			if (chatType and chatType != "ic") then
 				return !ix.chat.classes[chatType].bNoIndicator and chatType or nil
 			end
 
@@ -124,7 +124,7 @@ if (CLIENT) then
 			local moveType = v:GetMoveType()
 
 			if (!IsValid(v) or !v:Alive() or
-				(moveType ~= MOVETYPE_WALK and moveType ~= MOVETYPE_NONE) or
+				(moveType != MOVETYPE_WALK and moveType != MOVETYPE_NONE) or
 				!v.ixChatClassText or
 				distance >= v.ixChatClassRange) then
 				continue
@@ -132,10 +132,6 @@ if (CLIENT) then
 
 			local text = v.ixChatClassText
 			local range = v.ixChatClassRange
-
-			if (!text) then
-				continue
-			end
 
 			local bAnimation = !ix.option.Get("disableAnimations", false)
 			local fraction

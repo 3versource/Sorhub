@@ -55,7 +55,7 @@ end
 
 function PANEL:OnMouseReleased(code)
 	-- move the item into the world if we're dropping on something that doesn't handle inventory item drops
-	if (!dragndrop.m_ReceiverSlot or dragndrop.m_ReceiverSlot.Name ~= RECEIVER_NAME) then
+	if (!dragndrop.m_ReceiverSlot or dragndrop.m_ReceiverSlot.Name != RECEIVER_NAME) then
 		self:OnDrop(dragndrop.IsDragging())
 	end
 
@@ -101,7 +101,7 @@ function PANEL:DoRightClick()
 							surface.PlaySound(v.sound)
 						end
 
-						if (send ~= false) then
+						if (send != false) then
 							InventoryAction(k, itemTable.id, inventory)
 						end
 					itemTable.player = nil
@@ -124,7 +124,7 @@ function PANEL:DoRightClick()
 									surface.PlaySound(sub.sound)
 								end
 
-								if (send ~= false) then
+								if (send != false) then
 									InventoryAction(k, itemTable.id, inventory, sub.data)
 								end
 							itemTable.player = nil
@@ -144,7 +144,7 @@ function PANEL:DoRightClick()
 							surface.PlaySound(v.sound)
 						end
 
-						if (send ~= false) then
+						if (send != false) then
 							InventoryAction(k, itemTable.id, inventory)
 						end
 					itemTable.player = nil
@@ -155,7 +155,7 @@ function PANEL:DoRightClick()
 		-- we want drop to show up as the last option
 		local info = itemTable.functions.drop
 
-		if (info and info.OnCanRun and info.OnCanRun(itemTable) ~= false) then
+		if (info and info.OnCanRun and info.OnCanRun(itemTable) != false) then
 			menu:AddOption(L(info.name or "drop"), function()
 				itemTable.player = LocalPlayer()
 					local send = true
@@ -168,7 +168,7 @@ function PANEL:DoRightClick()
 						surface.PlaySound(info.sound)
 					end
 
-					if (send ~= false) then
+					if (send != false) then
 						InventoryAction("drop", itemTable.id, inventory)
 					end
 				itemTable.player = nil
@@ -196,7 +196,7 @@ function PANEL:OnDrop(bDragging, inventoryPanel, inventory, gridX, gridY)
 	elseif (inventoryPanel:IsAllEmpty(gridX, gridY, item.width, item.height, self)) then
 		local oldX, oldY = self.gridX, self.gridY
 
-		if (oldX ~= gridX or oldY ~= gridY or self.inventoryID ~= inventoryPanel.invID) then
+		if (oldX != gridX or oldY != gridY or self.inventoryID != inventoryPanel.invID) then
 			self:Move(gridX, gridY, inventoryPanel)
 		end
 	elseif (inventoryPanel.combineItem) then
@@ -344,7 +344,7 @@ end
 function PANEL:OnRemove()
 	if (self.childPanels) then
 		for _, v in ipairs(self.childPanels) do
-			if (v ~= self) then
+			if (v != self) then
 				v:Remove()
 			end
 		end
@@ -366,7 +366,7 @@ function PANEL:SetInventory(inventory, bFitParent)
 		local invWidth, invHeight = inventory:GetSize()
 		self.invID = inventory:GetID()
 
-		if (IsValid(ix.gui.inv1) and ix.gui.inv1.childPanels and inventory ~= LocalPlayer():GetCharacter():GetInventory()) then
+		if (IsValid(ix.gui.inv1) and ix.gui.inv1.childPanels and inventory != LocalPlayer():GetCharacter():GetInventory()) then
 			self:SetIconSize(ix.gui.inv1:GetIconSize())
 			self:SetPaintedManually(true)
 			self.bNoBackgroundBlur = true
@@ -492,13 +492,13 @@ function PANEL:PaintDragPreview(width, height, mouseX, mouseY, itemPanel)
 
 		local hoveredPanel = vgui.GetHoveredPanel()
 
-		if (IsValid(hoveredPanel) and hoveredPanel ~= itemPanel and hoveredPanel.GetItemTable) then
+		if (IsValid(hoveredPanel) and hoveredPanel != itemPanel and hoveredPanel.GetItemTable) then
 			local hoveredItem = hoveredPanel:GetItemTable()
 
 			if (hoveredItem) then
 				local info = hoveredItem.functions.combine
 
-				if (info and info.OnCanRun and info.OnCanRun(hoveredItem, {item.id}) ~= false) then
+				if (info and info.OnCanRun and info.OnCanRun(hoveredItem, {item.id}) != false) then
 					surface.SetDrawColor(ColorAlpha(derma.GetColor("Info", self, Color(200, 0, 0)), 20))
 					surface.DrawRect(
 						hoveredPanel.x,
@@ -604,7 +604,7 @@ function PANEL:OnTransfer(oldX, oldY, x, y, oldInventory, noSend)
 		end
 
 		if (item.CanTransfer and
-			item:CanTransfer(inventory, inventory ~= inventory2 and inventory2 or nil) == false) then
+			item:CanTransfer(inventory, inventory != inventory2 and inventory2 or nil) == false) then
 			return false
 		end
 	end
@@ -616,7 +616,7 @@ function PANEL:OnTransfer(oldX, oldY, x, y, oldInventory, noSend)
 			net.WriteUInt(x, 6)
 			net.WriteUInt(y, 6)
 			net.WriteUInt(oldInventory.invID, 32)
-			net.WriteUInt(self ~= oldInventory and self.invID or oldInventory.invID, 32)
+			net.WriteUInt(self != oldInventory and self.invID or oldInventory.invID, 32)
 		net.SendToServer()
 	end
 

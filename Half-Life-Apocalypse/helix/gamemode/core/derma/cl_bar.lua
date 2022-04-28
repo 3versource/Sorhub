@@ -118,7 +118,7 @@ function PANEL:Think()
 			continue
 		end
 
-		if (v:GetDelta() ~= realValue) then
+		if (v:GetDelta() != realValue) then
 			v:SetLifetime(curTime + 5)
 		end
 

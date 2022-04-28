@@ -173,7 +173,7 @@ do
 		end,
 
 		[ix.type.steamid] = function(value)
-			return isstring(value) and (value:match("STEAM_(%d+):(%d+):(%d+)")) ~= nil
+			return isstring(value) and (value:match("STEAM_(%d+):(%d+):(%d+)")) != nil
 		end
 	}
 
@@ -554,7 +554,7 @@ if (CLIENT) then
 			end
 		end
 
-		if (line ~= "") then
+		if (line != "") then
 			lines[#lines + 1] = line
 		end
 
@@ -935,7 +935,7 @@ function ix.util.FindEmptySpace(entity, filter, spacing, size, height, tolerance
 	end
 
 	table.sort(output, function(a, b)
-		return a:Distance(position) < b:Distance(position)
+		return a:DistToSqr(position) < b:DistToSqr(position)
 	end)
 
 	return output

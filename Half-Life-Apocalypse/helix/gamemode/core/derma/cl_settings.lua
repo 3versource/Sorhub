@@ -54,7 +54,7 @@ function PANEL:OpenPicker()
 	self.picker.OnValueChanged = function(panel)
 		local newColor = panel:GetValue()
 
-		if (newColor ~= self.color) then
+		if (newColor != self.color) then
 			self.color = newColor
 			self:OnValueChanged(newColor)
 		end
@@ -209,7 +209,7 @@ function PANEL:OpenEntry()
 	self.entry.OnValueChanged = function(panel)
 		local value = math.Round(panel:GetValue(), self:GetDecimals())
 
-		if (value ~= self:GetValue()) then
+		if (value != self:GetValue()) then
 			self:SetValue(value, true)
 			self:OnValueChanged(value)
 		end
@@ -731,11 +731,11 @@ hook.Add("CreateMenuButtons", "ixSettings", function(tabs)
 					end
 
 					row:SetValue(value, true)
-					row:SetShowReset(value ~= data.default, key, data.default)
+					row:SetShowReset(value != data.default, key, data.default)
 					row.OnValueChanged = function()
 						local newValue = row:GetValue()
 
-						row:SetShowReset(newValue ~= data.default, key, data.default)
+						row:SetShowReset(newValue != data.default, key, data.default)
 						ix.option.Set(key, newValue)
 					end
 

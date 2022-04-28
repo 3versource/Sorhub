@@ -14,7 +14,7 @@ do
 
 			local recognized = self:GetData("rgn", "")
 
-			if (recognized ~= "" and recognized:find(","..id..",")) then
+			if (recognized != "" and recognized:find(","..id..",")) then
 				return false
 			end
 
@@ -49,7 +49,7 @@ do
 
 		local recognized = char:GetData("rgn", "")
 
-		if (recognized ~= "" and recognized:find(","..id..",")) then
+		if (recognized != "" and recognized:find(","..id..",")) then
 			return true
 		end
 	end
@@ -69,7 +69,7 @@ if (CLIENT) then
 	end
 
 	function PLUGIN:GetCharacterDescription(client)
-		if (client:GetCharacter() and client ~= LocalPlayer() and LocalPlayer():GetCharacter() and
+		if (client:GetCharacter() and client != LocalPlayer() and LocalPlayer():GetCharacter() and
 			!LocalPlayer():GetCharacter():DoesRecognize(client:GetCharacter()) and !hook.Run("IsPlayerRecognized", client)) then
 			return L"noRecog"
 		end
@@ -82,7 +82,7 @@ if (CLIENT) then
 	end
 
 	function PLUGIN:GetCharacterName(client, chatType)
-		if (client ~= LocalPlayer()) then
+		if (client != LocalPlayer()) then
 			local character = client:GetCharacter()
 			local ourCharacter = LocalPlayer():GetCharacter()
 
@@ -171,7 +171,7 @@ else
 				class = ix.chat.classes[class]
 
 				for _, v in ipairs(player.GetAll()) do
-					if (client ~= v and v:GetCharacter() and class:CanHear(client, v)) then
+					if (client != v and v:GetCharacter() and class:CanHear(client, v)) then
 						targets[#targets + 1] = v
 					end
 				end

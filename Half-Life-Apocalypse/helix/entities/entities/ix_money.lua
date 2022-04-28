@@ -36,14 +36,14 @@ if (SERVER) then
 		if (self.ixSteamID and self.ixCharID) then
 			local char = activator:GetCharacter()
 
-			if (char and self.ixCharID ~= char:GetID() and self.ixSteamID == activator:SteamID()) then
+			if (char and self.ixCharID != char:GetID() and self.ixSteamID == activator:SteamID()) then
 				activator:NotifyLocalized("itemOwned")
 				return false
 			end
 		end
 
 		activator:PerformInteraction(ix.config.Get("itemPickupTime", 0.5), self, function(client)
-			if (hook.Run("OnPickupMoney", client, self) ~= false) then
+			if (hook.Run("OnPickupMoney", client, self) != false) then
 				self:Remove()
 			end
 		end)

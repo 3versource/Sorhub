@@ -145,7 +145,7 @@ function GM:CanPlayerUseBusiness(client, uniqueID)
 					break
 				end
 			end
-		elseif (client:Team() ~= itemTable.factions) then
+		elseif (client:Team() != itemTable.factions) then
 			allowed = false
 		end
 
@@ -334,7 +334,7 @@ do
 		local forcedSequence = client:GetNetVar("forcedSequence")
 
 		if (forcedSequence) then
-			if (client:GetSequence() ~= forcedSequence) then
+			if (client:GetSequence() != forcedSequence) then
 				client:SetCycle(0)
 			end
 
@@ -554,7 +554,7 @@ function GM:CanTransferItem(itemObject, curInv, inventory)
 	end
 
 	-- don't allow bags to be put inside bags
-	if (inventory.id ~= 0 and curInv.id ~= inventory.id) then
+	if (inventory.id != 0 and curInv.id != inventory.id) then
 		if (inventory.vars and inventory.vars.isBag) then
 			local owner = itemObject:GetOwner()
 
@@ -564,7 +564,7 @@ function GM:CanTransferItem(itemObject, curInv, inventory)
 
 			return false
 		end
-	elseif (inventory.id ~= 0 and curInv.id == inventory.id) then
+	elseif (inventory.id != 0 and curInv.id == inventory.id) then
 		-- we are simply moving items around if we're transferring to the same inventory
 		return
 	end

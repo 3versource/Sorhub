@@ -15,7 +15,7 @@ function PANEL:Init()
 	hook.Run("CanCreateCharacterInfo", suppress)
 
 	if (!suppress.time) then
-		local format = "%A, %B %d, %Y. %H:%M"
+		local format = ix.option.Get("24hourTime", false) and "%A, %B %d, %Y. %H:%M" or "%A, %B %d, %Y. %I:%M %p"
 
 		self.time = self:Add("DLabel")
 		self.time:SetFont("ixMediumFont")
@@ -221,7 +221,7 @@ function PANEL:Update(character)
 
 	if (self.class) then
 		-- don't show class label if the class is the same name as the faction
-		if (class and class.name ~= faction.name) then
+		if (class and class.name != faction.name) then
 			self.class:SetLabelText(L("class"))
 			self.class:SetText(L(class.name))
 			self.class:SizeToContents()

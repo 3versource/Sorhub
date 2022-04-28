@@ -205,7 +205,7 @@ end
 
 function PANEL:OnMousePressed(key)
 	for _, v in pairs(self.buttonList) do
-		if (IsValid(v) and v ~= self) then
+		if (IsValid(v) and v != self) then
 			v:SetSelected(false, self.sectionParent == v)
 		end
 	end

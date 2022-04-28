@@ -110,7 +110,7 @@ function PLUGIN:PostDrawTranslucentRenderables(bDepth, bSkybox)
 			local _, textHeight = draw.SimpleText(
 				k, "BudgetLabel", centerScreen.x, centerScreen.y, color, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 
-			if (v.type ~= "area") then
+			if (v.type != "area") then
 				draw.SimpleText(
 					"(" .. L(v.type) .. ")", "BudgetLabel",
 					centerScreen.x, centerScreen.y + textHeight, color, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER
@@ -219,7 +219,7 @@ net.Receive("ixAreaAdd", function()
 	local startPosition, endPosition = net.ReadVector(), net.ReadVector()
 	local properties = net.ReadTable()
 
-	if (name ~= "") then
+	if (name != "") then
 		ix.area.stored[name] = {
 			type = type,
 			startPosition = startPosition,

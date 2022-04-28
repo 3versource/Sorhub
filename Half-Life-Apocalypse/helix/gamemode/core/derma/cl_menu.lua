@@ -131,7 +131,7 @@ function PANEL:TransitionSubpanel(id)
 	subpanel = self:GetActiveSubpanel()
 
 	local info = subpanel.info
-	local bHideBackground = istable(info) and (info.bHideBackground ~= nil and info.bHideBackground or false) or false
+	local bHideBackground = istable(info) and (info.bHideBackground != nil and info.bHideBackground or false) or false
 
 	if (bHideBackground) then
 		self:HideBackground()
@@ -392,7 +392,7 @@ end
 function PANEL:Paint(width, height)
 	derma.SkinFunc("PaintMenuBackground", self, width, height, self.currentBlur)
 
-	local bShouldScale = self.currentAlpha ~= 255
+	local bShouldScale = self.currentAlpha != 255
 
 	if (bShouldScale) then
 		local currentScale = Lerp(self.currentAlpha / 255, 0.9, 1)

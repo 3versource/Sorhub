@@ -282,7 +282,7 @@ function ix.chat.Format(text)
 	text = string.Trim(text)
 	local last = text:utf8sub(-1)
 
-	if (last ~= "." and last ~= "?" and last ~= "!" and last ~= "-" and last ~= "\"") then
+	if (last != "." and last != "?" and last != "!" and last != "-" and last != "\"") then
 		text = text .. "."
 	end
 
@@ -314,12 +314,12 @@ if (SERVER) then
 
 		local class = ix.chat.classes[chatType]
 
-		if (class and class:CanSay(speaker, text, data) ~= false) then
+		if (class and class:CanSay(speaker, text, data) != false) then
 			if (class.CanHear and !receivers) then
 				receivers = {}
 
 				for _, v in ipairs(player.GetAll()) do
-					if (v:GetCharacter() and class:CanHear(speaker, v, data) ~= false) then
+					if (v:GetCharacter() and class:CanHear(speaker, v, data) != false) then
 						receivers[#receivers + 1] = v
 					end
 				end
@@ -574,7 +574,7 @@ ix.chat.Register("pm", {
 	OnChatAdd = function(self, speaker, text, bAnonymous, data)
 		chat.AddText(self.color, string.format(self.format, speaker:GetName(), data.target:GetName(), text))
 
-		if (LocalPlayer() ~= speaker) then
+		if (LocalPlayer() != speaker) then
 			surface.PlaySound("hl1/fvox/bell.wav")
 		end
 	end

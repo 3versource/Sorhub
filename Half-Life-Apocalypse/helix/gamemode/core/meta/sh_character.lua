@@ -67,12 +67,12 @@ if (SERVER) then
 		-- Let plugins/schema determine if the character should be saved.
 		local shouldSave = hook.Run("CharacterPreSave", self)
 
-		if (shouldSave ~= false) then
+		if (shouldSave != false) then
 			-- Run a query to save the character to the database.
 			local query = mysql:Update("ix_characters")
 				-- update all character vars
 				for k, v in pairs(ix.char.vars) do
-					if (v.field and self.vars[k] ~= nil and !v.bSaveLoadInitialOnly) then
+					if (v.field and self.vars[k] != nil and !v.bSaveLoadInitialOnly) then
 						local value = self.vars[k]
 
 						query:Update(v.field, istable(value) and util.TableToJSON(value) or tostring(value))
@@ -108,7 +108,7 @@ if (SERVER) then
 			local data = {}
 
 			for k, v in pairs(self.vars) do
-				if (ix.char.vars[k] ~= nil and !ix.char.vars[k].bNoNetworking) then
+				if (ix.char.vars[k] != nil and !ix.char.vars[k].bNoNetworking) then
 					data[k] = v
 				end
 			end
@@ -324,7 +324,7 @@ function ix.char.RegisterVar(key, data)
 		CHAR["Get"..upperName] = function(self, default)
 			local value = self.vars[key]
 
-			if (value ~= nil) then
+			if (value != nil) then
 				return value
 			end
 
