@@ -329,7 +329,8 @@ hook.Add("EntityFireBullets", "ixAmmoCheck", function(entity)
 					local ammoName = game.GetAmmoName(weapon:GetPrimaryAmmoType()) -- store the current ammo type
 					if(weapon:Clip1() == 0) then -- if the gun has no ammo in its magazine, then
 						for _, v in pairs(ply:GetCharacter():GetInventory():GetItems()) do -- scan the player's inventory
-							if(v.isAmmo and v.ammo == ammoName and weapon:Clip1() == 0 and ply:GetAmmoCount(ammoName) == 0) then-- if the item has the isAmmo parameter and it's true AND if the ammo's type equals the currently equipped weapon AND their gun is empty, then
+							if(v.isAmmo and v.ammo == ammoName and weapon:Clip1() == 0 and ply:GetAmmoCount(ammoName) == 0) then
+-- if the item has the isAmmo parameter and it's true AND if the ammo's type equals the currently equipped weapon AND their gun is empty, then
 								ply:SetAmmo(v.ammoAmount + ply:GetAmmoCount(ammoName), ammoName) -- set the ammo amount to what the item had said
 								v:Remove()-- remove the ammo item
 							end
