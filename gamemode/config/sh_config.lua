@@ -121,7 +121,8 @@ ix.config.Add("intro", true, "Whether or not the Helix intro is enabled for new 
 ix.config.Add("music", "music/hl2_song2.mp3", "The default music played in the character menu.", nil, {
 	category = "appearance"
 })
-ix.config.Add("communityURL", "https://discord.gg/atJvegw4bx", "The URL to navigate to when the community button is clicked.", nil, {
+ix.config.Add("communityURL", "https://discord.gg/atJvegw4bx",
+"The URL to navigate to when the community button is clicked.", nil, {
 	category = "appearance"
 })
 ix.config.Add("communityText", "@community",
