@@ -4,9 +4,7 @@ PLUGIN.author = "OctraSource"
 PLUGIN.desc = "Adds a needs bar that kills players if they don't eat.."
 PLUGIN.hungrySeconds = 21600
 
-
 local playerMeta = FindMetaTable("Player")
-local entityMeta = FindMetaTable("Entity")
 
 function playerMeta:getHunger()
 	return (self:GetNetVar("hunger")) or 0
@@ -32,12 +30,6 @@ if (CLIENT) then
 			return (1 - LocalPlayer():getHungerPercent())
 		end, color, nil, "hunger")
 	end
-
-	local hungerBar, percent, wave
-	function PLUGIN:Think()
-	end
-
-	local timers = {5, 15, 30}
 
 else
 	local PLUGIN = PLUGIN
@@ -70,7 +62,6 @@ else
 		end
 	end
 
-	local thinkTime = CurTime()
 	function PLUGIN:PlayerPostThink(client)
 		if (client:getHungerPercent() ~= -1) then
 			local percent = (client:getHungerPercent() - 1)
