@@ -37,13 +37,13 @@ function ix.act.Register(name, modelClass, data)
 		data.sequence = {data.sequence}
 	end
 
-	if (data.start and istable(data.start) and #data.start ~= #data.sequence) then
+	if (data.start and istable(data.start) and #data.start != #data.sequence) then
 		return ErrorNoHalt(string.format(
 			"Act '%s' tried to register without matching number of enter sequences\n", name
 		))
 	end
 
-	if (data.finish and istable(data.finish) and #data.finish ~= #data.sequence) then
+	if (data.finish and istable(data.finish) and #data.finish != #data.sequence) then
 		return ErrorNoHalt(string.format(
 			"Act '%s' tried to register without matching number of exit sequences\n", name
 		))

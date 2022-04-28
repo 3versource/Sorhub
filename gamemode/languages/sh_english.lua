@@ -160,6 +160,7 @@ LANGUAGE = {
 	moneyTaken = "You were given %s.",
 	moneyGiven = "You have given %s.",
 	insufficientMoney = "You do not have enough to do this!",
+	belowMinMoneyDrop = "You cannot drop less than %s.",
 	businessPurchase = "You purchased %s for %s.",
 	businessSell = "You sold %s for %s.",
 	businessTooFast = "Please wait before purchasing another item!",
@@ -454,6 +455,6 @@ LANGUAGE = {
 	iconEditorCopied = "Copied Item Model Data to Clipboard.",
 	iconEditorAlignFront = "Align from Front",
 	iconEditorAlignAbove = "Align from Above",
-	iconEditorAlignCenter = "Align from Center",
-
+	iconEditorAlignRight = "Align from Right",
+	iconEditorAlignCenter = "Align from Center"
 }

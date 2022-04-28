@@ -146,7 +146,7 @@ else
 		local text = net.ReadString()
 		local scale = net.ReadFloat()
 
-		if (text ~= "") then
+		if (text != "") then
 			PLUGIN.list[index] = {
 				position,
 				angles,
@@ -213,7 +213,7 @@ else
 	end
 
 	function PLUGIN:HUDPaint()
-		if (ix.chat.currentCommand ~= "textremove") then
+		if (ix.chat.currentCommand != "textremove") then
 			return
 		end
 

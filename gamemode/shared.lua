@@ -64,21 +64,21 @@ do
 			local model2 = model:gsub("models/", "models/player/")
 			result = player_manager.ixTranslateModel(model2)
 
-			if (result ~= "kleiner") then
+			if (result != "kleiner") then
 				return result
 			end
 
 			model2 = model:gsub("models/humans", "models/player")
 			result = player_manager.ixTranslateModel(model2)
 
-			if (result ~= "kleiner") then
+			if (result != "kleiner") then
 				return result
 			end
 
 			model2 = model:gsub("models/zombie/", "models/player/zombie_")
 			result = player_manager.ixTranslateModel(model2)
 
-			if (result ~= "kleiner") then
+			if (result != "kleiner") then
 				return result
 			end
 		end
