@@ -125,12 +125,12 @@ ITEM.functions.Unload = {
 
 		return false
 	end,
-	-- you can only unload ammo if the gun is equipped
+	-- you can only unload ammo if the gun is equipped and is not a melee or grenade
 	OnCanRun = function(item)
 		local client = item.player
 
 		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") == true and
-			hook.Run("CanPlayerUnequipItem", client, item) != false
+			hook.Run("CanPlayerUnequipItem", client, item) != false and item.weaponCategory != "melee" and item.weaponCategory != "grenade"
 	end
 }
 
