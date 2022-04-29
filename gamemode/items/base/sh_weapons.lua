@@ -10,6 +10,7 @@ ITEM.isWeapon = true
 ITEM.isGrenade = false
 ITEM.weaponCategory = "sidearm"
 ITEM.useSound = "items/ammo_pickup.wav"
+ITEM.usesAmmo = "pistolammo"
 
 -- Inventory drawing
 if (CLIENT) then
@@ -106,6 +107,33 @@ ITEM.functions.Equip = {
 			hook.Run("CanPlayerEquipItem", client, item) != false
 	end
 }
+
+ITEM.functions.Unload = {
+	name = "Unload",
+	tip = "equipTip",
+	icon = "icon16/add.png",
+	OnRun = function(item)
+		local weapon = item.player:GetActiveWeapon() -- store their active weapon
+
+		if (weapon:Clip1() != 0 and weapon:GetClass() == item.class) then 
+		    local ammoName = game.GetAmmoName(weapon:GetPrimaryAmmoType()) -- store the ammo type of that weapon
+			local ammoCount = weapon:Clip1()
+
+			item.player:GetCharacter():GetInventory():Add(item.usesAmmo, 1, {rounds = ammoCount})
+			weapon:SetClip1(0)
+		end
+
+		return false
+	end,
+	-- you can only unload ammo if the gun is equipped
+	OnCanRun = function(item)
+		local client = item.player
+
+		return !IsValid(item.entity) and IsValid(client) and item:GetData("equip") == true and
+			hook.Run("CanPlayerUnequipItem", client, item) != false
+	end
+}
+
 
 function ITEM:WearPAC(client)
 	if (ix.pac and self.pacData) then
