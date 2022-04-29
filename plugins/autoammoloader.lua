@@ -12,7 +12,7 @@ if (SERVER) then
             if (weapon:Clip1() == 0 and entity:GetAmmoCount(ammoName) == 0) then
                 for k, v in pairs(entity:GetCharacter():GetInventory():GetItems()) do
                     if v.isAmmo and v.ammo == ammoName then
-                        entity:SetAmmo(v.ammoAmount + entity:GetAmmoCount(ammoName), ammoName)
+                        entity:SetAmmo(v:GetData("rounds", v.ammoAmount) + entity:GetAmmoCount(ammoName), ammoName)
                         v:Remove()
                         break
                     end
