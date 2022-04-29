@@ -7,6 +7,7 @@ ITEM.classes = {CLASS_EOW}
 ITEM.flag = "g"
 ITEM.width = 4
 ITEM.height = 2
+ITEM.usesAmmo = "sprammo"
 ITEM.iconCam = {
 	ang	= Angle(-0.23955784738064, 270.44906616211, 0),
 	fov	= 6,
