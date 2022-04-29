@@ -409,6 +409,10 @@ ix.anim.SetModelClass("models/combine_soldier_prisonGuard.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_soldier.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_soldier_notr.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_super_soldier_notr.mdl", "overwatch")
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/combine_captain/combine_captain_hlvr_npc.mdl", "overwatch")
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/grunt/combine_grunt_hlvr_npc.mdl", "overwatch")
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/heavy/combine_heavy_hlvr_npc.mdl", "overwatch")
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/suppressor/combine_suppressor_hlvr_npc.mdl", "overwatch")
 
 -- Vortigaunt models
 ix.anim.SetModelClass("models/vortigaunt.mdl", "vortigaunt")
