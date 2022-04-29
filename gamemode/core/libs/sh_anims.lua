@@ -208,19 +208,19 @@ ix.anim.metrocop = {
 }
 ix.anim.overwatch = {
 	normal = {
-		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY},
+		[ACT_MP_STAND_IDLE] = {"idle_unarmed", ACT_IDLE_ANGRY},
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
-		[ACT_MP_WALK] = {ACT_WALK, ACT_RUN},
+		[ACT_MP_WALK] = {"walkunarmed_all", ACT_RUN},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
-		[ACT_MP_RUN] = {ACT_RUN_AIM_RIFLE, ACT_RUN_AIM_RIFLE},
+		[ACT_MP_RUN] = {"runall", "runall"},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
 	},
 	pistol = {
-		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY_PISTOL},
+		[ACT_MP_STAND_IDLE] = {"idle_unarmed", ACT_IDLE_ANGRY_PISTOL},
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
-		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK_PISTOL},
+		[ACT_MP_WALK] = {"walkunarmed_all", ACT_WALK_PISTOL},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
-		[ACT_MP_RUN] = {ACT_RUN_AIM_RIFLE, ACT_RUN_AIM_RIFLE},
+		[ACT_MP_RUN] = {"runall", "runall"},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
 	},
 	smg = {
@@ -228,7 +228,7 @@ ix.anim.overwatch = {
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
 		[ACT_MP_WALK] = {ACT_WALK_RIFLE, ACT_WALK_AIM_RIFLE},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
-		[ACT_MP_RUN] = {ACT_RUN_RIFLE, ACT_RUN_AIM_RIFLE},
+		[ACT_MP_RUN] = {"runall", ACT_RUN_AIM_RIFLE},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
 	},
 	shotgun = {
@@ -236,23 +236,23 @@ ix.anim.overwatch = {
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
 		[ACT_MP_WALK] = {ACT_WALK_RIFLE, ACT_WALK_AIM_SHOTGUN},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
-		[ACT_MP_RUN] = {ACT_RUN_RIFLE, ACT_RUN_AIM_SHOTGUN},
+		[ACT_MP_RUN] = {"runall", ACT_RUN_AIM_SHOTGUN},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
 	},
 	grenade = {
-		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY},
+		[ACT_MP_STAND_IDLE] = {"idle_unarmed", ACT_IDLE_ANGRY},
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
-		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK_RIFLE},
+		[ACT_MP_WALK] = {"walkunarmed_all", ACT_WALK_RIFLE},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
-		[ACT_MP_RUN] = {ACT_RUN_AIM_RIFLE, ACT_RUN_AIM_RIFLE},
+		[ACT_MP_RUN] = {"runall", ACT_RUN_AIM_RIFLE},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET}
 	},
 	melee = {
-		[ACT_MP_STAND_IDLE] = {ACT_IDLE, ACT_IDLE_ANGRY},
+		[ACT_MP_STAND_IDLE] = {"idle_unarmed", ACT_IDLE_ANGRY},
 		[ACT_MP_CROUCH_IDLE] = {ACT_CROUCHIDLE, ACT_CROUCHIDLE},
-		[ACT_MP_WALK] = {ACT_WALK, ACT_WALK_RIFLE},
+		[ACT_MP_WALK] = {"walkunarmed_all", ACT_WALK_RIFLE},
 		[ACT_MP_CROUCHWALK] = {ACT_WALK_CROUCH_RIFLE, ACT_WALK_CROUCH_RIFLE},
-		[ACT_MP_RUN] = {ACT_RUN_AIM_RIFLE, ACT_RUN_AIM_RIFLE},
+		[ACT_MP_RUN] = {"runall", ACT_RUN_AIM_RIFLE},
 		[ACT_LAND] = {ACT_RESET, ACT_RESET},
 		attack = ACT_MELEE_ATTACK_SWING_GESTURE
 	},
@@ -394,16 +394,33 @@ function ix.anim.GetModelClass(model)
 	return class
 end
 
+-- Ambiguous models
+ix.anim.SetModelClass("models/citizen_17.mdl", "citizen_male")
+ix.anim.SetModelClass("models/lambdamovement.mdl", "citizen_male")
+ix.anim.SetModelClass("models/lambdamovement_female.mdl", "citizen_female")
+
+-- CP models
 ix.anim.SetModelClass("models/police.mdl", "metrocop")
 ix.anim.SetModelClass("models/police_nemez.mdl", "metrocop")
+
+-- Overwatch models
 ix.anim.SetModelClass("models/combine_super_soldier.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_soldier_prisonGuard.mdl", "overwatch")
 ix.anim.SetModelClass("models/combine_soldier.mdl", "overwatch")
-ix.anim.SetModelClass("models/jq/hlvr/characters/combine/grunt/combine_grunt_hlvr_player.mdl", "overwatch")
+ix.anim.SetModelClass("models/combine_soldier_notr.mdl", "overwatch")
+ix.anim.SetModelClass("models/combine_super_soldier_notr.mdl", "overwatch")
+
+-- Vortigaunt models
 ix.anim.SetModelClass("models/vortigaunt.mdl", "vortigaunt")
 ix.anim.SetModelClass("models/vortigaunt_blue.mdl", "vortigaunt")
 ix.anim.SetModelClass("models/vortigaunt_doctor.mdl", "vortigaunt")
 ix.anim.SetModelClass("models/vortigaunt_slave.mdl", "vortigaunt")
+
+-- HL:A Playermodel models
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/grunt/combine_grunt_hlvr_player.mdl", "player")
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/combine_captain/combine_captain_hlvr_player.mdl", "player")
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/heavy/combine_heavy_hlvr_player.mdl", "player")
+ix.anim.SetModelClass("models/jq/hlvr/characters/combine/suppressor/combine_suppressor_hlvr_player.mdl", "player")
 
 if (SERVER) then
 	util.AddNetworkString("ixSequenceSet")
