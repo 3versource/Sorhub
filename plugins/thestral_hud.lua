@@ -23,15 +23,15 @@ ix.option.Add("healthColor", ix.type.color, Color(255,75,66), {
 	category = "Thestral HUD"
 })
 
-ix.option.Add("armorColor", ix.type.color, Color(255,132,187), {
+ix.option.Add("armorColor", ix.type.color, Color(0,0,128), {
 	category = "Thestral HUD"
 })
 
-ix.option.Add("hungerColor", ix.type.color, Color(250,168,35), {
+ix.option.Add("hungerColor", ix.type.color, Color(56,46,28), {
 	category = "Thestral HUD"
 })
 
-ix.option.Add("thirstColor", ix.type.color, Color(70,153,255), {
+ix.option.Add("thirstColor", ix.type.color, Color(135,206,250), {
 	category = "Thestral HUD"
 })
 
@@ -101,7 +101,7 @@ if CLIENT then
                 // armor 
                 if armor > 0 then 
                     draw.RoundedBox(8, scrw*(.006 + offsetHidden), scrh*.958, scrw*.062, scrh*.034, Color(0,0,0,200))
-                    draw.RoundedBox(8, scrw*(.006 + offsetHidden + 0.001), scrh*.96, armorbarchange, scrh*.031, ix.option.Get("armorColor", Color(255,132,187)))
+                    draw.RoundedBox(8, scrw*(.006 + offsetHidden + 0.001), scrh*.96, armorbarchange, scrh*.031, ix.option.Get("armorColor", Color(0,0,128)))
                     draw.SimpleText(armor, "jars_hud_indicators", scrw*(.006 + offsetHidden + 0.035),scrh*.975, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
                     offsetHidden = offsetHidden + 0.063
                 end
