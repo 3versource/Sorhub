@@ -1,6 +1,6 @@
 
 ITEM.name = "Citizen ID"
-ITEM.model = Model("models/gibs/metal_gib4.mdl")
+ITEM.model = Model("models/metalcardcid/metalcard_cid.mdl")
 ITEM.description = "A citizen identification card with ID #%s, assigned to %s."
 
 function ITEM:GetDescription()
