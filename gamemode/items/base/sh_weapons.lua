@@ -113,16 +113,19 @@ ITEM.functions.Unload = {
 	tip = "equipTip",
 	icon = "icon16/add.png",
 	OnRun = function(item)
-		local weapon = item.player:GetActiveWeapon() -- store their active weapon
+		if(item.player:GetCharacter():GetInventory():FindEmptySlot(1, 1, false)) then
+			local weapon = item.player:GetActiveWeapon() -- store their active weapon
 
-		if (weapon:Clip1() != 0 and weapon:GetClass() == item.class) then 
-		    local ammoName = game.GetAmmoName(weapon:GetPrimaryAmmoType()) -- store the ammo type of that weapon
-			local ammoCount = weapon:Clip1()
+			if (weapon:Clip1() != 0 and weapon:GetClass() == item.class) then 
+		    	local ammoName = game.GetAmmoName(weapon:GetPrimaryAmmoType()) -- store the ammo type of that weapon
+				local ammoCount = weapon:Clip1()
 
-			item.player:GetCharacter():GetInventory():Add(item.usesAmmo, 1, {rounds = ammoCount})
-			weapon:SetClip1(0)
+				item.player:GetCharacter():GetInventory():Add(item.usesAmmo, 1, {rounds = ammoCount})
+				weapon:SetClip1(0)
+			end
+		else
+			item.player:NotifyLocalized("noFit", item.player)
 		end
-
 		return false
 	end,
 	-- you can only unload ammo if the gun is equipped and is not a melee or grenade
