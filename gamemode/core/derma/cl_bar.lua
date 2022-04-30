@@ -123,11 +123,10 @@ function PANEL:Think()
 		end
 
 		if (v:GetLifetime() < curTime and !info.visible and !bAlwaysShow and !hook.Run("ShouldBarDraw", info)) then
-			v:SetVisible(true)
+			v:SetVisible(false)
 			continue
 		end
 
-		v:SetVisible(true)
 		v:SetValue(realValue)
 		v:SetText(isstring(barText) and barText or "")
 	end
