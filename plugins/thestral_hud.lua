@@ -3,41 +3,41 @@ PLUGIN.name = "Thestral HUD"
 PLUGIN.author = "Jars"
 PLUGIN.description = "Modified by OctraSource"
 
-ix.option.Add("hideHUD", ix.type.bool, false, {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("hideHUD", ix.type.bool, false, {
+-- 	category = "Thestral HUD"
+-- })
 
-ix.option.Add("automaticallyHideHUD", ix.type.bool, true, {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("automaticallyHideHUD", ix.type.bool, true, {
+-- 	category = "Thestral HUD"
+-- })
 
-ix.option.Add("HUDLifetime", ix.type.bool, false, {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("HUDLifetime", ix.type.bool, false, {
+-- 	category = "Thestral HUD"
+-- })
 
-ix.option.Add("staminaRight", ix.type.bool, false, {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("staminaRight", ix.type.bool, false, {
+-- 	category = "Thestral HUD"
+-- })
 
-ix.option.Add("healthColor", ix.type.color, Color(255,75,66), {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("healthColor", ix.type.color, Color(255,75,66), {
+-- 	category = "Thestral HUD"
+-- })
 
-ix.option.Add("armorColor", ix.type.color, Color(0,0,128), {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("armorColor", ix.type.color, Color(0,0,128), {
+-- 	category = "Thestral HUD"
+-- })
 
-ix.option.Add("hungerColor", ix.type.color, Color(56,46,28), {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("hungerColor", ix.type.color, Color(56,46,28), {
+-- 	category = "Thestral HUD"
+-- })
 
-ix.option.Add("thirstColor", ix.type.color, Color(135,206,250), {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("thirstColor", ix.type.color, Color(135,206,250), {
+-- 	category = "Thestral HUD"
+-- })
 
-ix.option.Add("staminaColor", ix.type.color, Color(67,223,67), {
-	category = "Thestral HUD"
-})
+-- ix.option.Add("staminaColor", ix.type.color, Color(67,223,67), {
+-- 	category = "Thestral HUD"
+-- })
 
 
 if CLIENT then
