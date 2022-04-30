@@ -70,9 +70,11 @@ else
 		if (client:getHungerPercent() != -1) then
 			local percent = (client:getHungerPercent() - 1)
 
-			if (percent == 0) then
-					client.TakeDamage(client, .05)
-					return
+			if (percent <= 1) then
+				client:SetHealth(client:Health() - 1)
+				if(client:Health() <= 0) then
+					client:Kill()
+				end
 			end
 		end
 	end
