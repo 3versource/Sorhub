@@ -114,7 +114,7 @@ function PANEL:Think()
 		local realValue, barText = info.GetValue()
 
 		if (bShouldHide or realValue == false) then
-			v:SetVisible(true)
+			v:SetVisible(false)
 			continue
 		end
 
