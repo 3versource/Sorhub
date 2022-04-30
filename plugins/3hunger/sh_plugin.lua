@@ -10,8 +10,13 @@ function playerMeta:getHunger()
 	return (self:GetNetVar("hunger")) or 0
 end
 
+function playerMeta:getElapsedHunger()
+	return (PLUGIN.hungrySeconds - (CurTime() - self:getHunger()))
+end
+
 function playerMeta:getHungerPercent()
-	return math.Clamp(((CurTime() - self:getHunger()) / PLUGIN.hungrySeconds), 0 ,1)
+	return (self:getElapsedHunger() / PLUGIN.hungrySeconds) * 100
+	-- return math.Clamp(((CurTime() - self:getHunger()) / PLUGIN.hungrySeconds), 0 ,1)
 end
 
 function playerMeta:addHunger(amount)
@@ -22,6 +27,7 @@ function playerMeta:addHunger(amount)
 	)
 end
 
+-- bar drawing
 if (CLIENT) then
 	local color = Color(56,46,28)
 
@@ -30,9 +36,7 @@ if (CLIENT) then
 			return (1 - LocalPlayer():getHungerPercent())
 		end, color, nil, "hunger")
 	end
-
 else
-	local PLUGIN = PLUGIN
 
 	function PLUGIN:LoadData()
 		if (true) then return end
@@ -63,7 +67,7 @@ else
 	end
 
 	function PLUGIN:PlayerPostThink(client)
-		if (client:getHungerPercent() ~= -1) then
+		if (client:getHungerPercent() != -1) then
 			local percent = (client:getHungerPercent() - 1)
 
 			if (percent == 0) then
@@ -74,11 +78,13 @@ else
 	end
 
 	function PLUGIN:PlayerLoadedCharacter(client, character, lastChar)
-		if(character:GetData("hunger") ~= nil) then
+		if(character:GetData("hunger") != nil) then
 			client:SetNetVar("hunger", CurTime() - character:GetData("hunger"))
+			client:SetNetVar("hungerPercent", client:getHungerPercent())
 		end
 		if(character:GetData("hunger") == nil) then
 			client:SetNetVar("hunger", CurTime())
+			client:SetNetVar("hungerPercent", client:getHungerPercent())
 		end
 	end
 end

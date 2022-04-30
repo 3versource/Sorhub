@@ -10,8 +10,13 @@ function playerMeta:getThirst()
 	return (self:GetNetVar("thirst")) or 0
 end
 
+function playerMeta:getElapsedThirst()
+	return (PLUGIN.thirstySeconds - (CurTime() - self:getThirst()))
+end
+
 function playerMeta:getThirstPercent()
-	return math.Clamp(((CurTime() - self:getThirst()) / PLUGIN.thirstySeconds), 0 ,1)
+	return (self:getElapsedThirst() / PLUGIN.thirstySeconds) * 100
+	-- return math.Clamp(((CurTime() - self:getThirst()) / PLUGIN.thirstySeconds), 0 ,1)
 end
 
 function playerMeta:addThirst(amount)
@@ -22,6 +27,7 @@ function playerMeta:addThirst(amount)
 	)
 end
 
+-- bar drawing
 if (CLIENT) then
 	local color = Color(135,206,250)
 
@@ -30,9 +36,7 @@ if (CLIENT) then
 			return (1 - LocalPlayer():getThirstPercent())
 		end, color, nil, "thirst")
 	end
-
 else
-	local PLUGIN = PLUGIN
 
 	function PLUGIN:LoadData()
 		if (true) then return end
@@ -63,7 +67,7 @@ else
 	end
 
 	function PLUGIN:PlayerPostThink(client)
-		if (client:getThirstPercent() ~= -1) then
+		if (client:getThirstPercent() != -1) then
 			local percent = (client:getThirstPercent() - 1)
 
 			if (percent == 0) then
@@ -74,11 +78,13 @@ else
 	end
 
 	function PLUGIN:PlayerLoadedCharacter(client, character, lastChar)
-		if(character:GetData("thirst") ~= nil) then
+		if(character:GetData("thirst") != nil) then
 			client:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
+			client:SetNetVar("thirstPercent", client:getThirstPercent())
 		end
 		if(character:GetData("thirst") == nil) then
 			client:SetNetVar("thirst", CurTime())
+			client:SetNetVar("thirstPercent", client:getThirstPercent())
 		end
 	end
 end
