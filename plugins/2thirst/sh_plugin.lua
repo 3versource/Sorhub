@@ -73,7 +73,7 @@ else
 			if (percent <= 1) then
 				client:SetHealth(client:Health() - 1)
 				if(client:Health() <= 0) then
-					client:Kill()
+					client:TakeDamage(999)
 				end
 			end
 		end
