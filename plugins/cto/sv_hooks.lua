@@ -146,7 +146,15 @@ end
 
 function Schema:GetPlayerDeathSound(client)
 	if (client:IsCombine()) then
-		local sound = "npc/metropolice/die" .. math.random(1, 4) .. ".wav"
+		local sound
+		local variation = math.random(1,7)
+		if variation == 1 then sound = "vj_hlr/hl2b_npc/metropolice/die1.wav"
+		elseif variation == 2 then sound = "vj_hlr/hl2b_npc/metropolice/die2.wav"
+		elseif variation == 3 then sound = "vj_hlr/hl2b_npc/metropolice/die3.wav"
+		elseif variation == 4 then sound = "vj_hlr/hl2b_npc/metropolice/die4.wav"
+		elseif variation == 5 then sound = "vj_hlr/hl2b_npc/metropolice/fire_scream1.wav"
+		elseif variation == 6 then sound = "vj_hlr/hl2b_npc/metropolice/fire_scream2.wav"
+		elseif variation == 7 then sound = "vj_hlr/hl2b_npc/metropolice/fire_scream3.wav" end
 
 		if (!client:GetNetVar("IsBiosignalGone")) then
 			for _, player in ipairs(player.GetAll()) do
