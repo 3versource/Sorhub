@@ -1,3 +1,13 @@
+local combineDeathSounds = {"vj_hlr/hl2b_npc/metropolice/die1.wav",
+	"vj_hlr/hl2b_npc/metropolice/die2.wav", "vj_hlr/hl2b_npc/metropolice/die3.wav",
+	"vj_hlr/hl2b_npc/metropolice/die4.wav", "vj_hlr/hl2b_npc/metropolice/fire_scream1.wav",
+	"vj_hlr/hl2b_npc/metropolice/fire_scream2.wav", "vj_hlr/hl2b_npc/metropolice/fire_scream3.wav"}
+
+local combinePainSounds = {"vj_hlr/hl2b_npc/metropolice/knockout1.wav",
+	"vj_hlr/hl2b_npc/metropolice/knockout2.wav", "vj_hlr/hl2b_npc/metropolice/knockout3.wav",
+	"vj_hlr/hl2b_npc/metropolice/pain1.wav", "vj_hlr/hl2b_npc/metropolice/pain2.wav",
+	"vj_hlr/hl2b_npc/metropolice/pain3.wav", "vj_hlr/hl2b_npc/metropolice/pain4.wav"}
+
 function Schema:LoadData()
 	self:LoadRationDispensers()
 	self:LoadVendingMachines()
@@ -208,15 +218,7 @@ end
 
 function Schema:GetPlayerPainSound(client)
 	if (client:IsCombine()) then
-		local sound
-		local variation = math.random(1,7)
-		if variation == 1 then sound = "vj_hlr/hl2b_npc/metropolice/knockout1.wav"
-		elseif variation == 2 then sound = "vj_hlr/hl2b_npc/metropolice/knockout2.wav"
-		elseif variation == 3 then sound = "vj_hlr/hl2b_npc/metropolice/knockout3.wav"
-		elseif variation == 4 then sound = "vj_hlr/hl2b_npc/metropolice/pain1.wav"
-		elseif variation == 5 then sound = "vj_hlr/hl2b_npc/metropolice/pain2.wav"
-		elseif variation == 6 then sound = "vj_hlr/hl2b_npc/metropolice/pain3.wav"
-		elseif variation == 7 then sound = "vj_hlr/hl2b_npc/metropolice/pain4.wav" end
+		local sound = combinePainSounds[math.random(1,7)]
 
 		if (Schema:IsCombineRank(client:Name(), "SCN")) then
 			sound = "NPC_CScanner.Pain"
@@ -230,15 +232,7 @@ end
 
 function Schema:GetPlayerDeathSound(client)
 	if (client:IsCombine()) then
-		local sound
-		local variation = math.random(1,7)
-		if variation == 1 then sound = "vj_hlr/hl2b_npc/metropolice/die1.wav"
-		elseif variation == 2 then sound = "vj_hlr/hl2b_npc/metropolice/die2.wav"
-		elseif variation == 3 then sound = "vj_hlr/hl2b_npc/metropolice/die3.wav"
-		elseif variation == 4 then sound = "vj_hlr/hl2b_npc/metropolice/die4.wav"
-		elseif variation == 5 then sound = "vj_hlr/hl2b_npc/metropolice/fire_scream1.wav"
-		elseif variation == 6 then sound = "vj_hlr/hl2b_npc/metropolice/fire_scream2.wav"
-		elseif variation == 7 then sound = "vj_hlr/hl2b_npc/metropolice/fire_scream3.wav" end
+		local sound = combineDeathSounds[math.random(1,7)]
 
 		if (Schema:IsCombineRank(client:Name(), "SCN")) then
 			sound = "NPC_CScanner.Die"
