@@ -4,4 +4,4 @@ ITEM.model = "models/bioshockinfinite/hext_potato.mdl"
 ITEM.category = "Food"
 
 ITEM.restFood = 8000
-ITEM.sound = "physics/flesh/flesh_squishy_impact_hard4.wav"
+ITEM.sound = "player/footsteps/dirt1.wav"

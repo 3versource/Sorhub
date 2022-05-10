@@ -4,4 +4,4 @@ ITEM.model = "models/props_junk/garbage_takeoutcarton001a.mdl"
 ITEM.category = "Food"
 
 ITEM.restFood = 12000
-ITEM.sound = "physics/flesh/flesh_squishy_impact_hard4.wav"
+ITEM.sound = "player/footsteps/slosh4.wav"

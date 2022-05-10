@@ -4,4 +4,4 @@ ITEM.model = "models/foodnhouseholditems/cookies.mdl"
 ITEM.category = "Food"
 
 ITEM.restFood = 9000
-ITEM.sound = "physics/flesh/flesh_squishy_impact_hard4.wav"
+ITEM.sound = "player/footsteps/dirt1.wav"

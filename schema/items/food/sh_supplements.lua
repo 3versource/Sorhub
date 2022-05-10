@@ -4,4 +4,4 @@ ITEM.model = "models/props_lab/jar01b.mdl"
 ITEM.category = "Food"
 
 ITEM.restFood = 8000
-ITEM.sound = "physics/flesh/flesh_squishy_impact_hard4.wav"
+ITEM.sound = "player/footsteps/slosh1.wav"
