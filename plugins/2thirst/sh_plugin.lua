@@ -37,18 +37,6 @@ if (CLIENT) then
 		end, color, nil, "thirst")
 	end
 else
-
-	function PLUGIN:LoadData()
-		if (true) then return end
-		
-		local savedTable = self:GetData() or {}
-	end
-	
-	function PLUGIN:SaveData()
-		if (true) then return end
-		local savedTable = {}
-		self:SetData(savedTable)
-	end
 	
 	function PLUGIN:CharacterPreSave(character)
 		local savedThirst = math.Clamp(CurTime() - character.player:getThirst(), 0, PLUGIN.thirstySeconds)
