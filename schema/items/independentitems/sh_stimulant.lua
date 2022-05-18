@@ -9,7 +9,7 @@ ITEM.functions.Inject = {
 	OnRun = function(itemTable)
 		local client = itemTable.player
 
-		client:EmitSound(ITEM.sound)
+		item.player:EmitSound(ITEM.sound)
 		client:RestoreStamina(40)
 		client:SetHealth(math.min(client:Health() - 5, client:GetMaxHealth()))
 		if client:Health() <= 0 then
