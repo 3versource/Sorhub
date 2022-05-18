@@ -1,2 +1,2 @@
 ATTRIBUTE.name = "Endurance"
-ATTRIBUTE.description = "Affects how long you can run for."
+ATTRIBUTE.description = "Endurance affects how long you can run for."
