@@ -70,11 +70,9 @@ else
 	function PLUGIN:PlayerLoadedCharacter(client, character, lastChar)
 		if(character:GetData("thirst") != nil) then
 			client:SetNetVar("thirst", CurTime() - character:GetData("thirst"))
-			client:SetNetVar("thirstPercent", client:getThirstPercent())
 		end
 		if(character:GetData("thirst") == nil) then
 			client:SetNetVar("thirst", CurTime())
-			client:SetNetVar("thirstPercent", client:getThirstPercent())
 		end
 	end
 end
