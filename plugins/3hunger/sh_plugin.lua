@@ -31,6 +31,10 @@ function playerMeta:addHunger(amount)
 		CurTime() - math.Clamp(math.min(curHunger, PLUGIN.hungrySeconds) - amount, 0, PLUGIN.hungrySeconds)
 	)
 end
+
+function playerMeta:getMaxHunger()
+	return (PLUGIN.hungrySeconds + (self:GetCharacter():GetAttribute("hungerlifetime", 0) * 100))
+end
 	
 -- upon character presave,
 function PLUGIN:CharacterPreSave(character)
@@ -56,7 +60,7 @@ function PLUGIN:PlayerSpawn(client)
 	end
 end
 
--- upon player think,
+-- upon player think, (essentially runs continuously)
 function PLUGIN:PlayerPostThink(client)
 	-- if the player's percentage isn't -1, then
 	if (client:getHungerPercent() != -1) then
@@ -76,6 +80,10 @@ function PLUGIN:PlayerPostThink(client)
 			end
 		end
 	end
+
+	-- if(client) then
+	-- 	print(client:getMaxHunger())
+	-- end
 end
 
 -- upon the player loading their character,
