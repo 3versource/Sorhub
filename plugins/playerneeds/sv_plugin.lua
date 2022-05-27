@@ -14,7 +14,7 @@ function playerMeta:addThirst(amount)
 
 	if !char then return end
 
-	char:SetData("hunger", math.Clamp((char:GetData("hunger", PLUGIN.defaultMax) + amount), 0 , PLUGIN.defaultMax))
+	char:SetData("thirst", math.Clamp((char:GetData("thirst", PLUGIN.defaultMax) + amount), 0 , PLUGIN.defaultMax))
 end
 
 function PLUGIN:PlayerDeath(client)
@@ -51,7 +51,7 @@ function PLUGIN:PlayerPostThink(client)
 		client.nextCooldownThirst = time + 120 + (char:GetAttribute("thirstlifetime") or 0)
 	end
 
-	if (char:GetData("hunger") < 0) or (char:GetData("thirst") < 0) then
+	if (char:GetData("hunger") < 1) or (char:GetData("thirst") < 1) then
 		client:SetHealth(client:Health() - 1)
 		if client:Health() < 1 then
 			client:TakeDamage(999)
