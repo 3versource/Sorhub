@@ -71,7 +71,7 @@ if CLIENT then
             
             local hp = ply:Health()
             local armor = ply:Armor()
-            local hunger = 100
+            local hunger = ply:getHunger()
             local thirst = 100
             local stamina = ply:GetLocalVar("stm", 0)
 
