@@ -1,4 +1,3 @@
-
 ITEM.name = "foodBase"
 ITEM.description = "Food Base"
 ITEM.model = "models/error.mdl"
