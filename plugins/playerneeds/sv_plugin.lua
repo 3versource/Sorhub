@@ -42,13 +42,13 @@ function PLUGIN:PlayerPostThink(client)
 	if (client.nextCooldownHunger or 0) < time then
 		char:SetData("hunger", char:GetData("hunger", PLUGIN.defaultMax) - 1)
 
-		client.nextCooldownHunger = time + 180
+		client.nextCooldownHunger = time + 180 + (char:GetAttribute("hungerlifetime") or 0)
 	end
 
 	if (client.nextCooldownThirst or 0) < time then
 		char:SetData("thirst", char:GetData("thirst", PLUGIN.defaultMax) - 1)
 
-		client.nextCooldownThirst = time + 120
+		client.nextCooldownThirst = time + 120 + (char:GetAttribute("thirstlifetime") or 0)
 	end
 
 	if (char:GetData("hunger") < 0) or (char:GetData("thirst") < 0) then
