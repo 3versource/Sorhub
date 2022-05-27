@@ -1,7 +1,7 @@
 local PLUGIN = PLUGIN
-PLUGIN.name = "Hunger"
+PLUGIN.name = "Needs"
 PLUGIN.author = "OctraSource"
-PLUGIN.desc = "Adds the logic/data needed for a hunger system."
+PLUGIN.desc = "Adds the logic/data needed for a needs system."
 PLUGIN.defaultMax = 100
 
 ix.util.Include("sv_plugin.lua")
