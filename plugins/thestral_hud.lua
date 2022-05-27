@@ -72,7 +72,7 @@ if CLIENT then
             local hp = ply:Health()
             local armor = ply:Armor()
             local hunger = ply:getHunger()
-            local thirst = 100
+            local thirst = ply:getThirst()
             local stamina = ply:GetLocalVar("stm", 0)
 
             local hpbarchange = barW*  math.Clamp((hp / ply:GetMaxHealth()) , 0, 1 )
