@@ -2,7 +2,7 @@ FACTION.name = "Metropolice Force"
 FACTION.description = "A metropolice unit working as Civil Protection."
 FACTION.color = Color(138, 171, 180)
 FACTION.pay = 20
-FACTION.models = {"models/police_nemez.mdl"}
+FACTION.models = {"models/police.mdl"}
 FACTION.isDefault = false
 FACTION.isGloballyRecognized = true
 FACTION.runSounds = {[0] = "NPC_MetroPolice.RunFootstepLeft", [1] = "NPC_MetroPolice.RunFootstepRight"}
