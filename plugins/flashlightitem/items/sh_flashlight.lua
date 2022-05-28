@@ -1,9 +1,9 @@
 
 ITEM.name = "Flashlight"
-ITEM.model = Model("models/jq/hlvr/characters/combine/combine_captain/torch/captain_torch_hlvr.mdl")
+ITEM.model = "models/ug_imports/clockwork/flashlight.mdl"
 ITEM.width = 1
 ITEM.height = 1
-ITEM.description = "A box containing a flashlight."
+ITEM.description = "A tool for lighting up your surroundings."
 ITEM.category = "Tools"
 
 ITEM:Hook("drop", function(item)
