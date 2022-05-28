@@ -1,5 +1,5 @@
-ITEM.name = "Water"
-ITEM.description = "A can of water."
+ITEM.name = "Can of Water"
+ITEM.description = "A UU can of water."
 ITEM.model = "models/props_lunk/popcan01a.mdl"
 ITEM.category = "Drink"
 
