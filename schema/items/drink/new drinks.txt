@@ -1,0 +1,78 @@
+UU tea (black tea)
+models/bioshockinfinite/ebsinthebottle.mdl
+
+UU lager
+models/bioshockinfinite/hext_bottle_lager.mdl
+
+UU gin
+models/bioshockinfinite/jin_bottle.mdl
+
+UU coffee
+models/bioshockinfinite/xoffee_mug_closed.mdl
+
+bleutur'd champagne
+models/foodnhouseholditems/champagne2.mdl
+
+talloires champagne
+models/foodnhouseholditems/champagne3.mdl
+
+orange juice carton
+models/foodnhouseholditems/juice.mdl
+
+red apple juice carton
+models/foodnhouseholditems/juice2.mdl
+
+green apple juice carton
+models/foodnhouseholditems/juice4.mdl
+
+orange juice carton (smaller than the previous, same size as the red and green apple juice cartons)
+models/foodnhouseholditems/juice3.mdl
+
+small green apple juice carton (juice box)
+models/foodnhouseholditems/juicesmall.mdl
+
+coca cola can
+models/foodnhouseholditems/sodacan01.mdl
+
+coca cola cherry can
+models/foodnhouseholditems/sodacan02.mdl
+
+pepsi can
+models/foodnhouseholditems/sodacan04.mdl
+
+sprite can
+models/foodnhouseholditems/sodacan05.mdl
+
+mountain dew can
+models/foodnhouseholditems/sodacan06.mdl
+
+redbull can
+models/foodnhouseholditems/sodacanc01.mdl
+
+chlorox bleach
+models/foodnhouseholditems/clorox.mdl
+
+pinot noir red wine bottle
+models/foodnhouseholditems/wine_red1.mdl
+
+costa del perro red wine bottle
+models/foodnhouseholditems/wine_red2.mdl
+
+syrah red wine bottle
+models/foodnhouseholditems/wine_red3.mdl
+
+homemade red wine bottle
+models/foodnhouseholditems/winebottle3.mdl
+
+purple cheese drink
+models/props_cunk/popcan01a.mdl
+
+aquafina water bottle
+models/ug_imports/drugmod/water_bottle.mdl
+
+water flask
+models/ug_imports/zworld/flask.mdl
+
+vodka
+models/ug_imports/stalker/food/cossacks_vodka.mdl
+

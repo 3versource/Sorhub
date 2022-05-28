@@ -173,21 +173,6 @@ models/foodnhouseholditems/grapes3.mdl
 chocolate icecream cone (one scoop)
 models/foodnhouseholditems/icecream.mdl
 
-orange juice carton
-models/foodnhouseholditems/juice.mdl
-
-red apple juice carton
-models/foodnhouseholditems/juice2.mdl
-
-green apple juice carton
-models/foodnhouseholditems/juice4.mdl
-
-orange juice carton (smaller than the previous, same size as the red and green apple juice cartons)
-models/foodnhouseholditems/juice3.mdl
-
-small green apple juice carton (juice box)
-models/foodnhouseholditems/juicesmall.mdl
-
 cornflakes cereal box
 models/foodnhouseholditems/kellogscornflakes.mdl
 
@@ -253,3 +238,6 @@ models/foodnhouseholditems/pineapple.mdl
 
 tuna can
 models/ug_imports/stalker/food/tourists_breakfast.mdl
+
+pear
+models/foodnhouseholditems/pear.mdl
