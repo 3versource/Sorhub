@@ -1,4 +1,3 @@
-
 ITEM.name = "Kevlar Uniform"
 ITEM.description = "A uniform made of complete kevlar. A white lambda symbol is donned on the left armpad."
 ITEM.category = "Kevlar"
@@ -9,5 +8,6 @@ ITEM.category = "Rebel Uniform"
 ITEM.outfitCategory = "fullbody"
 
 ITEM.replacements = {
-    {"models/ug_imports/lambdamovement/lambdamovement.mdl", "models/ug_imports/lambdamovement/lambdamovement_female.mdl"}
-    }
+    {"male", "models/ug_imports/lambdamovement/lambdamovement.mdl"},
+    {"female", "models/ug_imports/lambdamovement/lambdamovement_female.mdl"}
+}
