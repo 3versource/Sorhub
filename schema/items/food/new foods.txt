@@ -241,3 +241,6 @@ models/ug_imports/stalker/food/tourists_breakfast.mdl
 
 pear
 models/foodnhouseholditems/pear.mdl
+
+ramen
+models/props_junk/garbage_takeoutcarton001a.mdl

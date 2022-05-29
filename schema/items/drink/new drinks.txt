@@ -76,3 +76,19 @@ models/ug_imports/zworld/flask.mdl
 vodka
 models/ug_imports/stalker/food/cossacks_vodka.mdl
 
+whiskey that tastes like rust
+models/ug_imports/metro/bottle02.mdl
+models/ug_imports/metro/bottle03.mdl
+
+beer
+models/props_junk/GlassBottle01a.mdl
+models/props_junk/garbage_glassbottle003a.mdl
+
+moonshine
+models/props_junk/glassjug01.mdl
+
+milk carton
+models/props_junk/garbage_milkcarton002a.mdl
+
+gallon of milk
+models/props_junk/garbage_milkcarton001a.mdl
