@@ -10,4 +10,4 @@ ITEM.outfitCategory = "fullbody"
 ITEM.unitName = "DART"
 
 ITEM.newSkin = 3
-ITEM.replacements = "models/police_nemez.mdl"
+ITEM.replacements = "models/police.mdl"

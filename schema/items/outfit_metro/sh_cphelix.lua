@@ -10,4 +10,4 @@ ITEM.outfitCategory = "fullbody"
 ITEM.unitName = "HELIX"
 
 ITEM.newSkin = 1
-ITEM.replacements = "models/police_nemez.mdl"
+ITEM.replacements = "models/police.mdl"

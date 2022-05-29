@@ -10,7 +10,7 @@ ITEM.outfitCategory = "fullbody"
 ITEM.unitName = "ECHO"
 
 ITEM.newSkin = 3
-ITEM.replacements = "models/police_nemez.mdl"
+ITEM.replacements = "models/police.mdl"
 ITEM.bodyGroups = {
 	["cloak/summka"] = 1,
 	["radio"] = 1,

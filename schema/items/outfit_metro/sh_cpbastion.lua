@@ -10,7 +10,7 @@ ITEM.outfitCategory = "fullbody"
 ITEM.unitName = "BASTION"
 
 ITEM.newSkin = 3
-ITEM.replacements = "models/police_nemez.mdl"
+ITEM.replacements = "models/police.mdl"
 ITEM.bodyGroups = {
 	["mask"] = 8,
 	["cloak/summka"] = 2
