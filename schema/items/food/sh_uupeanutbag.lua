@@ -1,0 +1,7 @@
+ITEM.name = "Bag of Peanuts"
+ITEM.description = "A bag of UU-branded peanuts."
+ITEM.model = "models/bioshockinfinite/rag_of_peanuts.mdl"
+ITEM.category = "Food"
+
+ITEM.restFood = 20
+ITEM.sound = "eating_and_drinking/eating.wav"
