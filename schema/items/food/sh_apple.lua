@@ -1,0 +1,7 @@
+ITEM.name = "Apple"
+ITEM.description = "An apple."
+ITEM.model = "models/foodnhouseholditems/apple.mdl"
+ITEM.category = "Food"
+
+ITEM.restFood = 20
+ITEM.sound = "player/footsteps/dirt1.wav"
