@@ -10,13 +10,10 @@ models/bioshockinfinite/jin_bottle.mdl
 UU coffee
 models/bioshockinfinite/xoffee_mug_closed.mdl
 
-bleutur'd champagne
-models/foodnhouseholditems/champagne2.mdl
-
 talloires champagne
 models/foodnhouseholditems/champagne3.mdl
 
-orange juice carton
+orange juice carton/gallon
 models/foodnhouseholditems/juice.mdl
 
 red apple juice carton
@@ -49,17 +46,11 @@ models/foodnhouseholditems/sodacan06.mdl
 redbull can
 models/foodnhouseholditems/sodacanc01.mdl
 
-chlorox bleach
+clorox bleach
 models/foodnhouseholditems/clorox.mdl
 
-pinot noir red wine bottle
+red wine bottle
 models/foodnhouseholditems/wine_red1.mdl
-
-costa del perro red wine bottle
-models/foodnhouseholditems/wine_red2.mdl
-
-syrah red wine bottle
-models/foodnhouseholditems/wine_red3.mdl
 
 homemade red wine bottle
 models/foodnhouseholditems/winebottle3.mdl
@@ -78,7 +69,6 @@ models/ug_imports/stalker/food/cossacks_vodka.mdl
 
 whiskey that tastes like rust
 models/ug_imports/metro/bottle02.mdl
-models/ug_imports/metro/bottle03.mdl
 
 beer
 models/props_junk/GlassBottle01a.mdl
