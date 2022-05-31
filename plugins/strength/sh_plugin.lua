@@ -14,7 +14,6 @@ if (SERVER) then
 		if (client:GetCharacter() and IsValid(trace.Entity)) then
 			client:GetCharacter():UpdateAttrib("str", 0.1)
 		end
-		print("punch thrown at entity")
 	end
 end
 
