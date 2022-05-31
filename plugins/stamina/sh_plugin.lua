@@ -66,8 +66,8 @@ local function CalcStaminaChange(client)
 				client:SetRunSpeed(walkSpeed)
 				client:SetNetVar("brth", true)
 
-				character:UpdateAttrib("end", 0.1)
-				character:UpdateAttrib("stm", 0.01)
+				character:UpdateAttrib("end", 1)
+				character:UpdateAttrib("stm", 0.5)
 
 				hook.Run("PlayerStaminaLost", client)
 			elseif (value >= 20 and client:GetNetVar("brth", false)) then

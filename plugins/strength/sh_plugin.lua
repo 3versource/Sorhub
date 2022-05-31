@@ -11,9 +11,10 @@ if (SERVER) then
 	end
 
 	function PLUGIN:PlayerThrowPunch(client, trace)
-		if (client:GetCharacter() and IsValid(trace.Entity) and trace.Entity:IsPlayer()) then
-			client:GetCharacter():UpdateAttrib("str", 0.01)
+		if (client:GetCharacter() and IsValid(trace.Entity)) then
+			client:GetCharacter():UpdateAttrib("str", 0.1)
 		end
+		print("punch thrown at entity")
 	end
 end
 
