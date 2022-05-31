@@ -11,11 +11,11 @@ ITEM.functions.Apply = {
 		local ply = item.player
 		local char = ply:GetCharacter()
 
-        ply:EmitSound(item.sound)
-		ply:SetHealth(math.min(ply:Health() + item.recovery + ((char:GetAttribute("medefficiency") or  0) * .25), 100, ply:GetMaxHealth()))
-
 		if ply:Health() < 50 then
-			char:UpdateAttrib("medefficiency", .25)
+			char:UpdateAttrib("medefficiency", 1)
 		end
+
+		ply:SetHealth(math.min(ply:Health() + item.recovery + ((char:GetAttribute("medefficiency") or  0) * .25), 100, ply:GetMaxHealth()))
+		ply:EmitSound(item.sound)
 	end
 }
