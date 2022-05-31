@@ -8,9 +8,10 @@ ITEM.sound = "items/medshot4.wav"
 ITEM.functions.Apply = {
 	icon = "icon16/heart.png",
 	OnRun = function(item)
-		local client = item.player
+		local ply = item.player
+		local char = ply:GetCharacter()
 
-        item.player:EmitSound(item.sound)
-		client:SetHealth(math.min(client:Health() + item.recovery, 100, client:GetMaxHealth()))
+        ply:EmitSound(item.sound)
+		ply:SetHealth(math.min(ply:Health() + item.recovery + ((char:GetAttribute("medefficiency") or  0) * .5), 100, ply:GetMaxHealth()))
 	end
 }
