@@ -7,13 +7,17 @@ ITEM.sound = "items/medshot4.wav"
 ITEM.functions.Inject = {
 	icon =  "icon16/lightning.png",
 	OnRun = function(itemTable)
-		local client = itemTable.player
+		local ply = itemTable.player
+		local char = ply:GetCharacter()
 
-		item.player:EmitSound(ITEM.sound)
-		client:RestoreStamina(40)
-		client:SetHealth(math.min(client:Health() - 5, client:GetMaxHealth()))
-		if client:Health() <= 0 then
-			client:TakeDamage(100)
+		char:RestoreStamina(40)
+		ply:EmitSound(ITEM.sound)
+		ply:SetHealth(math.min(client:Health() - 10, client:GetMaxHealth()))
+		if ply:Health() <= 0 then
+			ply:TakeDamage(100)
 		end
+
+		char:AddBoost(574, "stm", 40)
+		char:AddBoost(328, "end", 20)
 	end
 }
