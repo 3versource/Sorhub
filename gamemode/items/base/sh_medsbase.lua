@@ -12,6 +12,10 @@ ITEM.functions.Apply = {
 		local char = ply:GetCharacter()
 
         ply:EmitSound(item.sound)
-		ply:SetHealth(math.min(ply:Health() + item.recovery + ((char:GetAttribute("medefficiency") or  0) * .5), 100, ply:GetMaxHealth()))
+		ply:SetHealth(math.min(ply:Health() + item.recovery + ((char:GetAttribute("medefficiency") or  0) * .25), 100, ply:GetMaxHealth()))
+
+		if ply:Health() < 50 then
+			char:UpdateAttrib("medefficiency", .25)
+		end
 	end
 }
