@@ -3,5 +3,5 @@ ITEM.description = "A Kinder chocolate egg. Its center is a delicious hazelnut c
 ITEM.model = "models/foodnhouseholditems/kindersurprise.mdl"
 ITEM.category = "Food"
 
-ITEM.restFood = 20
+ITEM.restFood = 5
 ITEM.sound = "eating_and_drinking/eating.wav"

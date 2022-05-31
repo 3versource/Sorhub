@@ -3,5 +3,5 @@ ITEM.description = "A burger with two layers containing two slices of beef, toma
 ITEM.model = "models/foodnhouseholditems/mcdburger.mdl"
 ITEM.category = "Food"
 
-ITEM.restFood = 20
+ITEM.restFood = 75
 ITEM.sound = "eating_and_drinking/eating.wav"

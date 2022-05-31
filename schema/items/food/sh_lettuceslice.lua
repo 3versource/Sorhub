@@ -1,7 +1,7 @@
-ITEM.name = "Slice of Lettuce"
+ITEM.name = "Lettuce Slice"
 ITEM.description = "A green slice of lettuce."
 ITEM.model = "models/foodnhouseholditems/lettuce.mdl"
 ITEM.category = "Food"
 
-ITEM.restFood = 20
+ITEM.restFood = 5
 ITEM.sound = "eating_and_drinking/crunchy.wav"

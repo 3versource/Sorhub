@@ -3,5 +3,5 @@ ITEM.description = "An apple."
 ITEM.model = "models/foodnhouseholditems/apple.mdl"
 ITEM.category = "Food"
 
-ITEM.restFood = 20
+ITEM.restFood = 10
 ITEM.sound = "player/footsteps/dirt1.wav"

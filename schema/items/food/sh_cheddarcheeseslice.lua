@@ -1,4 +1,4 @@
-ITEM.name = "Slice of Cheddar Cheese"
+ITEM.name = "Wedge of Cheddar Cheese"
 ITEM.description = "A trianglular slice of cheddar cheese."
 ITEM.model = "models/foodnhouseholditems/cheesewheel1c.mdl"
 ITEM.category = "Food"

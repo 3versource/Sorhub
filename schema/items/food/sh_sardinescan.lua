@@ -1,7 +1,7 @@
-ITEM.name = "Can of Sardines"
+ITEM.name = "Sardines Can"
 ITEM.description = "A can of many sardines layered over one another."
 ITEM.model = "models/bioshockinfinite/cardine_can_open.mdl"
 ITEM.category = "Food"
 
-ITEM.restFood = 20
+ITEM.restFood = 15
 ITEM.sound = "eating_and_drinking/eating.wav"

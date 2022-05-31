@@ -1,4 +1,4 @@
-ITEM.name = "Slice of Blue Cheese"
+ITEM.name = "Blue Cheese Wedge"
 ITEM.description = "A triangular slice of blue cheese. It emits a strong smell."
 ITEM.model = "models/foodnhouseholditems/cheesewheel2c.mdl"
 ITEM.category = "Food"
