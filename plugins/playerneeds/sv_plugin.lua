@@ -9,12 +9,28 @@ function playerMeta:addHunger(amount)
 	char:SetData("hunger", math.Clamp((char:GetData("hunger", PLUGIN.defaultMax) + amount), 0, PLUGIN.defaultMax))
 end
 
+function playerMeta:setHunger(amount)
+	local char = self:GetCharacter()
+	
+	if !char then return end
+
+	char:SetData("hunger", math.Clamp(amount, 0, PLUGIN.defaultMax))
+end
+
 function playerMeta:addThirst(amount)
 	local char = self:GetCharacter()
 
 	if !char then return end
 
 	char:SetData("thirst", math.Clamp((char:GetData("thirst", PLUGIN.defaultMax) + amount), 0 , PLUGIN.defaultMax))
+end
+
+function playerMeta:setThirst(amount)
+	local char = self:GetCharacter()
+	
+	if !char then return end
+
+	char:SetData("thirst", math.Clamp(amount, 0, PLUGIN.defaultMax))
 end
 
 function PLUGIN:PlayerDeath(client)
