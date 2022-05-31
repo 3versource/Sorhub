@@ -1,4 +1,2 @@
-
-ATTRIBUTE.name = "Medical Knowledge"
-ATTRIBUTE.description = "Your affinity for medical items."
-ATTRIBUTE.noStartBonus = true
+ATTRIBUTE.name = "Medical Efficiency"
+ATTRIBUTE.description = "Your efficiency with medical items."
