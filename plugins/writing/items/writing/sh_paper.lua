@@ -12,8 +12,8 @@ ITEM.bAllowMultiCharacterInteraction = true
 
 function ITEM:GetDescription()
 	return self:GetData("owner", 0) == 0
-		and string.format(self.description, "it hasn't been written on.")
-		or string.format(self.description, "it has been written on.")
+		and string.format(self.description, "it hasn't been written on")
+		or string.format(self.description, "it has been written on")
 end
 
 function ITEM:SetText(text, character)
