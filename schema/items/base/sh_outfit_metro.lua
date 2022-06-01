@@ -8,9 +8,6 @@ ITEM.height = 2
 ITEM.maxArmor = 0
 ITEM.unitName = "unitName"
 
-local faction = 1 -- citizen faction
-local prefix = ITEM.unitName
-
 if (CLIENT) then
 	function ITEM:PopulateTooltip(tooltip)
 		local panel = tooltip:AddRowAfter("name", "armor")
@@ -21,17 +18,37 @@ if (CLIENT) then
 end
 
 function ITEM:OnEquipped()
-	--self:SetData("oldname", self.player:GetCharacter():GetName())
-	--self.player:GetCharacter():SetName("MPF."..prefix.."."..self.player:GetData("id", "00000")) -- set their new name
+	local ply = self.player
+	local char = ply:GetCharacter()
+	-- self refers to the item
 
-	self.player:SetArmor(self:GetData("armor", self.maxArmor))
+	char:SetData("originalname", char:GetName())
+	char:SetData("originalfaction", ply:Team())
+	if self:GetData("newname", nil) == nil then
+		self:SetData("newname", tostring("MPF."..self.unitName.."."..math.random(10000, 99999)))
+	end
+	
+	-- 3 is MPF
+	ply:SetTeam(3)
+
+	char:SetName(self:GetData("newname"))
+
+	ply:SetArmor(self:GetData("armor", self.maxArmor))
 end
 
 function ITEM:OnUnequipped()
-	self:SetData("armor", math.Clamp(self.player:Armor(), 0, self.maxArmor))
-	self.player:SetArmor(0)
+	local ply = self.player
+	local char = ply:GetCharacter()
 
-	--self.player:GetCharacter():SetName(self.GetData("oldname", "noname")) -- set their old name
+	self:SetData("armor", math.Clamp(ply:Armor(), 0, self.maxArmor))
+	ply:SetArmor(0)
+
+	if char:GetName() != self:GetData("newname") then
+		self:SetData("newname", char:GetName())
+	end
+
+	ply:SetTeam(char:GetData("originalfaction"))
+	char:SetName(char:GetData("originalname"))
 end
 
 function ITEM:Repair(amount)
