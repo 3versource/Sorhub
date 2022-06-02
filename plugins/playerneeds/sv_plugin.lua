@@ -7,6 +7,7 @@ function playerMeta:addHunger(amount)
 	if !char then return end
 
 	char:SetData("hunger", math.Clamp((char:GetData("hunger", PLUGIN.defaultMax) + amount), 0, PLUGIN.defaultMax))
+	notifyHunger(self)
 end
 
 function playerMeta:setHunger(amount)
@@ -15,6 +16,7 @@ function playerMeta:setHunger(amount)
 	if !char then return end
 
 	char:SetData("hunger", math.Clamp(amount, 0, PLUGIN.defaultMax))
+	notifyHunger(self)
 end
 
 function playerMeta:addThirst(amount)
@@ -23,6 +25,7 @@ function playerMeta:addThirst(amount)
 	if !char then return end
 
 	char:SetData("thirst", math.Clamp((char:GetData("thirst", PLUGIN.defaultMax) + amount), 0 , PLUGIN.defaultMax))
+	notifyThirst(self)
 end
 
 function playerMeta:setThirst(amount)
@@ -30,7 +33,8 @@ function playerMeta:setThirst(amount)
 	
 	if !char then return end
 
-	char:SetData("thirst", math.Clamp(amount, 0, PLUGIN.defaultMax))
+	char:SetData("thirst", math.Clamp(amount, 0, PLUGIN.de faultMax))
+	notifyThirst(self)
 end
 
 function PLUGIN:PlayerDeath(client)
@@ -57,12 +61,14 @@ function PLUGIN:PlayerPostThink(client)
 
 	if (client.nextCooldownHunger or 0) < time then
 		char:SetData("hunger", char:GetData("hunger", PLUGIN.defaultMax) - 1)
+		notifyExactHunger(client)
 
 		client.nextCooldownHunger = time + 180 + (char:GetAttribute("hungerlifetime") or 0)
 	end
 
 	if (client.nextCooldownThirst or 0) < time then
 		char:SetData("thirst", char:GetData("thirst", PLUGIN.defaultMax) - 1)
+		notifyExactThirst(client)
 
 		client.nextCooldownThirst = time + 120 + (char:GetAttribute("thirstlifetime") or 0)
 	end
@@ -78,4 +84,78 @@ end
 function PLUGIN:PlayerLoadedCharacter(client, character, lastChar)
 	character:SetData("hunger", character:GetData("hunger", PLUGIN.defaultMax))
 	character:SetData("thirst", character:GetData("thirst", PLUGIN.defaultMax))
+end
+
+-- these functions are made to be used to generalize the result of adding hunger/thirst
+function notifyHunger(client)
+	hungStat = client:GetCharacter():GetData("hunger", PLUGIN.defaultMax)
+
+	if hungStat > 90 then
+		client:ChatNotify("You feel full.")
+	else if hungStat > 80 then
+		client:ChatNotify("You feel a little peckish.")
+	else if hungStat > 60 then
+		client:ChatNotify("You feel hungry.")
+	else if hungStat > 30 then
+		client:ChatNotify("You feel very hungry.")
+	else if hungStat > 0 then
+		client:ChatNotify("You feel starved.")
+	else if hungStat == 0 then
+		client:ChatNotify("Your vision begins to fade to blackness from starvation.")
+	end
+end
+
+function notifyThirst(client)
+	thirStat = client:GetCharacter():GetData("thirst", PLUGIN.defaultMax)
+
+	if thirStat > 90 then
+		client:ChatNotify("You feel quenched.")
+	else if thirStat > 80 then
+		client:ChatNotify("You feel a little parched.")
+	else if thirStat > 60 then
+		client:ChatNotify("You feel thirsty.")
+	else if thirStat > 30 then
+		client:ChatNotify("You feel very thirsy.")
+	else if thirStat > 0 then
+		client:ChatNotify("You feel dehydrated.")
+	else if thirStat == 0 then
+		client:ChatNotify("Your vision begins to fade to blackness from dehydration.")
+	end
+end
+
+-- "exact" functions are made to only be used in playerpostthink so the player isn't spammed every decrement
+function notifyExactHunger(client)
+	hungStat = client:GetCharacter():GetData("hunger", PLUGIN.defaultMax)
+
+	if hungStat == 100 then
+		client:ChatNotify("You feel full.")
+	else if hungStat == 75 then
+		client:ChatNotify("You feel a little peckish.")
+	else if hungStat == 50 then
+		client:ChatNotify("You feel hungry.")
+	else if hungStat == 25 then
+		client:ChatNotify("You feel very hungry.")
+	else if hungStat == 5 then
+		client:ChatNotify("You feel starved.")
+	else if hungStat == 0 then
+		client:ChatNotify("Your vision begins to fade to blackness from starvation.")
+	end
+end
+
+function notifyExactThirst(client)
+	thirStat = client:GetCharacter():GetData("thirst", PLUGIN.defaultMax)
+
+	if thirStat == 100 then
+		client:ChatNotify("You feel quenched.")
+	else if thirStat == 75 then
+		client:ChatNotify("You feel a little parched.")
+	else if thirStat == 50 then
+		client:ChatNotify("You feel thirsty.")
+	else if thirStat == 25 then
+		client:ChatNotify("You feel very thirsy.")
+	else if thirStat == 5 then
+		client:ChatNotify("You feel dehydrated.")
+	else if thirStat == 0 then
+		client:ChatNotify("Your vision begins to fade to blackness from dehydration.")
+	end
 end
