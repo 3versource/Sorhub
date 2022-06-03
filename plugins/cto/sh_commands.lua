@@ -118,7 +118,7 @@ do
 	end
 
 	function COMMAND:OnCheckAccess(client)
-		return client:IsCombine() and (Schema:IsCombineRank(client:Name(), "SCN") or Schema:IsCombineRank(client:Name(), "OfC") or Schema:IsCombineRank(client:Name(), "EpU") or Schema:IsCombineRank(client:Name(), "DvL") or Schema:IsCombineRank(client:Name(), "SeC") or client:Team() == FACTION_OTA)
+		return client:IsCombine() and (Schema:IsCombineRank(client:Name(), "SCN") or Schema:IsCombineRank(client:Name(), "OfC") or Schema:IsCombineRank(client:Name(), "EpU") or Schema:IsCombineRank(client:Name(), "DvL") or Schema:IsCombineRank(client:Name(), "SeC") or client:Team() == FACTION_OTA or client:IsCombine() and (Schema:IsCombineRank(client:Name(), "WATCHER")) or client:IsCombine() and (Schema:IsCombineRank(client:Name(), "SqL")))
 	end
 
 	ix.command.Add("SetSocioStatus", COMMAND)

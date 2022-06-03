@@ -29,7 +29,7 @@ function ITEM:OnEquipped()
 	char:SetData("originalclass", char:GetClass())
 
 	if self:GetData("newname", nil) == nil then
-		self:SetData("newname", tostring("MPF."..self.unitName.."."..math.random(10000, 99999)))
+		self:SetData("newname", tostring("MPF-"..self.unitName.."."..math.random(10000, 99999)))
 	end
 	
 	-- 3 is MPF
