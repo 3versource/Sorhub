@@ -1,7 +1,7 @@
 
 ITEM.name = "Tan Shirt"
 ITEM.description = "A tan shirt."
-ITEM.category = "Shirt"
+ITEM.category = "Clothes - Torso"
 ITEM.outfitCategory = "torso"
 ITEM.model = "models/props_junk/cardboard_box004a.mdl"
 

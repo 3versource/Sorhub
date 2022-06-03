@@ -1,4 +1,4 @@
-ITEM.name = "Can of Sparkling Water"
+ITEM.name = "UU Sparkling Water Can"
 ITEM.description = "A UU can of sparkling water."
 ITEM.model = "models/props_lunk/popcan01a.mdl"
 ITEM.category = "Drink"

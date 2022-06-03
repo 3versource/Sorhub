@@ -1,7 +1,7 @@
 
 ITEM.name = "Boonie"
 ITEM.description = "A boonie hat."
-ITEM.category = "Hat"
+ITEM.category = "Clothes - Hat"
 ITEM.outfitCategory = "head"
 ITEM.model = "models/props_lab/box01a.mdl"
 

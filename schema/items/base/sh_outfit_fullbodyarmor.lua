@@ -17,17 +17,12 @@ if (CLIENT) then
 end
 
 function ITEM:OnEquipped()
-	--self:SetData("oldname", self.player:GetCharacter():GetName())
-	--self.player:GetCharacter():SetName("MPF."..prefix.."."..self.player:GetData("id", "00000")) -- set their new name
-
 	self.player:SetArmor(self:GetData("armor", self.maxArmor))
 end
 
 function ITEM:OnUnequipped()
 	self:SetData("armor", math.Clamp(self.player:Armor(), 0, self.maxArmor))
 	self.player:SetArmor(0)
-
-	--self.player:GetCharacter():SetName(self.GetData("oldname", "noname")) -- set their old name
 end
 
 function ITEM:Repair(amount)

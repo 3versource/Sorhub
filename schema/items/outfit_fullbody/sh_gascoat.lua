@@ -1,9 +1,8 @@
 ITEM.name = "Gas Trenchcoat"
 ITEM.description = "A large green trenchcoat with a gas mask for hazardous environments."
-ITEM.category = "Kevlar"
+ITEM.category = "Clothes - Full Body"
 ITEM.flag = "V"
 ITEM.model = "models/props_junk/cardboard_box003b.mdl"
-ITEM.category = "Rebel Uniform"
 ITEM.outfitCategory = "fullbody"
 
 ITEM.replacements = {

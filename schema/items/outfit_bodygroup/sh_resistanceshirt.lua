@@ -1,7 +1,7 @@
 
 ITEM.name = "Resistance Shirt"
 ITEM.description = "A black combat shirt with a lambda armband."
-ITEM.category = "Shirt"
+ITEM.category = "Clothes - Torso"
 ITEM.outfitCategory = "torso"
 ITEM.model = "models/props_junk/cardboard_box004a.mdl"
 
