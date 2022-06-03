@@ -189,6 +189,10 @@ end
 function Schema:PlayerHurt(client, attacker, health, damage)
 	if (health <= 0) then
 		return
+	elseif health <= 15 and ((client.ragdollCooldown or 0) < CurTime()) then
+		client:SetRagdolled(true, 30)
+		client:ChatNotify("Your vision darkens and you collapse from blood loss.")
+		client.ragdollCooldown = CurTime() + 40
 	end
 
 	if (client:IsCombine() and (client.ixTraumaCooldown or 0) < CurTime()) then
@@ -205,6 +209,15 @@ function Schema:PlayerHurt(client, attacker, health, damage)
 		end
 
 		client.ixTraumaCooldown = CurTime() + 15
+
+		if !client:GetNetVar("IsBiosignalGone") then
+			local location = client:GetArea() != "" and client:GetArea() or "unknown location"
+			local digits = string.match(client:Name(), "%d%d%d%d?%d?") or 0
+
+			-- Alert all other units.
+			Schema:AddCombineDisplayMessage("Downloading trauma packet...", Color(255, 255, 255, 255))
+			Schema:AddCombineDisplayMessage("ALERT! Vital signs dropping for protection team unit " .. digits .. " at " .. location .. "...", Color(255, 0, 0, 255))
+		end
 	end
 end
 

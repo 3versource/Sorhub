@@ -7,7 +7,7 @@ CLASS.canRemoveWaypoints = true
 CLASS.canUpdateWaypoints = true
 
 function CLASS:CanSwitchTo(client)
-	return (Schema:IsCombineRank(client:Name(), "WATCH") or Schema:IsCombineRank(client:Name(), "OfC") or Schema:IsCombineRank(client:Name(), "SqL"))
+	return (Schema:IsCombineRank(client:Name(), "WATCHER") or Schema:IsCombineRank(client:Name(), "OfC") or Schema:IsCombineRank(client:Name(), "SqL"))
 end
 
 CLASS_EMP = CLASS.index
