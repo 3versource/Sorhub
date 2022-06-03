@@ -37,8 +37,13 @@ ix.command.Add("WaypointAdd", {
 	arguments = {ix.type.string, ix.type.number, bit.bor(ix.type.string, ix.type.optional)},
 	OnRun = function(self, client, text, time, color)
 		local faction = ix.faction.Get(client:Team())
+		local class = ix.class.Get(client:GetCharacter():GetClass())
 
-		if (!faction or !faction.canAddWaypoints) then
+		print(class)
+		print(faction)
+		print(class.canAddWaypoints)
+
+		if (!faction or (!faction.canAddWaypoints and !class.canAddWaypoints)) then
 			return "@cannotAddWaypoints"
 		end
 
@@ -75,8 +80,9 @@ ix.command.Add("WaypointAddND", {
 	arguments = {ix.type.string, ix.type.number, bit.bor(ix.type.string, ix.type.optional)},
 	OnRun = function(self, client, text, time, color)
 		local faction = ix.faction.Get(client:Team())
+		local class = ix.class.Get(client:GetCharacter():GetClass())
 
-		if (!faction or !faction.canAddWaypoints) then
+		if (!faction or (!faction.canAddWaypoints and !class.canAddWaypoints)) then
 			return "@cannotAddWaypoints"
 		end
 
@@ -120,7 +126,8 @@ ix.command.Add("WaypointUpdate", {
 		local minDistanceSqr = nil
 
 		local faction = ix.faction.Get(client:Team())
-		local onlyOwnWaypoints = !(faction and faction.canUpdateWaypoints)
+		local class = ix.class.Get(client:GetCharacter():GetClass())
+		local onlyOwnWaypoints = !(faction and faction.canUpdateWaypoints and class.canUpdateWaypoints)
 
 		for k, point in pairs(PLUGIN.waypoints) do
 			if (onlyOwnWaypoints and point.addedBy != client) then
@@ -188,7 +195,8 @@ ix.command.Add("WaypointRemove", {
 		local minDistanceSqr = nil
 
 		local faction = ix.faction.Get(client:Team())
-		local onlyOwnWaypoints = !(faction and faction.canRemoveWaypoints)
+		local class = ix.class.Get(client:GetCharacter():GetClass())
+		local onlyOwnWaypoints = !(faction and faction.canRemoveWaypoints and class.canRemoveWaypoints)
 
 		for k, point in pairs(PLUGIN.waypoints) do
 			if (onlyOwnWaypoints and point.addedBy != client) then
@@ -223,8 +231,9 @@ ix.command.Add("WaypointRemoveAll", {
 	description = "@cmdWaypointRemoveAll",
 	OnRun = function(self, client)
 		local faction = ix.faction.Get(client:Team())
+		local class = ix.class.Get(client:GetCharacter():GetClass())
 
-		if (!faction or !faction.canRemoveWaypoints) then
+		if (!faction or (!faction.canRemoveWaypoints and !class.canRemoveWaypoints)) then
 			return "@cannotRemoveWaypoints"
 		end
 

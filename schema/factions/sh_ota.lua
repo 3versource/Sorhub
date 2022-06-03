@@ -6,6 +6,7 @@ FACTION.pay = 40
 FACTION.models = {"models/jq/hlvr/characters/combine/grunt/combine_grunt_hlvr_npc.mdl"}
 FACTION.isDefault = false
 FACTION.isGloballyRecognized = true
+FACTION.canSeeWaypoints = true
 FACTION.runSounds = {[0] = "NPC_CombineS.RunFootstepLeft", [1] = "NPC_CombineS.RunFootstepRight"}
 
 function FACTION:OnCharacterCreated(client, character)

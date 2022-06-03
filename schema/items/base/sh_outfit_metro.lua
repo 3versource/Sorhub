@@ -23,13 +23,18 @@ function ITEM:OnEquipped()
 	-- self refers to the item
 
 	char:SetData("originalname", char:GetName())
-	char:SetData("originalfaction", ply:Team())
+	char:SetData("originalfaction", char:GetFaction())
+	char:SetData("originalteam", ply:Team())
+	char:SetData("originalclass", char:GetClass())
+
 	if self:GetData("newname", nil) == nil then
 		self:SetData("newname", tostring("MPF."..self.unitName.."."..math.random(10000, 99999)))
 	end
 	
 	-- 3 is MPF
+	char:SetFaction(3)
 	ply:SetTeam(3)
+	char:JoinClass(CLASS_MPR)
 
 	char:SetName(self:GetData("newname"))
 
@@ -47,8 +52,10 @@ function ITEM:OnUnequipped()
 		self:SetData("newname", char:GetName())
 	end
 
-	ply:SetTeam(char:GetData("originalfaction"))
 	char:SetName(char:GetData("originalname"))
+	char:SetFaction(char:GetData("originalfaction"))
+	ply:SetTeam(char:GetData("originalteam"))
+	char:JoinClass(char:GetData("originalclass"))
 end
 
 function ITEM:Repair(amount)

@@ -5,6 +5,7 @@ FACTION.pay = 20
 FACTION.models = {"models/police.mdl"}
 FACTION.isDefault = false
 FACTION.isGloballyRecognized = true
+FACTION.canSeeWaypoints = true
 FACTION.runSounds = {[0] = "NPC_MetroPolice.RunFootstepLeft", [1] = "NPC_MetroPolice.RunFootstepRight"}
 
 local id
