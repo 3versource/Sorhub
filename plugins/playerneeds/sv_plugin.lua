@@ -33,7 +33,7 @@ function playerMeta:setThirst(amount)
 	
 	if !char then return end
 
-	char:SetData("thirst", math.Clamp(amount, 0, PLUGIN.de faultMax))
+	char:SetData("thirst", math.Clamp(amount, 0, PLUGIN.defaultMax))
 	notifyThirst(self)
 end
 
@@ -92,15 +92,15 @@ function notifyHunger(client)
 
 	if hungStat > 90 then
 		client:ChatNotify("You feel full.")
-	else if hungStat > 80 then
+	elseif hungStat > 80 then
 		client:ChatNotify("You feel a little peckish.")
-	else if hungStat > 60 then
+	elseif hungStat > 60 then
 		client:ChatNotify("You feel hungry.")
-	else if hungStat > 30 then
+	elseif hungStat > 30 then
 		client:ChatNotify("You feel very hungry.")
-	else if hungStat > 0 then
+	elseif hungStat > 0 then
 		client:ChatNotify("You feel starved.")
-	else if hungStat == 0 then
+	elseif hungStat == 0 then
 		client:ChatNotify("Your vision begins to fade to blackness from starvation.")
 	end
 end
@@ -110,15 +110,15 @@ function notifyThirst(client)
 
 	if thirStat > 90 then
 		client:ChatNotify("You feel quenched.")
-	else if thirStat > 80 then
+	elseif thirStat > 80 then
 		client:ChatNotify("You feel a little parched.")
-	else if thirStat > 60 then
+	elseif thirStat > 60 then
 		client:ChatNotify("You feel thirsty.")
-	else if thirStat > 30 then
+	elseif thirStat > 30 then
 		client:ChatNotify("You feel very thirsy.")
-	else if thirStat > 0 then
+	elseif thirStat > 0 then
 		client:ChatNotify("You feel dehydrated.")
-	else if thirStat == 0 then
+	elseif thirStat == 0 then
 		client:ChatNotify("Your vision begins to fade to blackness from dehydration.")
 	end
 end
@@ -129,15 +129,15 @@ function notifyExactHunger(client)
 
 	if hungStat == 100 then
 		client:ChatNotify("You feel full.")
-	else if hungStat == 75 then
+	elseif hungStat == 75 then
 		client:ChatNotify("You feel a little peckish.")
-	else if hungStat == 50 then
+	elseif hungStat == 50 then
 		client:ChatNotify("You feel hungry.")
-	else if hungStat == 25 then
+	elseif hungStat == 25 then
 		client:ChatNotify("You feel very hungry.")
-	else if hungStat == 5 then
+	elseif hungStat == 5 then
 		client:ChatNotify("You feel starved.")
-	else if hungStat == 0 then
+	elseif hungStat == 0 then
 		client:ChatNotify("Your vision begins to fade to blackness from starvation.")
 	end
 end
@@ -147,15 +147,15 @@ function notifyExactThirst(client)
 
 	if thirStat == 100 then
 		client:ChatNotify("You feel quenched.")
-	else if thirStat == 75 then
+	elseif thirStat == 75 then
 		client:ChatNotify("You feel a little parched.")
-	else if thirStat == 50 then
+	elseif thirStat == 50 then
 		client:ChatNotify("You feel thirsty.")
-	else if thirStat == 25 then
+	elseif thirStat == 25 then
 		client:ChatNotify("You feel very thirsy.")
-	else if thirStat == 5 then
+	elseif thirStat == 5 then
 		client:ChatNotify("You feel dehydrated.")
-	else if thirStat == 0 then
+	elseif thirStat == 0 then
 		client:ChatNotify("Your vision begins to fade to blackness from dehydration.")
 	end
 end
