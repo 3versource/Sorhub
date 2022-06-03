@@ -14,7 +14,7 @@ ITEM.functions.Inject = {
 		ply:EmitSound(item.sound)
 		ply:SetHealth(math.min(ply:Health() - 10, ply:GetMaxHealth()))
 		if ply:Health() <= 0 then
-			ply:TakeDamage(100)
+			ply:TakeDamage(999)
 		end
 
 		char:AddBoost(574, "stm", 40)
