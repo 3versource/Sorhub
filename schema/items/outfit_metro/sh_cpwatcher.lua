@@ -1,14 +1,13 @@
 
-ITEM.name = "Metropolice HELIX Uniform"
-ITEM.description = "A uniform for HELIX units. It has distinctive green eyes with red cross insignias."
+ITEM.name = "Metropolice WATCHER Uniform"
+ITEM.description = "A uniform for ECHO units. It has a long coat and is equipped with radios."
 ITEM.flag = "V"
 ITEM.maxArmor = 50
 ITEM.model = "models/props_junk/cardboard_box003b.mdl"
 ITEM.category = "Metropolice - Full Body"
 ITEM.outfitCategory = "fullbody"
-ITEM.unitName = "HELIX"
-ITEM.className = CLASS_HLX
-
+ITEM.unitName = "WATCHER"
+ITEM.className = CLASS_ECH
 ITEM.replacements = {
     {"models/ug/new/citizens/female_01.mdl", "models/police.mdl"},
     {"models/ug/new/citizens/female_02.mdl", "models/police.mdl"},
@@ -48,4 +47,9 @@ ITEM.replacements = {
     {"models/ug/new/citizens/male_12.mdl", "models/police.mdl"},
     {"models/ug/new/citizens/male_13.mdl", "models/police.mdl"}
 }
-ITEM.newSkin = 1
+ITEM.newSkin = 2
+
+ITEM.bodyGroups = {
+    ["mask"] = 4,
+	["cloak/summka"] = 1
+}
