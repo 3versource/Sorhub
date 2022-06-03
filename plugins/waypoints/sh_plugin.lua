@@ -39,10 +39,6 @@ ix.command.Add("WaypointAdd", {
 		local faction = ix.faction.Get(client:Team())
 		local class = ix.class.Get(client:GetCharacter():GetClass())
 
-		print(class)
-		print(faction)
-		print(class.canAddWaypoints)
-
 		if (!faction or (!faction.canAddWaypoints and !class.canAddWaypoints)) then
 			return "@cannotAddWaypoints"
 		end

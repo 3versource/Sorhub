@@ -7,6 +7,7 @@ ITEM.width = 2
 ITEM.height = 2
 ITEM.maxArmor = 0
 ITEM.unitName = "unitName"
+ITEM.className = CLASS_CITIZEN
 
 if (CLIENT) then
 	function ITEM:PopulateTooltip(tooltip)
@@ -32,11 +33,10 @@ function ITEM:OnEquipped()
 	end
 	
 	-- 3 is MPF
+	char:SetName(self:GetData("newname"))
 	char:SetFaction(3)
 	ply:SetTeam(3)
-	char:JoinClass(CLASS_MPR)
-
-	char:SetName(self:GetData("newname"))
+	char:JoinClass(self.className)
 
 	ply:SetArmor(self:GetData("armor", self.maxArmor))
 end
