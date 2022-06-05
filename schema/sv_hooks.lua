@@ -188,6 +188,7 @@ end
 
 function Schema:PlayerHurt(client, attacker, health, damage)
 	if (health <= 0) then
+		client.ragdollCooldown = 0
 		return
 	elseif health <= 15 and ((client.ragdollCooldown or 0) < CurTime()) then
 		client:SetRagdolled(true, 30)
@@ -208,7 +209,7 @@ function Schema:PlayerHurt(client, attacker, health, damage)
 			client:AddCombineDisplayMessage("@cDroppingVitals", Color(255, 0, 0, 255))
 		end
 
-		client.ixTraumaCooldown = CurTime() + 15
+		client.ixTraumaCooldown = CurTime() + 10
 
 		if !client:GetNetVar("IsBiosignalGone") then
 			local location = client:GetArea() != "" and client:GetArea() or "unknown location"
