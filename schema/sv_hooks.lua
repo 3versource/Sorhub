@@ -217,7 +217,7 @@ function Schema:PlayerHurt(client, attacker, health, damage)
 
 			-- Alert all other units.
 			Schema:AddCombineDisplayMessage("Downloading trauma packet...", Color(255, 255, 255, 255))
-			Schema:AddCombineDisplayMessage("ALERT! Vital signs dropping for protection team unit " .. digits .. " at " .. location .. "...", Color(255, 0, 0, 255))
+			Schema:AddCombineDisplayMessage("ALERT! Vital signs dropping for protection team unit " .. digits .. " at " .. location .. "...", Color(255, 255, 0, 255))
 		end
 	end
 end
