@@ -193,7 +193,7 @@ function Schema:PlayerHurt(client, attacker, health, damage)
 	elseif health <= 15 and ((client.ragdollCooldown or 0) < CurTime()) then
 		client:SetRagdolled(true, 30)
 		client:ChatNotify("Your vision darkens and you collapse from blood loss.")
-		client.ragdollCooldown = CurTime() + 40
+		client.ragdollCooldown = CurTime() + 60
 	end
 
 	if (client:IsCombine() and (client.ixTraumaCooldown or 0) < CurTime()) then
