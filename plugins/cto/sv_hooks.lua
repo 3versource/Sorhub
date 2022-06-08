@@ -131,7 +131,7 @@ function PLUGIN:OnCharacterFallover(client, entity, bFallenOver)
 			local digits = string.match(client:Name(), "%d%d%d%d?%d?") or 0
 
 			Schema:AddCombineDisplayMessage("Downloading trauma packet...", Color(255, 255, 255, 255))
-			Schema:AddCombineDisplayMessage("WARNING! Protection team unit " .. digits .. " lost consciousness at " .. location .. "...", Color(255, 0, 0, 255))
+			Schema:AddCombineDisplayMessage("ALERT! Protection team unit " .. digits .. " lost consciousness at " .. location .. "...", Color(255, 255, 0, 255))
 		end
 	end
 end
