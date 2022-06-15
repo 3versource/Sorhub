@@ -1,4 +1,4 @@
-ITEM.name = "Box of Cheerios"
+ITEM.name = "Cheerios"
 ITEM.description = "A box of cheerios."
 ITEM.model = "models/foodnhouseholditems/cheerios.mdl"
 ITEM.category = "Food"

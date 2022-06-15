@@ -1,4 +1,4 @@
-ITEM.name = "Grapes"
+ITEM.name = "Green Grapes"
 ITEM.description = "A bundle of White grapes."
 ITEM.model = "models/foodnhouseholditems/grapes3.mdl"
 ITEM.category = "Food"

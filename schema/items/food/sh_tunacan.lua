@@ -1,4 +1,4 @@
-ITEM.name = "Tuna Can"
+ITEM.name = "Tuna"
 ITEM.description = "A can of tuna."
 ITEM.model = "models/ug_imports/stalker/food/tourists_breakfast.mdl"
 ITEM.category = "Food"

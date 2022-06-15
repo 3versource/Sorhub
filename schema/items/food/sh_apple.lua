@@ -1,5 +1,5 @@
 ITEM.name = "Apple"
-ITEM.description = "An apple."
+ITEM.description = "A red apple."
 ITEM.model = "models/foodnhouseholditems/apple.mdl"
 ITEM.category = "Food"
 

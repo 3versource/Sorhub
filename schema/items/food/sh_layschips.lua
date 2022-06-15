@@ -1,4 +1,4 @@
-ITEM.name = "Lays Chips"
+ITEM.name = "Lays"
 ITEM.description = "A bag of Lays potato chips."
 ITEM.model = "models/foodnhouseholditems/chipslays.mdl"
 ITEM.category = "Food"

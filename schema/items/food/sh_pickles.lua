@@ -1,4 +1,4 @@
-ITEM.name = "Pickle Jar"
+ITEM.name = "Pickles"
 ITEM.description = "A jar of pickles."
 ITEM.model = "models/foodnhouseholditems/picklejar.mdl"
 ITEM.category = "Food"

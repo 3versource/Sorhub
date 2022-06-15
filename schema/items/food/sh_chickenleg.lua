@@ -1,5 +1,5 @@
 ITEM.name = "Chicken Leg"
-ITEM.description = "A leg of chicken. Its quite greasy."
+ITEM.description = "A leg of chicken. Quite greasy."
 ITEM.model = "models/foodnhouseholditems/mcdfriedchickenleg.mdl"
 ITEM.category = "Food"
 

@@ -1,5 +1,5 @@
-ITEM.name = "Ration Block"
-ITEM.description = "A citizen ration block bag."
+ITEM.name = "Citizen Ration"
+ITEM.description = "A ration block wrapped by a citizen label."
 ITEM.model = "models/mres/consumables/tag_mre.mdl"
 ITEM.category = "Food"
 

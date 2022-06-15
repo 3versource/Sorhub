@@ -1,4 +1,4 @@
-ITEM.name = "Over-Easy Egg"
+ITEM.name = "Egg"
 ITEM.description = "An over-easy done egg."
 ITEM.model = "models/foodnhouseholditems/egg.mdl"
 ITEM.category = "Food"

@@ -1,4 +1,4 @@
-ITEM.name = "Cylinder of Cookies"
+ITEM.name = "Cookies"
 ITEM.description = "A red cylinder of cookies."
 ITEM.model = "models/foodnhouseholditems/cookies.mdl"
 ITEM.category = "Food"

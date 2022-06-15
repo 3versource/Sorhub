@@ -1,4 +1,4 @@
-ITEM.name = "Doritos Chips"
+ITEM.name = "Doritos"
 ITEM.description = "A bag of Dorito corn chips."
 ITEM.model = "models/foodnhouseholditems/chipsdoritos.mdl"
 ITEM.category = "Food"

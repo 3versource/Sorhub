@@ -1,4 +1,4 @@
-ITEM.name = "Slice of Bacon"
+ITEM.name = "Bacon"
 ITEM.description = "A slice of bacon."
 ITEM.model = "models/foodnhouseholditems/baconcooked.mdl"
 ITEM.category = "Food"

@@ -1,5 +1,5 @@
 ITEM.name = "Granny Smith Apple"
-ITEM.description = "A sour Granny Smith apple.."
+ITEM.description = "A sour Granny Smith apple."
 ITEM.model = "models/foodnhouseholditems/apple1.mdl"
 ITEM.category = "Food"
 
