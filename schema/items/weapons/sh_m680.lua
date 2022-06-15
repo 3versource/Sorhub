@@ -1,4 +1,4 @@
-ITEM.name = "M680 Trench"
+ITEM.name = "M680"
 ITEM.description = "A slow yet powerful trench shotgun that takes four shells."
 ITEM.model = "models/worldmodels/w_mw2019_m680wood_wm.mdl"
 ITEM.class = "tfa_l4d2mw_m680wood"
