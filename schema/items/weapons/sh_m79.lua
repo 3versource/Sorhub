@@ -1,0 +1,10 @@
+ITEM.name = "M79"
+ITEM.description = "An American grenade launcher utilizing 40x46 grenade rounds."
+ITEM.model = "models/worldmodels/w_mw2019_m79_wm.mdl"
+ITEM.class = "tfa_l4d2mw_m79"
+ITEM.weaponCategory = "primary"
+ITEM.classes = {CLASS_EOW}
+ITEM.flag = "g"
+ITEM.width = 3
+ITEM.height = 1
+ITEM.usesAmmo = "40x46grenadelauncherammo"
