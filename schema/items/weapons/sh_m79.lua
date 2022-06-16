@@ -8,3 +8,8 @@ ITEM.flag = "g"
 ITEM.width = 3
 ITEM.height = 1
 ITEM.usesAmmo = "40x46grenadelauncherammo"
+ITEM.iconCam = {
+	ang	= Angle(-0.23955784738064, 270.44906616211, 0),
+	fov	= 6,
+	pos	= Vector(-12, 360, 0)
+}
