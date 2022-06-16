@@ -1,7 +1,7 @@
 ITEM.name = "Bottled Water"
 ITEM.description = "A plastic bottle of purified water."
-ITEM.model = "models/props_cunk/popcan01a.mdl"
+ITEM.model = "models/ug_imports/drugmod/water_bottle.mdl"
 ITEM.category = "Drink"
 
-ITEM.restThirst = 20
+ITEM.restThirst = 60
 ITEM.sound = "npc/barnacle/barnacle_gulp2.wav"

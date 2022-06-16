@@ -4,5 +4,5 @@ ITEM.model = "models/props_lunk/popcan01a.mdl"
 ITEM.category = "Drink"
 ITEM.skin = 2
 
-ITEM.restThirst = 20
-ITEM.sound = "npc/barnacle/barnacle_gulp2.wav"
+ITEM.restThirst = 25
+ITEM.sound = "eating_and_drinking/can.wav"

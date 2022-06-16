@@ -1,6 +1,6 @@
-ITEM.name = "Lays"
-ITEM.description = "A bag of Lays potato chips."
-ITEM.model = "models/foodnhouseholditems/chipslays.mdl"
+ITEM.name = "Cheezits"
+ITEM.description = "A bag of Cheezits."
+ITEM.model = "models/foodnhouseholditems/chipscheezit.mdl"
 ITEM.category = "Food"
 
 ITEM.restFood = 20

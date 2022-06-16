@@ -5,3 +5,9 @@ ITEM.category = "Food"
 
 ITEM.restFood = 10
 ITEM.sound = "eating_and_drinking/eating.wav"
+
+ITEM.iconCam = {
+	pos = Vector(509.64, 427.61, 310.24),
+	ang = Angle(25, 220, 0),
+	fov = 1.07
+}
