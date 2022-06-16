@@ -43,6 +43,7 @@ ix.ammo.Register("airboatgun")
 ix.ammo.Register("striderminigun")
 ix.ammo.Register("striderminigundirect")
 ix.ammo.Register("helicoptergun")
+ix.ammo.Register("grenadehl1")
 
 -- Called right before the character has its information save.
 function PLUGIN:CharacterPreSave(character)
