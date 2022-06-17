@@ -5,11 +5,11 @@ ITEM.class = "tfa_l4d2mw_uzi"
 ITEM.weaponCategory = "primary"
 ITEM.classes = {CLASS_EMP, CLASS_EOW}
 ITEM.flag = "g"
-ITEM.width = 3
+ITEM.width = 2
 ITEM.height = 2
 ITEM.usesAmmo = "uziammo"
 ITEM.iconCam = {
 	ang	= Angle(-0.23955784738064, 270.44906616211, 0),
-	fov	= 6,
-	pos	= Vector(-12, 360, 0)
+	fov	= 4,
+	pos	= Vector(-2, 360, 0)
 }
