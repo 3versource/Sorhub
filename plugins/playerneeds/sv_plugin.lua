@@ -115,7 +115,7 @@ function notifyThirst(client)
 	elseif thirStat > 60 then
 		client:ChatNotify("You feel thirsty.")
 	elseif thirStat > 30 then
-		client:ChatNotify("You feel very thirsy.")
+		client:ChatNotify("You feel very thirsty.")
 	elseif thirStat > 0 then
 		client:ChatNotify("You feel dehydrated.")
 	elseif thirStat == 0 then
