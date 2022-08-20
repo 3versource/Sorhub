@@ -6,7 +6,7 @@ ITEM.recovery = 1
 ITEM.sound = "items/medshot4.wav"
 
 ITEM.functions.Apply = {
-	icon = "icon16/heart.png",
+	icon = "icon16/pill.png",
 	OnRun = function(item)
 		local ply = item.player
 		local char = ply:GetCharacter()
@@ -17,5 +17,13 @@ ITEM.functions.Apply = {
 
 		ply:SetHealth(math.min(ply:Health() + item.recovery + ((char:GetAttribute("medefficiency") or  0) * .25), 100, ply:GetMaxHealth()))
 		ply:EmitSound(item.sound)
+	end
+}
+
+ITEM.functions.ApplyToTarget = {
+	name = "Apply To",
+	icon = "icon16/pill_go.png",
+	OnRun = function(item)
+
 	end
 }
