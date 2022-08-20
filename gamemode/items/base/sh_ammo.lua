@@ -36,7 +36,7 @@ ITEM.functions.use = {
 		item.player:EmitSound(item.useSound, 110)
 
 		return true
-	end,
+	end
 }
 
 -- Called after the item is registered into the item tables.
