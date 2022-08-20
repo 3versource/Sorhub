@@ -5,13 +5,14 @@ ITEM.category = "Medical"
 ITEM.recovery = 1
 ITEM.sound = "items/medshot4.wav"
 
-ITEM.functions.Apply = {
+ITEM.functions.apply = {
+	name = "Apply",
 	icon = "icon16/pill.png",
 	OnRun = function(item)
 		local ply = item.player
 		local char = ply:GetCharacter()
 
-		if ply:Health() < 50 then
+		if ply:Health() < 25 then
 			char:UpdateAttrib("medefficiency", 1)
 		end
 
@@ -20,10 +21,31 @@ ITEM.functions.Apply = {
 	end
 }
 
-ITEM.functions.ApplyToTarget = {
+ITEM.functions.applyToTarget = {
 	name = "Apply To",
 	icon = "icon16/pill_go.png",
 	OnRun = function(item)
+		local ply = item.player
+		local char = ply:GetCharacter()
 
+		local data = {}
+			data.start = ply:GetShootPos()
+			data.endpos = data.start + ply:GetAimVector() * 96
+			data.filter = ply
+
+		local target = util.TraceLine(data).Entity
+
+		if IsValid(target) and target:IsPlayer() and target:GetCharacter() then
+
+			if target:Health() < 25 then
+				char:UpdateAttrib("medefficiency", 1)
+			end
+
+			target:SetHealth(math.min(target:Health() + item.recovery + ((char:GetAttribute("medefficiency") or  0) * .25), 100, target:GetMaxHealth()))
+			target:EmitSound(item.sound)
+
+			return true
+		end
+		return false
 	end
 }
