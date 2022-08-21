@@ -165,9 +165,9 @@ function ITEM:Equip(client, bNoSelect, bNoSound)
 				return false
 			else
 				if (itemTable.isWeapon and client.carryWeapons[self.weaponCategory] and itemTable:GetData("equip")) then
-					client:NotifyLocalized("weaponSlotFilled", self.weaponCategory)
-
-					return false
+					--client:NotifyLocalized("weaponSlotFilled", self.weaponCategory)
+					v:Unequip(client, bNoSelect, bNoSound)
+					-- return false
 				end
 			end
 		end
