@@ -249,8 +249,9 @@ ITEM.functions.Equip = {
 				local itemTable = ix.item.instances[v.id]
 
 				if (itemTable.pacData and itemTable:GetData("equip")) then
-					client:NotifyLocalized("Unequip all clothing before equipping this.")
-					return false
+					-- client:NotifyLocalized("Unequip all clothing before equipping this.")
+					-- unequip all clothes that are currently equipped
+					itemTable:SetData("equip", false)
 				end
 			end
 		end
