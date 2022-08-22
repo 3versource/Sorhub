@@ -94,9 +94,8 @@ ITEM.functions.Equip = {
 				local itemTable = ix.item.instances[v.id]
 
 				if((itemTable.pacData and v.outfitCategory == item.outfitCategory and itemTable:GetData("equip")) or (v.outfitCategory == "fullbody" and itemTable:GetData("equip"))) then
-					-- item.player:NotifyLocalized(item.equippedNotify or "outfitAlreadyEquipped")
-					-- unequip all clothes that are currently equipped
-					itemTable:SetData("equip", false)
+					item.player:NotifyLocalized("Unequip all other vests before equipping another vest.")
+					return false
 				end
 			end
 		end

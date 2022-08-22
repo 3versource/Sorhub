@@ -5,6 +5,7 @@ ITEM.model = "models/Gibs/HGIBS.mdl"
 ITEM.width = 1
 ITEM.height = 1
 ITEM.outfitCategory = "model"
+ITEM.isClothes = true
 ITEM.pacData = {}
 
 if (CLIENT) then
@@ -92,11 +93,14 @@ ITEM.functions.Equip = {
 			if (v.id ~= item.id) then
 				local itemTable = ix.item.instances[v.id]
 
-				if((itemTable.pacData and v.outfitCategory == item.outfitCategory and itemTable:GetData("equip")) or (v.outfitCategory == "fullbody" and itemTable:GetData("equip"))) then
+				if((itemTable.pacData and v.outfitCategory == item.outfitCategory and itemTable:GetData("equip"))) then
 					-- item.player:NotifyLocalized(item.equippedNotify or "outfitAlreadyEquipped")
 					-- unequip all clothes that are currently equipped
 					itemTable:SetData("equip", false)
 				end
+				elseif v.outfitCategory == "fullbody" and itemTable:GetData("equip") then
+					item.player:NotifyLocalized("Unequip the full-body outfit before equipping this.")
+					return false
 			end
 		end
 

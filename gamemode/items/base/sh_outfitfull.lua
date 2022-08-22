@@ -6,6 +6,7 @@ ITEM.width = 1
 ITEM.height = 1
 ITEM.outfitCategory = "model"
 ITEM.unitName = "unitName"
+ITEM.isClothes = true
 ITEM.pacData = {}
 
 -- Inventory drawing
@@ -248,10 +249,9 @@ ITEM.functions.Equip = {
 			if (v.id != item.id) then
 				local itemTable = ix.item.instances[v.id]
 
-				if (itemTable.pacData and itemTable:GetData("equip")) then
-					-- client:NotifyLocalized("Unequip all clothing before equipping this.")
-					-- unequip all clothes that are currently equipped
-					itemTable:SetData("equip", false)
+				if (v.isClothes and itemTable.pacData and itemTable:GetData("equip")) or (v.isBag and itemTable:GetData("equip")) then
+					client:NotifyLocalized("Unequip all clothing, bags, and armor before equipping this.")
+					return false
 				end
 			end
 		end
