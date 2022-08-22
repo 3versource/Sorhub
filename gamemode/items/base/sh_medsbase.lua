@@ -46,6 +46,11 @@ ITEM.functions.applyToTarget = {
 
 			return true
 		end
+		ply:NotifyLocalized("Invalid target.")
 		return false
+	end,
+	OnCanRun = function(item)
+		-- only runs when inside the player's inventory
+		return !IsValid(item.entity) and IsValid(ply) and item.player:GetCharacter():GetInventory():GetItemByID(item.id)
 	end
 }
