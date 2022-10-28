@@ -113,12 +113,13 @@ function ITEM:OnEquipped(justChange, initialPly)
 				local itemTable = ix.item.instances[v.id]
 
 				for i = 1, self.playermodelBodygroupChanges, 1 do
-					-- if the selected item is of the same category as the self item and is equipped, then
-					if v.outfitCategories[i] == self.outfitCategories[i] and v:GetData("equip") then
-						-- will unequip the selected item if ANY of the categories are the same to prevent conflictions
-
-						-- unequip the conflicting item
-						v:OnUnequipped(self.player)
+					for a = 1, v.playermodelBodygroupChanges, 1 do
+						-- if the selected item is of the same category as the self item and is equipped, then
+						if v.outfitCategories[a] == self.outfitCategories[i] and v:GetData("equip") then
+							-- will unequip the selected item if ANY of the categories are the same to prevent conflictions
+							-- unequip the conflicting item
+							v:OnUnequipped(self.player)
+						end
 					end
 				end
 			end
@@ -160,10 +161,12 @@ function ITEM:OnUnequipped(player)
 	local ply = self.player or player
 
 	for i = 1, (self.playermodelBodygroupChanges*2), 2 do
-		ply:SetBodygroup(self:GetData("previousBodygroupsAndVariants")[i], self:GetData("previousBodygroupsAndVariants")[i+1])
-		self:SetData("previousBodygroupsAndVariants", NULL)
+		if i ~= 0 then
+			ply:SetBodygroup(self:GetData("previousBodygroupsAndVariants")[i], self:GetData("previousBodygroupsAndVariants")[i+1])
+		end
 	end
-
+	
+	self:SetData("previousBodygroupsAndVariants", NULL)
 	self:SetData("equip", false)
 end
 
