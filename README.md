@@ -1,4 +1,4 @@
 # Sorhub
-All schemas each server will use will be stored on here.
 <br>
-Server content can be downloaded inside the servers themselves.
+This is a fork of Helix, a Garry's Mod schema.
+https://github.com/NebulousCloud/helix
