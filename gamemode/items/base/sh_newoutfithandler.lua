@@ -12,7 +12,7 @@ ITEM.outfitCategories = {}
 	torso - 1
 	legs - 2
 	hands - 3
-	handgear - 4
+	headgear - 4
 	bag - 5
 	glasses - 6
 	satchel - 7
@@ -33,11 +33,17 @@ ITEM.playermodelBodygroupChanges = 0
 -- the amount of bodygroup changes an item will have (default = 0)
 
 -- ITEM.playermodel = NULL
--- ITEM.playermodelSkin = NULL -- the new skin the player will have
 ITEM.isClothingItem = true
 ITEM.isBagItem = false
-ITEM.isMPFUniform = false
 ITEM.isArmor = false
+
+ITEM.forModel = NULL
+/*
+	forModel must be one of the following:
+
+	models/ug/new/citizens
+	models/police
+*/
 
 -- draws the small square on an item when the item is equipped
 if (CLIENT) then
@@ -105,6 +111,11 @@ function ITEM:OnEquipped(justChange, initialPly)
 		-- defines this after the if statement to not waste time
 		local char = ply:GetCharacter() -- returns the player's character
 		local items = char:GetInv():GetItems() -- returns a table of the player's items to go through
+
+		if !(string.find(ply:GetModel(), self.forModel)) then
+			ply:NotifyLocalized("You can't equip this clothing item.")
+			return
+		end
 
 		-- go through the player's inventory
 		for k, v in pairs(items) do
