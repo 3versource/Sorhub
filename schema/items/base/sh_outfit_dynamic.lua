@@ -12,7 +12,7 @@ ITEM.outfitCategories = {""}
 	torso - 1
 	legs - 2
 	hands - 3
-	handgear - 4
+	headgear - 4
 	bag - 5
 	glasses - 6
 	satchel - 7
@@ -33,8 +33,13 @@ ITEM.playermodelBodygroupChanges = 0
 -- the amount of bodygroup changes an item will have (default = 0)
 
 -- ITEM.playermodel = NULL
--- ITEM.playermodelSkin = NULL -- the new skin the player will have
 ITEM.isClothingItem = true
 ITEM.isBagItem = false
-ITEM.isMPFUniform = false
-ITEM.isArmor = false
+
+ITEM.forModel = NULL
+/*
+	forModel must be one of the following:
+
+	models/ug/new/citizens
+	models/police
+*/
