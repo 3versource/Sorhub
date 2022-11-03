@@ -1,17 +1,16 @@
-ITEM.name = "Better Outfits"
-ITEM.description = "A not-so-trash outfit base without PAC support."
-ITEM.base = "base_newoutfithandler"
-ITEM.category = "Outfit"
-ITEM.model = "models/Gibs/HGIBS.mdl"
+ITEM.name = "Other Pants"
+ITEM.description = "A pair of heavy-duty kevlar pants."
+ITEM.category = "Better Clothes - Pants"
+ITEM.model = "models/props_junk/garbage_bag001a.mdl"
 ITEM.width = 1
 ITEM.height = 1
-ITEM.playermodelBodygroupAndVariants = nil
-ITEM.playermodelBodygroupChanges = 0
+ITEM.playermodelBodygroupAndVariants = {2,2}
+ITEM.playermodelBodygroupChanges = 1
 ITEM.playermodel = nil
 ITEM.isClothingItem = true
 ITEM.isBagItem = false
 ITEM.armor = nil
-ITEM.forModel = nil
+ITEM.forModel = "models/ug/new/citizens"
 
 /*
 	forModel must be one of the following:
