@@ -5,7 +5,9 @@ ITEM.model = "models/Gibs/HGIBS.mdl"
 ITEM.width = 1
 ITEM.height = 1
 
-ITEM.outfitCategories = {}
+ITEM.playermodelBodygroupAndVariants = nil -- table of pairs (bodygroup, variant), (bodygroup, variant)
+-- so if index 1 = 1 and index 2 = 1, bodygroup type 1 will be set to variant 1
+-- whatever the 1st bodygroup is of the model will have its variant changed to 1
 /*
 	citizen playermodel layout:
 	skin - 0
@@ -24,25 +26,25 @@ ITEM.outfitCategories = {}
 
 	MPF playermodel layout:
 */
-
-
-ITEM.playermodelBodygroupAndVariants = NULL -- table of pairs (bodygroup, variant), (bodygroup, variant)
--- so if index 1 = 1 and index 2 = 1, bodygroup type 1 will be set to variant 1
--- whatever the 1st bodygroup is of the model will have its variant changed to 1
 ITEM.playermodelBodygroupChanges = 0
 -- the amount of bodygroup changes an item will have (default = 0)
 
--- ITEM.playermodel = NULL
+ITEM.playermodel = nil
+-- string of the playermodel you are trying to change to
+
 ITEM.isClothingItem = true
 ITEM.isBagItem = false
-ITEM.isArmor = false
+ITEM.armor = nil
 
-ITEM.forModel = NULL
+ITEM.forModel = nil
 /*
 	forModel must be one of the following:
 
 	models/ug/new/citizens
 	models/police
+
+	"this item is for this model"
+	good for disabling people from equipping non-supported clothes
 */
 
 -- draws the small square on an item when the item is equipped
@@ -78,19 +80,11 @@ ITEM.functions.Equip = {
 	OnRun = function(item)
 		item:OnEquipped(false)
 		return false
-		end,
+	end,
 	OnCanRun = function(item)
 		return (!IsValid(item.entity) and item:GetData("equip") ~= true)
 	end
 }
-
-function ITEM:onCanBeTransfered(oldInventory, newInventory)
-	if (newInventory and self:GetData("equip")) then
-		return false
-	end
-
-	return true
-end
 
 -- equips the clothing item specified
 function ITEM:OnEquipped(justChange, initialPly)
@@ -117,28 +111,38 @@ function ITEM:OnEquipped(justChange, initialPly)
 			return
 		end
 
-		-- go through the player's inventory
+		-- go through the player's inventory to unequip any conflicting clothes
 		for k, v in pairs(items) do
-			-- if the selected item is a clothing item and its not the self item, then
-			if v.isClothingItem and v.id ~= self.id then
-				local itemTable = ix.item.instances[v.id]
+			-- if the selected item is a clothing item and is equipped and is not the self item, then
+			if v.isClothingItem and v:GetData("equip") then
+				-- if the self item is a playermodel and if the selected item is too, then
+				if self.playermodel and v.playermodel then
+					-- unequip the selected item to prevent conflictions
+					v:OnUnequipped(ply)
+				end
 
-				for i = 1, self.playermodelBodygroupChanges, 1 do
-					for a = 1, v.playermodelBodygroupChanges, 1 do
-						-- if the selected item is of the same category as the self item and is equipped, then
-						if v.outfitCategories[a] == self.outfitCategories[i] and v:GetData("equip") then
-							-- will unequip the selected item if ANY of the categories are the same to prevent conflictions
-							-- unequip the conflicting item
-							v:OnUnequipped(self.player)
+				if self.playermodelBodygroupChanges then
+					for i = 1, (self.playermodelBodygroupChanges*2), 2 do
+						for a = 1, (v.playermodelBodygroupChanges*2), 2 do
+							-- if the selected item is of the same category or has a category that's the same as the self item, then
+							if v.playermodelBodygroupAndVariants[a] == self.playermodelBodygroupAndVariants[i] then
+								-- unequip the selected item if ANY of the categories are the same to prevent conflictions
+								v:OnUnequipped(ply)
+							end
 						end
 					end
 				end
 			end
 		end
 
-		-- ORDER MATTERS.
-		-- 1. model 2. bodygroup 3. skin
-		-- SAVE DATA TO THE ITEM.
+		-- if the item is a playermodel, then
+		if self.playermodel then
+			print("running playermodel check")
+			-- save the old playermodel
+			self:SetData("previousPlayermodel", ply:GetModel())
+			-- set the new playermodel
+			ply:SetModel(self.playermodel)
+		end
 
 		-- if the item is a bodygroup, then
 		if self.playermodelBodygroupAndVariants then
@@ -160,9 +164,10 @@ function ITEM:OnEquipped(justChange, initialPly)
 			end
 		-- saves the player's previous bodygroups and variants
 		self:SetData("previousBodygroupsAndVariants", previousBodygroupsAndVariants)
-		end 
+		end
 	end
-
+	
+	-- the item is properly equipped, set "equip" data to true
 	self:SetData("equip", true)
 end
 
@@ -171,13 +176,30 @@ function ITEM:OnUnequipped(player)
 	-- "self" refers to "item"
 	local ply = self.player or player
 
-	for i = 1, (self.playermodelBodygroupChanges*2), 2 do
-		if i ~= 0 then
+	-- if the item is a playermodel, then
+	if self.playermodel then
+		-- set the player's model to their old model
+		ply:SetModel(self:GetData("previousPlayermodel"))
+		-- remove the data on their previous playermodel
+		self:SetData("previousPlayermodel", nil)
+	end
+
+	-- if the item is a bodygroup, then
+	if self.playermodelBodygroupChanges then
+		/*
+			loop, starting at 1 and skipping every other number (goes like 1, 3, 5, 7, etc),
+			with the maximum limit being the amount of changes times 2
+			(allows the skipping to work and be able to save what bodygroup is set to what)
+		*/
+		for i = 1, (self.playermodelBodygroupChanges*2), 2 do
+			-- set the bodygroup to the previous bodygroup and what its index was (1, 2 means set bodygroup 1 to variant 2)
 			ply:SetBodygroup(self:GetData("previousBodygroupsAndVariants")[i], self:GetData("previousBodygroupsAndVariants")[i+1])
 		end
+		-- remove the data on their previous bodygroups
+		self:SetData("previousBodygroupsAndVariants", nil)
 	end
-	
-	self:SetData("previousBodygroupsAndVariants", NULL)
+
+	-- item is properly unequipped, set "unequip" data to false
 	self:SetData("equip", false)
 end
 
@@ -190,14 +212,19 @@ end)
 
 -- when the player spawns,
 hook.Add("PlayerLoadedCharacter", "equipClothes", function(client, character)
-	-- set their bodygroups to all of their equipped clothing
 	local items = character:GetInv():GetItems() -- returns a table of the player's items to go through
+	-- go through the player's entire inventory,
 	for k, v in pairs(items) do
-		-- local itemTable = ix.item.instances[v.id]
 		-- if the selected item is a clothing item and is equipped, then
 		if v.isClothingItem and v:GetData("equip", true) then
-			-- set the player's bodygroups
+			-- equip that item
 			v:OnEquipped(true, client)
 		end
+	end
+end)
+
+hook.Add("CanTransferItem", "transferingClothes", function (item, currentInv, oldInv)
+	if item.isClothingItem and item:GetData("equip", false) and currentInv != oldInv then
+		item:OnUnequipped(oldInv:GetOwner())
 	end
 end)
